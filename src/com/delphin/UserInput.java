@@ -119,4 +119,53 @@ public class UserInput {
         setMinute(minuteInt);
     }
 
+    public static String inputString(String msg) {
+        String word;
+        System.out.println(msg);
+        while(!scan.hasNextLine()){
+            System.out.println(msg);
+            scan.next();
+        }
+        word = scan.next();
+        return word;
+    }
+
+    public static boolean inputBoolean(String msg) {
+
+        boolean word;
+        System.out.println(msg);
+        while(!scan.hasNextBoolean()){
+            System.out.println(msg);
+            scan.next();
+        }
+        word = scan.nextBoolean();
+        return word;
+    }
+
+    public static boolean inputBooleanInt(int min, int max, String msg) {
+        int number;
+        boolean trueOrFalse;
+        System.out.println(msg);
+        do {
+
+            while (!scan.hasNextInt()) {
+                System.out.println("Fejl, du skal skrive et tal:");
+                scan.next();
+            }
+            number = scan.nextInt();
+            if (number < min || number > max) {
+            System.out.println("Du skal skrive et tal mellem " + min + " og " + max + ":");
+            }
+        } while (number < min || number > max);
+
+        if (number == 1){
+            trueOrFalse = true;
+        } else {
+            trueOrFalse = false;
+        }
+        return trueOrFalse;
+    }
+
+
+
 }

@@ -1,5 +1,7 @@
 package com.delphin;
 
+import org.omg.PortableInterceptor.DISCARDING;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -12,7 +14,10 @@ public class Member {
    private boolean competitor; //true = competes
    private boolean activeDebt; //true = has arrears
    private double subscriptionPrice; //use method to calculate
-
+   static final double SENIORPRICE = 1600;
+   static final double JUNIORPRICE = 1000;
+   static final double DISCOUNT = 0.25;
+   static final double PENSIONER = (SENIORPRICE- (SENIORPRICE*DISCOUNT));
 
    static File membersData = new File("src\\com\\delphin\\Members.txt");
 
@@ -36,9 +41,6 @@ public class Member {
        this.subscriptionPrice=subscriptionPrice;
    }
 
-   public boolean isActivity() {
-        return activity;
-    }
    public void setActivity(boolean activity) {
         this.activity = activity;
     }
@@ -106,5 +108,28 @@ public class Member {
 
    }
 
+   static double calculatePrice(Member member) {
+        double price = 0;
+
+        if (member.getAge() < 18){
+            price = JUNIORPRICE;
+        } else if (member.getAge() >= 18 && member.getAge() < 60) {
+            price = SENIORPRICE;
+        } else {
+            price = PENSIONER;
+        }
+
+        return price;
+   }
+
+   static boolean calculateJuniorSenior(Member member) {
+        boolean juniorSenior;
+       if (member.getAge() < 18) {
+           juniorSenior = true; //under 18
+       } else {
+           juniorSenior = false; //over 18
+       }
+       return juniorSenior;
+   }
 
 }
