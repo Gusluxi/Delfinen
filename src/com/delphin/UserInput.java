@@ -131,7 +131,6 @@ public class UserInput {
 
             } else test = false;
         }
-
         return word;
     }
 
