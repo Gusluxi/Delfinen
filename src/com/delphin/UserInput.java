@@ -129,7 +129,7 @@ public class UserInput {
             if (containsNumbers(word)){
                 test = true;
 
-            } else test=false;
+            } else test = false;
         }
 
         return word;
