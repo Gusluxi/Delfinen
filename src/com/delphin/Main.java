@@ -1,7 +1,9 @@
 package com.delphin;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Main {
 
@@ -9,7 +11,7 @@ public class Main {
         IDNumber idNumber = new IDNumber();
 
         Member test3 = new Member(idNumber.newMemberID(), 35,"Jesus",true,false,true,false,1500);
-        createNewMemberFile(test3.getMemberID());
+        createNewMemberFile(test3);
 
 
 
@@ -17,7 +19,8 @@ public class Main {
         //System.out.println(test3.toString());
     }
 
-    void createNewMemberFile(int IDNumber){ // @author Stackoverflow :)
+    void createNewMemberFile(Member member) throws IOException { // @author Stackoverflow :)
+        int IDNumber = member.getMemberID();
         String path = "src\\com\\delphin\\"+IDNumber+".txt";
         try{
             File viProver = new File(path);
@@ -29,6 +32,12 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        FileWriter fw = new FileWriter(path,true);
+        PrintWriter writeToFile = new PrintWriter(fw);
+        writeToFile.println(member.toString());
+        writeToFile.flush();
+        writeToFile.close();
     }
 
     public static void main(String[] args) throws IOException {
