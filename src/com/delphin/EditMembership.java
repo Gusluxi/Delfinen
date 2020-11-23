@@ -34,8 +34,8 @@ public class EditMembership {
         double subscriptionPrice;
 
         int memberID = idNumber.newMemberID();
-        member.setAge(UserInput.inputInt("Skriv en alder: "));
-        member.setName(UserInput.inputString("Skriv et navn: "));
+        member.setAge(UserInput.inputInt(0,122,"Skriv en alder: "));
+        member.setName(UserInput.inputString("Skriv et fuldt navn: "));
         member.setActivity(UserInput.inputBooleanInt(1,2,"1 for aktiv, 2 for passiv:"));
         member.setCompetitor(UserInput.inputBooleanInt(1,2,"1 for konkurrencesvømmer, 2 for hyggesvømmer:"));
         member.setMemberID(memberID);
@@ -43,5 +43,9 @@ public class EditMembership {
         member.setSubscriptionPrice(member.calculatePrice(member));
 
         createNewMemberFile(member);
+    }
+
+    void editMembership() {
+
     }
 }

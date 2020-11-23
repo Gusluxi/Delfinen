@@ -14,7 +14,6 @@ public class Main {
         EditMembership editMembership = new EditMembership();
         editMembership.newMembership();
 
-
     }
 
 
