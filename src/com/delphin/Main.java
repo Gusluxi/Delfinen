@@ -13,13 +13,11 @@ public class Main {
         Member test3 = new Member(idNumber.newMemberID(), 35,"Jesus",true,false,true,false,1500);
         createNewMemberFile(test3);
 
-
-
         //System.out.println("YAYEET");
         //System.out.println(test3.toString());
     }
 
-    void createNewMemberFile(Member member) throws IOException { // @author Stackoverflow :)
+    void createNewMemberFile(Member member) throws IOException { // @author
         int IDNumber = member.getMemberID();
         String path = "src\\Members\\"+IDNumber+".txt";
         try{
