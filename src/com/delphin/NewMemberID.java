@@ -9,16 +9,12 @@ import java.util.Scanner;
 public class NewMemberID {
 
         private final String FILENAME = "src\\com\\pizza\\OrderID.txt";
-        private int currentOrderID;
+        private int MemberID;
 
-        public void setCurrentOrderID(int currentOrderID) {
-            this.currentOrderID = currentOrderID;
+        public void setMemberID(int MemberID) {
+            this.MemberID = MemberID;
         }
 
-        /**
-         * This method reads the ORDERID-file and returns the number
-         * @return the current ID in the file
-         */
         int readOrderID() {
             try {
                 Scanner idFileScan = new Scanner(new File(FILENAME));
@@ -32,17 +28,13 @@ public class NewMemberID {
             return -1;
         }
 
-        /**
-         * Gets the OrderID from the method above and adds 1. (Also saves the newest OrderID in the file.)
-         * @return the ID from the file
-         * @throws FileNotFoundException .
-         */
+
         int newOrderID() throws FileNotFoundException {
             int countID = readOrderID();
             countID ++;
             PrintStream writeToFile = new PrintStream(FILENAME);
             writeToFile.printf("%04d",countID);
-            setCurrentOrderID(countID);
+            setMemberID(countID);
             return countID;
         }
 }
