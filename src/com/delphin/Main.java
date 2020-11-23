@@ -11,8 +11,15 @@ public class Main {
         // IDNumber idNumber = new IDNumber();
         // Member test3 = new Member(idNumber.newMemberID(), 35,"Jesus",true,false,true,false,1500);
 
-        EditMembership editMembership = new EditMembership();
-        editMembership.newMembership();
+        //EditMembership editMembership = new EditMembership();
+        //editMembership.newMembership();
+
+        FileEditing fileEditing = new FileEditing();
+
+        // FIX INPUT STRING
+        //String word = UserInput.inputString("Skriv det du vil fjerne");
+
+        fileEditing.removeLineFromText("Hej");
 
 
     }
