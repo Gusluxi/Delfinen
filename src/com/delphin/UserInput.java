@@ -122,11 +122,11 @@ public class UserInput {
     public static String inputString(String msg) {
         String word;
         System.out.println(msg);
-        while(!scan.hasNextLine()){
-            System.out.println(msg);
-            scan.next();
-        }
         word = scan.next();
+        while(!word.matches("[a-zA-ZæøåÆØÅ]+$")){
+            System.out.println(msg);
+            word = scan.next();
+        }
         scan.nextLine();
         return word;
     }
