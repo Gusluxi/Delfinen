@@ -21,7 +21,7 @@ public class Main {
 
     void createNewMemberFile(Member member) throws IOException { // @author Stackoverflow :)
         int IDNumber = member.getMemberID();
-        String path = "src\\com\\delphin\\"+IDNumber+".txt";
+        String path = "src\\Members\\"+IDNumber+".txt";
         try{
             File viProver = new File(path);
             if (viProver.createNewFile()){
