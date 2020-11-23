@@ -19,7 +19,7 @@ public class Member {
    static final double DISCOUNT = 0.25;
    static final double PENSIONER = (SENIORPRICE- (SENIORPRICE*DISCOUNT));
 
-   static File membersData = new File("src\\com\\delphin\\Members.txt");
+   //static File membersData = new File("src\\com\\delphin\\Members.txt");
 
    Member() throws IOException {}
 
@@ -96,17 +96,6 @@ public class Member {
                 '}';
     }
 
-   Scanner readFile = new Scanner(membersData);
-   FileWriter fw = new FileWriter(membersData,true);
-   PrintWriter writeToFile = new PrintWriter(fw);
-
-    void methodLol(Object member) throws IOException {
-       writeToFile.println(member.toString());
-       writeToFile.flush();
-       writeToFile.close();
-
-
-   }
 
    static double calculatePrice(Member member) {
         double price = 0;

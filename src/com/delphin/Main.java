@@ -8,8 +8,7 @@ import java.io.PrintWriter;
 public class Main {
 
     void run() throws IOException {
-        IDNumber idNumber = new IDNumber();
-
+        // IDNumber idNumber = new IDNumber();
         // Member test3 = new Member(idNumber.newMemberID(), 35,"Jesus",true,false,true,false,1500);
 
         EditMembership editMembership = new EditMembership();

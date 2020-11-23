@@ -122,13 +122,26 @@ public class UserInput {
     public static String inputString(String msg) {
         String word;
         System.out.println(msg);
-        word = scan.next();
-        while(!word.matches("[a-zA-ZæøåÆØÅ]+$")){
-            System.out.println(msg);
-            word = scan.next();
+        boolean test = true;
+        word = scan.nextLine();
+        while(test){
+            word = scan.nextLine();
+            if (containsNumbers(word)){
+                test = true;
+
+            } else test=false;
         }
-        scan.nextLine();
+
         return word;
+    }
+
+    public static boolean containsNumbers(String str){
+        for(char ch : str.toCharArray()){
+            if(Character.isDigit(ch)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public static boolean inputBoolean(String msg) {
