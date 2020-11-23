@@ -179,6 +179,28 @@ public class UserInput {
         return trueOrFalse;
     }
 
+    public static boolean validateStringToBoo(String trueStatement, String falseStatement, String msg) {
+        boolean valid = true;
+        boolean statement = false;
+        String trueS = trueStatement.toLowerCase();
+        String falseS = falseStatement.toLowerCase();
+        System.out.println(msg);
+
+        while (valid) {
+            String usrInput = scan.nextLine();
+            String input = usrInput.toLowerCase();
+            if (trueS.compareTo(input) == 0 || "1".compareTo(input) == 0) {
+                statement = true;
+                valid = false;
+            } else if (falseS.compareTo(input) == 0 || "2".compareTo(input) == 0) {
+                statement = false;
+                valid = false;
+            } else {
+                System.out.println("Skriv 1. for " + trueStatement + " eller 2. for " + falseStatement);
+            }
+        }
+        return statement;
+    }
 
 
 }

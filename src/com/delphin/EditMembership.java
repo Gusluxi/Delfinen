@@ -36,8 +36,8 @@ public class EditMembership {
         int memberID = idNumber.newMemberID();
         member.setAge(UserInput.inputInt(0,122,"Skriv en alder: "));
         member.setName(UserInput.inputString("Skriv et fuldt navn: "));
-        member.setActivity(UserInput.inputBooleanInt(1,2,"1 for aktiv, 2 for passiv:"));
-        member.setCompetitor(UserInput.inputBooleanInt(1,2,"1 for konkurrencesvømmer, 2 for hyggesvømmer:"));
+        member.setActivity(UserInput.validateStringToBoo("Aktiv","Passiv","Skriv aktiv eller passiv for medlemskabet: "));
+        member.setCompetitor(UserInput.validateStringToBoo("Konkurrence","Atlet","Skriv konkurrence eller atlet for svømningsform"));
         member.setMemberID(memberID);
         member.setJunior(member.calculateJuniorSenior(member));
         member.setSubscriptionPrice(member.calculatePrice(member));

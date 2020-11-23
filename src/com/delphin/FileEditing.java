@@ -8,6 +8,7 @@ public class FileEditing {
 
     //@author Mick
     void removeLineFromText(String string) throws IOException {
+
         File inputFile = new File("src\\com\\delphin\\testFile.txt");
         File tempFile = new File("src\\com\\delphin\\tempTestFile.txt");
 
@@ -25,11 +26,14 @@ public class FileEditing {
         }
         writer.close();
         reader.close();
-        inputFile.delete();
-        tempFile.renameTo(inputFile);
+        boolean checkIfDeleted = inputFile.delete();
+        boolean checkIfRenamed = tempFile.renameTo(inputFile);
+        System.out.println("Deleted: " + checkIfDeleted + " \nRenamed: " + checkIfRenamed);
     }
+
     //@author Mick
     void displayTextFile() throws IOException{
+
         Scanner textFile = new Scanner(testFile);
         while (textFile.hasNextLine()){
             System.out.println(textFile.nextLine());
