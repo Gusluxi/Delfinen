@@ -127,6 +127,7 @@ public class UserInput {
             scan.next();
         }
         word = scan.next();
+        scan.nextLine();
         return word;
     }
 
