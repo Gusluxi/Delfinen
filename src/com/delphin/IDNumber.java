@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class NewMemberID {
+public class IDNumber {
 
-        private final String FILENAME = "src\\com\\pizza\\OrderID.txt";
-        private int MemberID;
+        private final String FILENAME = "src\\com\\delphin\\MemberID.txt";
+        private int memberID;
 
-        public void setMemberID(int MemberID) {
-            this.MemberID = MemberID;
+        public void setMemberID(int memberID) {
+            this.memberID = memberID;
         }
 
         int readMemberID() {
