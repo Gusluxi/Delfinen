@@ -9,9 +9,7 @@ public class Main {
         IDNumber idNumber = new IDNumber();
 
         Member test3 = new Member(idNumber.newMemberID(), 35,"Jesus",true,false,true,false,1500);
-        int idtallet = test3.getMemberID();
-        String idtal = Integer.toString(idtallet);
-        createNewMemberFile(idtal);
+        createNewMemberFile(test3.getMemberID());
 
 
 
@@ -19,7 +17,7 @@ public class Main {
         //System.out.println(test3.toString());
     }
 
-    void createNewMemberFile(String IDNumber){ // @author Stackoverflow :)
+    void createNewMemberFile(int IDNumber){ // @author Stackoverflow :)
         String path = "src\\com\\delphin\\"+IDNumber+".txt";
         try{
             File viProver = new File(path);
