@@ -121,10 +121,10 @@ public class UserInput {
 
     public static String inputString(String msg) {
         String word;
-        System.out.println(msg);
         boolean test = true;
         word = scan.nextLine();
         while(test){
+            System.out.println(msg);
             word = scan.nextLine();
             if (containsNumbers(word)){
                 test = true;
