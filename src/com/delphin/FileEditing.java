@@ -21,7 +21,7 @@ public class FileEditing {
             // trim newline when comparing with lineToRemove
             String trimmedLine = currentLine.trim();
             if (trimmedLine.contains(lineToRemove)) continue;
-            writer.write(currentLine + System.getProperty("line.separator"));
+            writer.write(currentLine + "\n");
         }
         writer.close();
         reader.close();

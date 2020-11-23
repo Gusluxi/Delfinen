@@ -19,7 +19,7 @@ public class Main {
         // FIX INPUT STRING
         //String word = UserInput.inputString("Skriv det du vil fjerne");
         fileEditing.displayTextFile();
-        fileEditing.removeLineFromText(" ");
+        fileEditing.removeLineFromText("elsker");
         fileEditing.displayTextFile();
     }
 
