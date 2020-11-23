@@ -15,7 +15,7 @@ public class NewMemberID {
             this.MemberID = MemberID;
         }
 
-        int readOrderID() {
+        int readMemberID() {
             try {
                 Scanner idFileScan = new Scanner(new File(FILENAME));
                 String stringID = idFileScan.nextLine();
@@ -29,8 +29,8 @@ public class NewMemberID {
         }
 
 
-        int newOrderID() throws FileNotFoundException {
-            int countID = readOrderID();
+        int newMemberID() throws FileNotFoundException {
+            int countID = readMemberID();
             countID ++;
             PrintStream writeToFile = new PrintStream(FILENAME);
             writeToFile.printf("%04d",countID);
