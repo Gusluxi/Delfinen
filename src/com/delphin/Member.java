@@ -12,10 +12,11 @@ public class Member {
 
    Member() throws IOException {}
 
-   Member(int age, String name,int memberID) throws IOException {
+   Member(int memberID, int age, String name) throws IOException {
+       this.memberID=memberID;
        this.age=age;
        this.name=name;
-       this.memberID=memberID;
+
    }
 
    public int getMemberID(){return this.memberID;}
@@ -32,7 +33,7 @@ public class Member {
    PrintWriter writeToFile = new PrintWriter(fw);
 
    public String toString() {
-       return getAge() + " " + getName() + " " + getMemberID();
+       return getMemberID() + " " + getName() + " " + getAge();
    }
 
    void methodLol(Object member) throws IOException {

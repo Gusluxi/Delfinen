@@ -4,16 +4,23 @@ import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    void run() throws IOException {
         IDNumber idNumber = new IDNumber();
 
 
-    Member test = new Member(15,"Mick", idNumber.newMemberID());
-    test.methodLol(test);
+        Member test = new Member(idNumber.newMemberID(),55, "Mick");
+        test.methodLol(test);
         System.out.println(test.toString());
 
-    Member test2 = new Member(12,"lel",idNumber.newMemberID());
-    test2.methodLol(test2);
+        Member test2 = new Member(idNumber.newMemberID(),14,"yaayEet");
+        test2.methodLol(test2);
+    }
+
+
+    public static void main(String[] args) throws IOException {
+
+        Main prg = new Main();
+        prg.run();
 
     }
 }
