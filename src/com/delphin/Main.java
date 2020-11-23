@@ -18,9 +18,9 @@ public class Main {
 
         // FIX INPUT STRING
         //String word = UserInput.inputString("Skriv det du vil fjerne");
-
-        fileEditing.removeLineFromText("Hej");
-
+        fileEditing.displayTextFile();
+        fileEditing.removeLineFromText(" ");
+        fileEditing.displayTextFile();
     }
 
 

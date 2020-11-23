@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class FileEditing {
+    static File testFile = new File("src\\com\\delphin\\testFile.txt");
 
     //@author Mick
     void removeLineFromText(String string) throws IOException {
@@ -28,8 +29,8 @@ public class FileEditing {
         tempFile.renameTo(inputFile);
     }
     //@author Mick
-    void displayTextFile(){
-        Scanner textFile = new Scanner("src\\com\\delphin\\testFile.txt");
+    void displayTextFile() throws IOException{
+        Scanner textFile = new Scanner(testFile);
         while (textFile.hasNextLine()){
             System.out.println(textFile.nextLine());
         }
