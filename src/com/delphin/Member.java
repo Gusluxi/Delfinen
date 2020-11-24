@@ -1,9 +1,6 @@
 package com.delphin;
-
-import org.omg.PortableInterceptor.DISCARDING;
-
 import java.io.*;
-import java.util.Scanner;
+
 
 public class Member {
    private int age;
@@ -15,7 +12,7 @@ public class Member {
    private boolean activeDebt; //true = has arrears
    private double subscriptionPrice; //use method to calculate
 
-    static final double SENIORPRICE = 1600;
+   static final double SENIORPRICE = 1600;
    static final double JUNIORPRICE = 1000;
    static final double DISCOUNT = 0.25;
    static final double PENSIONER = (SENIORPRICE- (SENIORPRICE*DISCOUNT));
@@ -98,6 +95,8 @@ public class Member {
     }
 
 
+    //@author GroupCall
+    //Calculates the price for a new member.
    static double calculatePrice(Member member) {
         double price = 0;
 
@@ -111,7 +110,8 @@ public class Member {
 
         return price;
    }
-
+    //@author Gustav
+    //Figures out if the member is junior or senior
    static boolean calculateJuniorSenior(Member member) {
         boolean juniorSenior;
        if (member.getAge() < 18) {

@@ -6,6 +6,8 @@ public class EditMembership {
     static IDNumber idNumber = new IDNumber();
     //Member test3 = new Member(idNumber.newMemberID(), 35,"Jesus",true,false,true,false,1500);
 
+    //@author Mick
+    //Saves a member in a textfile in case of program crashes.
     void createNewMemberFile(Member member) throws IOException { // @author
         int IDNumber = member.getMemberID();
         String path = "src\\Members\\"+IDNumber+".txt";
@@ -27,6 +29,8 @@ public class EditMembership {
         writeToFile.close();
     }
 
+    //Creates a member
+    //@author Gustav &the gang
     void newMembership() throws IOException {
         Member member = new Member();
         boolean juniorSenior;

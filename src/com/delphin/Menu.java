@@ -1,6 +1,7 @@
 package com.delphin;
 
 //Just the menu class :)
+//@author Kurt (last project)
 
 public class Menu {
     private final String menuHeader;

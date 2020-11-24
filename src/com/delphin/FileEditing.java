@@ -44,9 +44,6 @@ public class FileEditing {
     }
 
 
-
-
-
     //@author Mick
     //Searches file for a given String. Writes all the code (except the string)..
     //into another file. Deletes the old file and renames the new one.

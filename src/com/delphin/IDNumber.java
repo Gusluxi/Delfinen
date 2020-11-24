@@ -15,6 +15,8 @@ public class IDNumber {
             this.memberID = memberID;
         }
 
+        //@author Gustav (last project)
+        //reads a file and gets the number inside of it
         int readMemberID() {
             try {
                 Scanner idFileScan = new Scanner(new File(FILENAME));
@@ -28,7 +30,8 @@ public class IDNumber {
             return -1;
         }
 
-
+        //@author Gustav (last project)
+        //sets the IDnumber to the customer/member and adds 1 to file.
         int newMemberID() throws FileNotFoundException {
             int countID = readMemberID();
             countID ++;

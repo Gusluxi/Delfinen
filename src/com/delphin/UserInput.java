@@ -21,6 +21,7 @@ public class UserInput {
     }
 
 
+    //author Gustav (last project)
     //Checks if the input is an integer and if it is within the chosen min/max value
     public static int inputInt(int min, int max, String msg) {
         int number;
@@ -39,6 +40,8 @@ public class UserInput {
 
         return number;
     }
+
+    //@author (last project)
     //Asks user to input an integer if they didn't
     public static int inputInt(String msgOutput) {
         int number;
@@ -53,6 +56,7 @@ public class UserInput {
     }
 
 
+    //@author Gustav (last project)
     public void inputTimeInt(String msgOutput)  {
         String time;
         int hourInt = -1;
@@ -119,6 +123,7 @@ public class UserInput {
         setMinute(minuteInt);
     }
 
+    //@author Collective
     public static String inputString(String msg) {
         String word;
         boolean test = true;
@@ -134,6 +139,7 @@ public class UserInput {
         return word;
     }
 
+    //@author Mick
     //Scans the given String for numbers and returns TRUE if found.
     public static boolean containsNumbers(String str){
         for(char ch : str.toCharArray()){
@@ -144,6 +150,7 @@ public class UserInput {
         return false;
     }
 
+    //@author Unsure
     public static boolean inputBoolean(String msg) {
 
         boolean word;
@@ -156,6 +163,7 @@ public class UserInput {
         return word;
     }
 
+    //@author Mick
     public static boolean inputBooleanInt(int min, int max, String msg) {
         int number;
         boolean trueOrFalse;
@@ -180,6 +188,8 @@ public class UserInput {
         return trueOrFalse;
     }
 
+    //@author Gustav
+    //Does the same as the method above, but more user-proof.
     public static boolean validateStringToBoo(String trueStatement, String falseStatement, String msg) {
         boolean valid = true;
         boolean statement = false;
