@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
-public class TimeClass {
+public class TimeAndDate {
     static String currentRealTime = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
     static UserInput userInput = new UserInput();
     static Calendar cal = Calendar.getInstance();
