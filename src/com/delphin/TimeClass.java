@@ -2,10 +2,12 @@ package com.delphin;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 public class TimeClass {
     static String currentRealTime = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
     static UserInput userInput = new UserInput();
+    static Calendar cal = Calendar.getInstance();
 
     //@author last project
     public String displayTime(){
@@ -19,6 +21,21 @@ public class TimeClass {
         String timeTest = setTime.toString();
         return timeTest;
     }
+    // Calendar cal = TimeAndDate.setDate(2010, Calendar.MAY, 21);
+    public static Calendar setDate(int year, int month, int day) {
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month);
+        cal.set(Calendar.DAY_OF_MONTH, day);
+        return cal;
+    }
+
+    public static Calendar currentDate() {
+        cal.get(Calendar.YEAR);
+        cal.get(Calendar.MONTH);
+        cal.get(Calendar.DAY_OF_MONTH);
+        return cal;
+    }
+
 
     /*
     //@author last project
