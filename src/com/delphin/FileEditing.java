@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.Scanner;
 
 public class FileEditing {
-    static File testFile = new File("src\\com\\delphin\\testFile.txt");
 
     //@author Mick
     void removeLineFromText(String string) throws IOException {
@@ -44,11 +43,18 @@ public class FileEditing {
 
     //@author Mick
     void displayTextFile() throws IOException{
+        File inputFile = new File("src\\com\\delphin\\testFile.txt");
+        if (inputFile.createNewFile()){
+            System.out.println("Filen er oprettet: "+inputFile.getName()); //prints filename
+        } else {
+            System.out.println("Filen findes:" +inputFile.getName());
+        }
 
-        Scanner textFile = new Scanner(testFile);
+        Scanner textFile = new Scanner(inputFile);
         while (textFile.hasNextLine()){
             System.out.println(textFile.nextLine());
         }
+        textFile.close();
     }
 
 }
