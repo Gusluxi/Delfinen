@@ -1,0 +1,8 @@
+MemberID: #66
+Age: 33
+Name: Gus E-J
+Active: false
+junior: false
+Competitor: true
+ActiveDebt: false
+SubscriptionPrice: 1600.0 kr.

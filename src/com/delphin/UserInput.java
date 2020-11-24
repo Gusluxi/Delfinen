@@ -125,9 +125,8 @@ public class UserInput {
 
     //@author Collective
     public static String inputString(String msg) {
-        String word;
+        String word = "";
         boolean test = true;
-        word = scan.nextLine();
         while(test){
             System.out.println(msg);
             word = scan.nextLine();

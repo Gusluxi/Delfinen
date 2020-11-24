@@ -1,0 +1,8 @@
+MemberID: #67
+Age: 55
+Name: Gus No.
+Active: false
+junior: false
+Competitor: false
+ActiveDebt: false
+SubscriptionPrice: 500.0 kr.

@@ -1,9 +1,11 @@
 package com.delphin;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class EditMembership {
     static IDNumber idNumber = new IDNumber();
+    static FileEditing fileEditing = new FileEditing();
     //Member test3 = new Member(idNumber.newMemberID(), 35,"Jesus",true,false,true,false,1500);
 
     //@author Mick
@@ -48,8 +50,16 @@ public class EditMembership {
 
         createNewMemberFile(member);
     }
+    //@Gus
+    void findCrazyMember() throws FileNotFoundException {
+        String input = UserInput.inputString("Skriv navn eller #nr. på den person der skal redigeres: ");
+        ArrayList<String> memberData = fileEditing.dataToArrayList();
+        for (int i = 0; i < memberData.size(); i++) {
+            if (memberData.get(i).contains(input))
+                System.out.println(memberData.get(i));
+        }
 
-    void editMembership() {
+
 
     }
 }
