@@ -27,6 +27,9 @@ public class Main {
 
         //Nedestående tester vores sortering. IT WORKS LEL
         //fileEditing.sortTextFile();
+
+        fileEditing.readSpecificFile("50");
+
     }
 
 

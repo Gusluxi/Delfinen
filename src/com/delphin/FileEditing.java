@@ -7,6 +7,16 @@ import java.util.Scanner;
 
 public class FileEditing {
 
+    //@author Mick
+    //Finds a file with given string-name, displays it.
+    void readSpecificFile(String fileName) throws FileNotFoundException {
+        File file = new File("src\\Members\\"+fileName+".txt");
+        Scanner readFile = new Scanner(file);
+        while (readFile.hasNextLine()){
+            System.out.println(readFile.nextLine());
+        }
+    }
+
 
     //@author Mick
     //Copies a file into an Arraylist, sorts it, then sends it back.
