@@ -8,9 +8,65 @@ public class EditMembership {
     static FileEditing fileEditing = new FileEditing();
     //Member test3 = new Member(idNumber.newMemberID(), 35,"Jesus",true,false,true,false,1500);
 
+
+    //@author Mick
+    //Reads a given filename as an Object (member)
+    //Returns the member-object.
+    Member readFileAndConvertToObject(int IDNumber) throws IOException {
+        /*On reading objects, the ObjectInputStream directly tries to map all the attributes
+         *into the class into which we try to cast the read object.
+         *If it is unable to map the respective object exactly then it throws a ClassNotFound exception.
+         */
+
+        //import ObjectInputStream to to read objects from a file.
+
+        String path = "src\\Members\\"+IDNumber+".txt";
+        try{
+        FileInputStream fi = new FileInputStream(new File(path));
+        ObjectInputStream oi = new ObjectInputStream(fi);
+
+        //Read Object
+        Member aMember = (Member) oi.readObject();
+        System.out.println(aMember.toString());
+
+
+        oi.close();
+        fi.close();
+        return aMember;
+
+        } catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    //@author Mick
+    //Stores our members as objects in files.
+    void createNewMemberObjectFile(Member member){
+        //import ObjectOutputStream to write objects to a file.
+
+        int IDNumber = member.getMemberID();
+        String path = "src\\Members\\"+IDNumber+".txt";
+
+        try{
+            FileOutputStream f = new FileOutputStream(new File(path));
+            ObjectOutputStream o = new ObjectOutputStream(f);
+
+            //Write object to file
+            o.writeObject(member);
+            o.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println("Error initializing stream");
+        }
+    }
+
+
     //@author Mick
     //Saves a member in a textfile in case of program crashes.
-    void createNewMemberFile(Member member) throws IOException { // @author
+    /*void createNewMemberFile(Member member) throws IOException {
         int IDNumber = member.getMemberID();
         String path = "src\\Members\\"+IDNumber+".txt";
         try{
@@ -31,6 +87,8 @@ public class EditMembership {
         writeToFile.close();
     }
 
+     */
+
     //Creates a member
     //@author Gustav &the gang
     void newMembership() throws IOException {
@@ -48,7 +106,7 @@ public class EditMembership {
         member.setJunior(member.calculateJuniorSenior(member));
         member.setSubscriptionPrice(member.calculatePrice(member));
 
-        createNewMemberFile(member);
+        createNewMemberObjectFile(member);
     }
     //@Gus
     void findCrazyMember() throws FileNotFoundException {

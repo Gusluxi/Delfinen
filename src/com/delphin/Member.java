@@ -2,7 +2,8 @@ package com.delphin;
 import java.io.*;
 
 
-public class Member {
+public class Member implements Serializable {
+
    private int age;
    private String name;
    private int memberID;
