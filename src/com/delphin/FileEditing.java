@@ -10,8 +10,18 @@ public class FileEditing {
     void removeLineFromText(String string) throws IOException {
 
         File inputFile = new File("src\\com\\delphin\\testFile.txt");
-        File tempFile = new File("src\\com\\delphin\\tempTestFile.txt");
+        if (inputFile.createNewFile()){
+            System.out.println("Filen er oprettet: "+inputFile.getName()); //prints filename
+        } else {
+            System.out.println("Filen findes:" +inputFile.getName());
+        }
 
+        File tempFile = new File("src\\com\\delphin\\tempTestFile.txt");
+        if (tempFile.createNewFile()){
+            System.out.println("Filen er oprettet: "+inputFile.getName()); //prints filename
+        } else {
+            System.out.println("Filen findes: "+tempFile.getName());
+        }
         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
         BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
 
@@ -24,11 +34,12 @@ public class FileEditing {
             if (trimmedLine.contains(lineToRemove)) continue;
             writer.write(currentLine + "\n");
         }
+        //writer.flush();
         writer.close();
         reader.close();
-        boolean checkIfDeleted = inputFile.delete();
-        boolean checkIfRenamed = tempFile.renameTo(inputFile);
-        System.out.println("Deleted: " + checkIfDeleted + " \nRenamed: " + checkIfRenamed);
+
+        inputFile.delete();
+        tempFile.renameTo(inputFile);
     }
 
     //@author Mick
