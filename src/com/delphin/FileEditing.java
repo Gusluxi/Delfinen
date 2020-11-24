@@ -3,7 +3,6 @@ package com.delphin;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileEditing {
