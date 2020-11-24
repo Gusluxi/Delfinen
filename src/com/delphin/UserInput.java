@@ -134,6 +134,7 @@ public class UserInput {
         return word;
     }
 
+    //Scans the given String for numbers and returns TRUE if found.
     public static boolean containsNumbers(String str){
         for(char ch : str.toCharArray()){
             if(Character.isDigit(ch)){
