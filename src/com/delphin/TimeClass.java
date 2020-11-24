@@ -29,6 +29,14 @@ public class TimeClass {
         return cal;
     }
 
+    public static Calendar currentDate() {
+        cal.get(Calendar.YEAR);
+        cal.get(Calendar.MONTH);
+        cal.get(Calendar.DAY_OF_MONTH);
+        return cal;
+    }
+
+
     /*
     //@author last project
     public void askForTime(Order order){
