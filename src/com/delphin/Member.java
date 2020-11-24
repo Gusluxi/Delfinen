@@ -19,8 +19,6 @@ public class Member implements Serializable {
    static final double PENSIONER = (SENIORPRICE- (SENIORPRICE*DISCOUNT));
    static final double PASSIVE = 500;
 
-   //static File membersData = new File("src\\com\\delphin\\Members.txt");
-
    Member() throws IOException {}
 
    Member(int memberID, int age, String name) throws IOException {
@@ -95,7 +93,6 @@ public class Member implements Serializable {
                 "\nKontingentet: " + subscriptionPrice + " kr.";
     }
 
-
     //@author GroupCall
     //Calculates the price for a new member.
    static double calculatePrice(Member member) {
@@ -111,6 +108,7 @@ public class Member implements Serializable {
         }
         return price;
    }
+
     //@author Gustav
     //Figures out if the member is junior or senior
    static boolean calculateJuniorSenior(Member member) {

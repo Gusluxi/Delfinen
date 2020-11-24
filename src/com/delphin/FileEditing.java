@@ -18,6 +18,9 @@ public class FileEditing {
         }
     }
 
+    //@author Mick
+    //Reads a given filename as an Object (member)
+    //Returns the member-object.
     Member readFileAndConvertToObject(int IDNumber) throws IOException {
         /*On reading objects, the ObjectInputStream directly tries to map all the attributes
          *into the class into which we try to cast the read object.
@@ -70,6 +73,7 @@ public class FileEditing {
 
         return null;
     }
+
     //@author Mick
     //Stores our members as objects in files.
     void createNewMemberObjectFile(Member member){
@@ -92,6 +96,7 @@ public class FileEditing {
             System.out.println("Error initializing stream");
         }
     }
+
     //@author Mick
     //Copies a file into an Arraylist, sorts it, then sends it back.
     //Sorts after numbers first, then abc..
@@ -173,7 +178,7 @@ public class FileEditing {
         textFile.close();
     }
 
-    //author Gustav
+    //@author Gustav
     ArrayList<String> dataToArrayList() throws IOException {
         ArrayList<String> memberData = new ArrayList<>();
         ArrayList<File> fileArray = filesToArrayList();
@@ -183,7 +188,7 @@ public class FileEditing {
         }
         return memberData;
     }
-    //author Gustav
+    //@author Gustav
     ArrayList<File> filesToArrayList() throws IOException {
         File directory = new File("src\\Members");
         File[] fileArray = directory.listFiles();
