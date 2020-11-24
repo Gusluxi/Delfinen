@@ -1,6 +1,7 @@
 package com.delphin;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -28,6 +29,32 @@ public class FileEditing {
         String path = "src\\Members\\"+IDNumber+".txt";
         try{
             FileInputStream fi = new FileInputStream(new File(path));
+            ObjectInputStream oi = new ObjectInputStream(fi);
+
+            //Read Object
+            Member aMember = (Member) oi.readObject();
+
+            oi.close();
+            fi.close();
+            return aMember;
+
+        } catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    //Gustav Overloaded Mick's metode
+    //Overloading til at modtage en fil som parameter.
+    Member readFileAndConvertToObject(File file) throws IOException {
+        /*On reading objects, the ObjectInputStream directly tries to map all the attributes
+         *into the class into which we try to cast the read object.
+         *If it is unable to map the respective object exactly then it throws a ClassNotFound exception.
+         */
+        //import ObjectInputStream to to read objects from a file.
+        try{
+            FileInputStream fi = new FileInputStream(file);
             ObjectInputStream oi = new ObjectInputStream(fi);
 
             //Read Object
@@ -146,20 +173,25 @@ public class FileEditing {
         textFile.close();
     }
 
-    //@Gus
-    ArrayList dataToArrayList() throws IOException {
+    //author Gustav
+    ArrayList<String> dataToArrayList() throws IOException {
+        ArrayList<String> memberData = new ArrayList<>();
+        ArrayList<File> fileArray = filesToArrayList();
+        for (int i = 0; i < fileArray.size(); i++ ) {
+            File file = fileArray.get(i);
+            memberData.add(readFileAndConvertToObject(fileArray.get(i)).toString());
+        }
+        return memberData;
+    }
+    //author Gustav
+    ArrayList<File> filesToArrayList() throws IOException {
         File directory = new File("src\\Members");
         File[] fileArray = directory.listFiles();
-        ArrayList<Member> memberList = new ArrayList<>();
-        System.out.println(fileArray[0]);
+        ArrayList<File> fileNames = new ArrayList<>();
         for (int i = 0; i < fileArray.length; i++) {
-
-            memberList.add(readFileAndConvertToObject(fileArray.get(i)));
+            fileNames.add(fileArray[i]);
         }
-        System.out.println(memberList.toString());
-        return memberList;
+
+        return fileNames;
     }
-
-
-
 }

@@ -1,1 +1,0 @@
-Member{age=19, name='Michael', memberID=57, activity=true, junior=false, competitor=true, activeDebt=false, subscriptionPrice=1600.0}

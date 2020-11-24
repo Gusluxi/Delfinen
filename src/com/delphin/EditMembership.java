@@ -60,7 +60,7 @@ public class EditMembership {
 
         fileEditing.createNewMemberObjectFile(member);
     }
-    //@Gus
+    //@author Gustav
     String findCrazyMember() throws IOException {
         ArrayList<Integer> arrayPlace = new ArrayList<>();
         String input = UserInput.inputString("Skriv navn eller #nr. på den person der skal redigeres: ");
@@ -82,6 +82,7 @@ public class EditMembership {
         return memberData.get(arrayPlace.get(0));
     }
 
+    //auther Gustav
     //Printer ved hjælp af toStringMetoden i Member.java
     void printNrNameFromString(String data) {
         Scanner scan = new Scanner(data);
@@ -96,4 +97,6 @@ public class EditMembership {
         }
         scan.close();
     }
+
 }
+

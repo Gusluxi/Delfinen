@@ -29,7 +29,7 @@ public class Main {
         test.setActivity(false); //ændrer på ham som object
         System.out.println(test.toString()); //viser ændringen
         fileEditing.createNewMemberObjectFile(test); //sætter ham tilbage i fil som object
-        System.out.println(editMembership.findCrazyMember());
+        System.out.println(editMembership.findCrazyMember()); //Returner
         //POGGERS DUDE
 
 
