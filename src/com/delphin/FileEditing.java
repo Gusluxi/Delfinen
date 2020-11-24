@@ -9,7 +9,7 @@ public class FileEditing {
 
     //@author Mick
     //Finds a file with given string-name, displays it.
-    void readSpecificFile(String fileName) throws FileNotFoundException {
+    void readSpecificFile(int fileName) throws FileNotFoundException {
         File file = new File("src\\Members\\"+fileName+".txt");
         Scanner readFile = new Scanner(file);
         while (readFile.hasNextLine()){
@@ -17,7 +17,54 @@ public class FileEditing {
         }
     }
 
+    Member readFileAndConvertToObject(int IDNumber) throws IOException {
+        /*On reading objects, the ObjectInputStream directly tries to map all the attributes
+         *into the class into which we try to cast the read object.
+         *If it is unable to map the respective object exactly then it throws a ClassNotFound exception.
+         */
 
+        //import ObjectInputStream to to read objects from a file.
+
+        String path = "src\\Members\\"+IDNumber+".txt";
+        try{
+            FileInputStream fi = new FileInputStream(new File(path));
+            ObjectInputStream oi = new ObjectInputStream(fi);
+
+            //Read Object
+            Member aMember = (Member) oi.readObject();
+
+            oi.close();
+            fi.close();
+            return aMember;
+
+        } catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    //@author Mick
+    //Stores our members as objects in files.
+    void createNewMemberObjectFile(Member member){
+        //import ObjectOutputStream to write objects to a file.
+
+        int IDNumber = member.getMemberID();
+        String path = "src\\Members\\"+IDNumber+".txt";
+
+        try{
+            FileOutputStream f = new FileOutputStream(new File(path));
+            ObjectOutputStream o = new ObjectOutputStream(f);
+
+            //Write object to file
+            o.writeObject(member);
+            o.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println("Error initializing stream");
+        }
+    }
     //@author Mick
     //Copies a file into an Arraylist, sorts it, then sends it back.
     //Sorts after numbers first, then abc..
@@ -98,19 +145,18 @@ public class FileEditing {
         }
         textFile.close();
     }
+
     //@Gus
-    ArrayList dataToArrayList() throws FileNotFoundException {
+    ArrayList dataToArrayList() throws IOException {
         File directory = new File("src\\Members");
         File[] fileArray = directory.listFiles();
-        ArrayList<String> memberList = new ArrayList<>();
-        for (File file : fileArray) {
-            Scanner scan = new Scanner(file);
-            String data = "";
-            while (scan.hasNextLine()) {
-                data += scan.nextLine() + "\n";
-            }
-            memberList.add(data);
+        ArrayList<Member> memberList = new ArrayList<>();
+        System.out.println(fileArray[0]);
+        for (int i = 0; i < fileArray.length; i++) {
+
+            memberList.add(readFileAndConvertToObject(fileArray.get(i)));
         }
+        System.out.println(memberList.toString());
         return memberList;
     }
 

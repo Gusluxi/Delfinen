@@ -2,6 +2,7 @@ package com.delphin;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class EditMembership {
     static IDNumber idNumber = new IDNumber();
@@ -12,56 +13,7 @@ public class EditMembership {
     //@author Mick
     //Reads a given filename as an Object (member)
     //Returns the member-object.
-    Member readFileAndConvertToObject(int IDNumber) throws IOException {
-        /*On reading objects, the ObjectInputStream directly tries to map all the attributes
-         *into the class into which we try to cast the read object.
-         *If it is unable to map the respective object exactly then it throws a ClassNotFound exception.
-         */
 
-        //import ObjectInputStream to to read objects from a file.
-
-        String path = "src\\Members\\"+IDNumber+".txt";
-        try{
-        FileInputStream fi = new FileInputStream(new File(path));
-        ObjectInputStream oi = new ObjectInputStream(fi);
-
-        //Read Object
-        Member aMember = (Member) oi.readObject();
-        System.out.println(aMember.toString());
-
-
-        oi.close();
-        fi.close();
-        return aMember;
-
-        } catch (ClassNotFoundException e){
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-    //@author Mick
-    //Stores our members as objects in files.
-    void createNewMemberObjectFile(Member member){
-        //import ObjectOutputStream to write objects to a file.
-
-        int IDNumber = member.getMemberID();
-        String path = "src\\Members\\"+IDNumber+".txt";
-
-        try{
-            FileOutputStream f = new FileOutputStream(new File(path));
-            ObjectOutputStream o = new ObjectOutputStream(f);
-
-            //Write object to file
-            o.writeObject(member);
-            o.close();
-
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-        } catch (IOException e) {
-            System.out.println("Error initializing stream");
-        }
-    }
 
 
     //@author Mick
@@ -106,18 +58,42 @@ public class EditMembership {
         member.setJunior(member.calculateJuniorSenior(member));
         member.setSubscriptionPrice(member.calculatePrice(member));
 
-        createNewMemberObjectFile(member);
+        fileEditing.createNewMemberObjectFile(member);
     }
     //@Gus
-    void findCrazyMember() throws FileNotFoundException {
+    String findCrazyMember() throws IOException {
+        ArrayList<Integer> arrayPlace = new ArrayList<>();
         String input = UserInput.inputString("Skriv navn eller #nr. på den person der skal redigeres: ");
         ArrayList<String> memberData = fileEditing.dataToArrayList();
         for (int i = 0; i < memberData.size(); i++) {
-            if (memberData.get(i).contains(input))
-                System.out.println(memberData.get(i));
+            if (memberData.get(i).contains(input)) {
+                arrayPlace.add(i);
+            }
         }
+        if (arrayPlace.size() > 1) {
+            System.out.println("Vælg hvilken "+input+":");
+            for (int c = 0; c < arrayPlace.size(); c++) {
+                System.out.println((c+1)+".");
+                printNrNameFromString(memberData.get(arrayPlace.get(c)));
+            }
+            int reInput = UserInput.inputInt(1, arrayPlace.size(),"Skriv nr. for den " + input + " du vil vælge.")-1;
+            return memberData.get(arrayPlace.get(reInput));
+        }
+        return memberData.get(arrayPlace.get(0));
+    }
 
-
-
+    //Printer ved hjælp af toStringMetoden i Member.java
+    void printNrNameFromString(String data) {
+        Scanner scan = new Scanner(data);
+        while (scan.hasNextLine()) {
+            String line = scan.nextLine();
+            if (line.contains("MemberID:")) {
+                System.out.println(line);
+            }
+            if (line.contains("Navn:")) {
+                System.out.println(line+"\n");
+            }
+        }
+        scan.close();
     }
 }

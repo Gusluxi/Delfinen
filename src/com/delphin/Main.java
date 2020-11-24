@@ -10,22 +10,26 @@ public class Main {
     void run() throws IOException {
         //Instances of classes
         EditMembership editMembership = new EditMembership();
+
+
         FileEditing fileEditing = new FileEditing();
         IDNumber idNumber = new IDNumber();
 
-
+        fileEditing.dataToArrayList();
         //Testcode
                     //Opretter JESUS som medlem.
-        Member test3 = new Member(idNumber.newMemberID(), 35,"Jesus",true,false,true,false,1500);
-        editMembership.createNewMemberObjectFile(test3);
+        Member test3 = new Member(69, 35,"Jesus",true,false,true,false,1500);
+        fileEditing.createNewMemberObjectFile(test3);
 
+        //editMembership.newMembership();
 
-        Member test = editMembership.readFileAndConvertToObject(69); //henter JESUS medlemsnummer
-        System.out.println(test.toString()); //viser ham som object
+        Member test = fileEditing.readFileAndConvertToObject(69); //henter JESUS medlemsnummer
+        //System.out.println(test.toString()); //viser ham som object
         System.out.println("\n\n\n");
         test.setActivity(false); //ændrer på ham som object
         System.out.println(test.toString()); //viser ændringen
-        editMembership.createNewMemberObjectFile(test); //sætter ham tilbage i fil som object
+        fileEditing.createNewMemberObjectFile(test); //sætter ham tilbage i fil som object
+        System.out.println(editMembership.findCrazyMember());
         //POGGERS DUDE
 
 
@@ -36,7 +40,7 @@ public class Main {
 
         Main prg = new Main();
         prg.run();
-       
+
 
     }
     void gammelKodetest(){
@@ -50,8 +54,8 @@ public class Main {
 
         //fileEditing.readSpecificFile("50");
         //editMembership.findCrazyMember();
+        //System.out.println(editMembership.findCrazyMember());
 
-        //editMembership.newMembership();
     }
 }
 

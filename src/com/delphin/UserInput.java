@@ -33,6 +33,7 @@ public class UserInput {
                 scan.next();
             }
             number = scan.nextInt();
+            scan.nextLine();
             if (number < min || number > max) {
                 System.out.println("Du skal skrive et tal mellem " + min + " og " + max + ":");
             }
