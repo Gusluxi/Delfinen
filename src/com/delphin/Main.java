@@ -19,9 +19,14 @@ public class Main {
         // FIX INPUT STRING
         //String word = UserInput.inputString("Skriv det du vil fjerne");
 
-        fileEditing.displayTextFile();
-        fileEditing.removeLineFromText("hej");
-        fileEditing.displayTextFile();
+
+        //Nedestående tester om vi kan læse en fil, slette en givet string, og så display igen
+        //fileEditing.displayTextFile();
+        //fileEditing.removeLineFromText("hej");
+        //fileEditing.displayTextFile();
+
+        //Nedestående tester vores sortering. IT WORKS LEL
+        //fileEditing.sortTextFile();
     }
 
 
