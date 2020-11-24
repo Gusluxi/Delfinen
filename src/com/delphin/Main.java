@@ -11,7 +11,7 @@ public class Main {
         // IDNumber idNumber = new IDNumber();
         // Member test3 = new Member(idNumber.newMemberID(), 35,"Jesus",true,false,true,false,1500);
 
-        //EditMembership editMembership = new EditMembership();
+        EditMembership editMembership = new EditMembership();
         //editMembership.newMembership();
 
         FileEditing fileEditing = new FileEditing();
@@ -28,7 +28,8 @@ public class Main {
         //Nedestående tester vores sortering. IT WORKS LEL
         //fileEditing.sortTextFile();
 
-        fileEditing.readSpecificFile("50");
+        //fileEditing.readSpecificFile("50");
+        editMembership.findCrazyMember();
 
     }
 

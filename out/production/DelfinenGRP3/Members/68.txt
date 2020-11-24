@@ -1,0 +1,8 @@
+MemberID: #68
+Alder: 33
+Navn: Gus 
+Aktiv: true
+junior: false
+Konkurrence: false
+Restance: false
+Kontingentet: 1600.0 kr.

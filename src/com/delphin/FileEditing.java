@@ -3,6 +3,7 @@ package com.delphin;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileEditing {
@@ -42,9 +43,6 @@ public class FileEditing {
         }
         fileWriter.close();
     }
-
-
-
 
 
     //@author Mick
@@ -101,5 +99,22 @@ public class FileEditing {
         }
         textFile.close();
     }
+    //@Gus
+    ArrayList dataToArrayList() throws FileNotFoundException {
+        File directory = new File("src\\Members");
+        File[] fileArray = directory.listFiles();
+        ArrayList<String> memberList = new ArrayList<>();
+        for (File file : fileArray) {
+            Scanner scan = new Scanner(file);
+            String data = "";
+            while (scan.hasNextLine()) {
+                data += scan.nextLine() + "\n";
+            }
+            memberList.add(data);
+        }
+        return memberList;
+    }
+
+
 
 }
