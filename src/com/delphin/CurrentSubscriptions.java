@@ -29,8 +29,8 @@ public class CurrentSubscriptions {
         ArrayList<Member> memberData = fileEditing.memberFilesDebt();
 
         for (int i = 0; i < memberData.size(); i++) {
-            System.out.println("\n" + memberData.get(i).toStringDebt());
-            System.out.println();
+            System.out.println("\n" + memberData.get(i).toStringDebt() + "\n");
+
         }
 
     }
