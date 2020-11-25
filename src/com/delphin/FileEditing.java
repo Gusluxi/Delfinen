@@ -160,6 +160,14 @@ public class FileEditing {
         tempFile.renameTo(inputFile);
     }
 
+    void addToFile(String string, String inputFraBruger) throws IOException {
+        File inputFile = new File("src\\Disciplines\\" + inputFraBruger + ".txt");
+     BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile,true));
+     writer.write("\n" + string);
+     writer.close();
+
+    }
+
     //@author Mick
     //Displays a file for the user.. Just a print method atm
     void displayTextFile() throws IOException{
