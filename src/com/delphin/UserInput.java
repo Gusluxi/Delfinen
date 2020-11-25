@@ -143,34 +143,24 @@ public class UserInput {
         return word;
     }
     // Validerer om brugeren skriver
-    public int validationString(ArrayList<String> checkStrings, String msg) {
-        Scanner in = new Scanner(System.in);
-
+    public static boolean validationStringArray(ArrayList<String> checkStrings, String msg) {
+        System.out.print(msg);
         //Variables
-        int valid;
-        String ja = "ja";
-        String nej = "nej";
+        boolean isInputThere = false;
+        boolean validated = false;
+        int validationChecker;
 
         //LoopValidation
-        do {
-            System.out.print(msg);
-            String userAnswer = in.nextLine();
-            userAnswer = userAnswer.toLowerCase();
-            //Hvis ja: retunering af 1.
-            if (ja.compareTo(userAnswer) == 0) {
-                valid = 1;
-
-                // Hvis Nej: retunering af 2
-            } else if (nej.compareTo(userAnswer) == 0) {
-                valid = 2;
-
-                // Hvis brugeren hverken skriver ja/nej valid = 0 og loop fortsætter.
-            } else {
-                valid = 0;
-                System.err.println(userAnswer + "Vil du have kvittering? ja eller nej?");
+        while (!validated) {
+            String usrInput = scan.nextLine();
+            for (int i = 0; i < checkStrings.size(); i++) {
+                validationChecker = usrInput.compareTo(checkStrings.get(i));
+                if (validationChecker == 0) {
+                    isInputThere = true;
+                }
             }
-        } while (valid == 0);
-        return valid;
+        }
+        return isInputThere;
     }
 
     //@author Mick

@@ -1,6 +1,7 @@
 package com.delphin;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static com.delphin.EditMembership.fileEditing;
 import static com.delphin.UserInput.scan;
@@ -13,10 +14,12 @@ public class Main {
         FileEditing fileEditing = new FileEditing();
         IDNumber idNumber = new IDNumber();
         CurrentSubscriptions currentSubscriptions = new CurrentSubscriptions();
-        TimeAndDate timeClass = new TimeAndDate();
 
         //Testcode
-
+        ArrayList<String> testArray = new ArrayList<>();
+        testArray.add("HEJ");
+        testArray.add("NoO");
+        UserInput.validationStringArray(testArray, "Skriv brugernavn:");
         //Opretter JESUS som medlem.
         Member test3 = new Member(69, 35,"Jesus",true,false,true,true,1500);
         Member test4 = new Member(idNumber.newMemberID(), 15,"Jesus2",true,false,true,true,1000);
@@ -41,36 +44,8 @@ public class Main {
         //System.out.println(fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ")); //Returner
         //fileEditing.dataToArrayList();
 
-        boolean run = true;
-        int choice;
-        String headertext = "Velkommen til Delfinens system kl. er - " + TimeAndDate.displayTime() + " datoen er - " + TimeAndDate.currentDate();
-        String leadtext = "Indtast en valgmulighed: ";
-        String[] menuitems = {"1. Formandslogin", "2. Trænerlogin", "3. Kassérlogin", "9. Afslut program."};
-
-        while (run){
-            Menu menu = new Menu(headertext,leadtext,menuitems);
-            menu.printMenu();
-            choice = UserInput.inputInt(leadtext);
-            switch (choice){
-                case 1: //Indtast brugernavn og kodeord?
-                    break;
-                case 2: //Indtast brugernavn og kodeord?
-                    break;
-                case 3: //Indtast brugernavn og kodeord?
-                    break;
-                case 9: //Terminates program (if needed).
-                    System.out.println("Afslutter program...");
-                    int confirmEnd = UserInput.inputInt(1,2,"Er du sikker på at afslutte programmet?\n1. for Ja, 2. for Nej: ");
-                    if (confirmEnd == 1)
-                        run = false;
-                    break;
-                default:
-                    menu.printMenu();
-            }
-        }
-
-
     }
+
 
     public static void main(String[] args) throws IOException {
         Main prg = new Main();
