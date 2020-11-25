@@ -21,6 +21,9 @@ public class Main {
         testArray.add("NoO");
         UserInput.validationStringArray(testArray, "Skriv brugernavn:");
         //Opretter JESUS som medlem.
+        Login Formand = new Login("Formand","JegErDejlig","Kurt Kurt");
+        Login Traener = new Login("Traener","JegErDenHurtigeste","Hurtig Kurt");
+        Login Kasser = new Login("Kasser","JegElskerTal","Kvinde Kurt");
         Member test3 = new Member(69, 35,"Jesus",true,false,true,true,1500);
         Member test4 = new Member(idNumber.newMemberID(), 15,"Jesus2",true,false,true,true,1000);
         fileEditing.createNewMemberObjectFile(test3);
