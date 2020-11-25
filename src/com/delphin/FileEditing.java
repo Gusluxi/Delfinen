@@ -195,6 +195,8 @@ public class FileEditing {
         return memberData;
     }
 
+    //@author Kristian
+    //Returns personal subscription Price for each club member.
     ArrayList<Double> memberFilesSubscription() throws IOException {
         File directory = new File("src\\Members");
         File[] fileArray = directory.listFiles();
@@ -207,6 +209,8 @@ public class FileEditing {
         return memberData;
     }
 
+    //@author Kristian
+    //Returns all members with missing payment.
     ArrayList<Member> memberFilesDebt() throws IOException {
         File directory = new File("src\\Members");
         File[] fileArray = directory.listFiles();
