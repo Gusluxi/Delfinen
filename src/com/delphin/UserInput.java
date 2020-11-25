@@ -1,5 +1,6 @@
 package com.delphin;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInput {
@@ -141,6 +142,36 @@ public class UserInput {
         }
         return word;
     }
+    // Validerer om brugeren skriver
+    public int validationString(ArrayList<String> checkStrings, String msg) {
+        Scanner in = new Scanner(System.in);
+
+        //Variables
+        int valid;
+        String ja = "ja";
+        String nej = "nej";
+
+        //LoopValidation
+        do {
+            System.out.print(msg);
+            String userAnswer = in.nextLine();
+            userAnswer = userAnswer.toLowerCase();
+            //Hvis ja: retunering af 1.
+            if (ja.compareTo(userAnswer) == 0) {
+                valid = 1;
+
+                // Hvis Nej: retunering af 2
+            } else if (nej.compareTo(userAnswer) == 0) {
+                valid = 2;
+
+                // Hvis brugeren hverken skriver ja/nej valid = 0 og loop fortsætter.
+            } else {
+                valid = 0;
+                System.err.println(userAnswer + "Vil du have kvittering? ja eller nej?");
+            }
+        } while (valid == 0);
+        return valid;
+    }
 
     //@author Mick
     //Scans the given String for numbers and returns TRUE if found.
@@ -211,6 +242,30 @@ public class UserInput {
                 valid = false;
             } else {
                 System.out.println("Skriv 1. for " + trueStatement + " eller 2. for " + falseStatement);
+            }
+        }
+        return statement;
+    }
+    //@author Gustav
+    //Does the same as the method above, but more user-proof.
+    public static boolean validateStringToBooleanPlus(String trueStatement, String falseStatement, String msg) {
+        boolean valid = true;
+        boolean statement = false;
+        String trueS = trueStatement.toLowerCase();
+        String falseS = falseStatement.toLowerCase();
+        System.out.println(msg);
+
+        while (valid) {
+            String usrInput = scan.nextLine();
+            String input = usrInput.toLowerCase();
+            if (trueS.compareTo(input) == 0) {
+                statement = true;
+                valid = false;
+            } else if (falseS.compareTo(input) == 0) {
+                statement = false;
+                valid = false;
+            } else {
+                System.out.println(msg);
             }
         }
         return statement;

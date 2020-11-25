@@ -3,7 +3,6 @@ package com.delphin;
 import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -184,25 +183,35 @@ public class FileEditing {
     //"fileArray" is a list of all files. The method adds each file object's toString to "memberData"
     //Returns an Arraylist of String with memberData
     ArrayList<String> dataToArrayList() throws IOException {
+        //Declaration of variables and initialization.
         File directory = new File("src\\Members");
-        File[] fileArray = directory.listFiles();
-        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
         ArrayList<String> memberData = new ArrayList<>();
-        for (int i = 0; i < fileA.size(); i++ ) {
+        ArrayList<File> fileArrayList = new ArrayList<>();
+        // .listFiles returns an Array[] of Files from a targeted pathname.
+        File[] fileArray = directory.listFiles();
+        //Conversion from Array[] to ArrayList<>
+        Collections.addAll(fileArrayList, fileArray);
+
+        for (int i = 0; i < fileArrayList.size(); i++ ) {
             //adds a string that contains the file-object's toString
-            memberData.add(readFileAndConvertToObject(fileA.get(i)).toString());
+            memberData.add(readFileAndConvertToObject(fileArrayList.get(i)).toString());
         }
         return memberData;
     }
 
     ArrayList<Double> memberFilesSubscription() throws IOException {
-        File directory = new File("src\\Members");
-        File[] fileArray = directory.listFiles();
-        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        //Declaration of variables and initialization.
+        ArrayList<File> fileArrayList = new ArrayList<>();
         ArrayList<Double> memberData = new ArrayList<>();
-        for (int i = 0; i < fileA.size(); i++ ) {
+        File directory = new File("src\\Members");
+        // .listFiles returns an Array[] of Files from a targeted pathname.
+        File[] fileArray = directory.listFiles();
+        //Conversion from Array[] to ArrayList<>
+        Collections.addAll(fileArrayList, fileArray);
+
+        for (int i = 0; i < fileArrayList.size(); i++ ) {
             //adds a string that contains the file-object's toString
-            memberData.add(readFileAndConvertToObject(fileA.get(i)).getSubscriptionPrice());
+            memberData.add(readFileAndConvertToObject(fileArrayList.get(i)).getSubscriptionPrice());
         }
         return memberData;
     }
