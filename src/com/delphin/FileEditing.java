@@ -3,6 +3,7 @@ package com.delphin;
 import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -165,28 +166,18 @@ public class FileEditing {
     //"fileArray" is a list of all files. The method adds each file object's toString to "memberData"
     //Returns an Arraylist of String with memberData
     ArrayList<String> dataToArrayList() throws IOException {
+        File directory = new File("src\\Members");
+        File[] fileArray = directory.listFiles();
+        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
         ArrayList<String> memberData = new ArrayList<>();
-        ArrayList<File> fileArray = filesToArrayList(); //arraylist of all files
-        for (int i = 0; i < fileArray.size(); i++ ) {
+        for (int i = 0; i < fileA.size(); i++ ) {
             //adds a string that contains the file-object's toString
-            memberData.add(readFileAndConvertToObject(fileArray.get(i)).toString());
+            memberData.add(readFileAndConvertToObject(fileA.get(i)).toString());
         }
         return memberData;
     }
 
     //@author Gustav
-    //Creates an Arraylist with all the files in Members Directory.
-    ArrayList<File> filesToArrayList() throws IOException {
-        File directory = new File("src\\Members");
-        File[] fileArray = directory.listFiles();
-        ArrayList<File> fileNames = new ArrayList<>();
-
-        for (int i = 0; i < fileArray.length; i++) {
-            fileNames.add(fileArray[i]);
-        }
-
-        return fileNames;
-    }
 
     //@author Gustav
     //Looks for a specific member by String or Number.
