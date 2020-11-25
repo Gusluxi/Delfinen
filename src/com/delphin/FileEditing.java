@@ -188,20 +188,28 @@ public class FileEditing {
         return fileNames;
     }
 
+    //@author Gustav
+    //Looks for a specific member by String or Number.
+    //If multiply users appear, you can choose by using the ID-number
     String findSpecificFileValues(String usrMsg) throws IOException {
+
         ArrayList<Integer> arrayPlace = new ArrayList<>();
         String input = UserInput.inputString(usrMsg, false);
-        ArrayList<String> memberData = dataToArrayList();
+        ArrayList<String> memberData = dataToArrayList(); //Returns an Arraylist of Strings with each member instead.
+        //so when searching for "Gus" it finds all members named something with "Gus"
+
         for (int i = 0; i < memberData.size(); i++) {
             if (memberData.get(i).contains(input)) {
                 arrayPlace.add(i);
             }
         }
+
+        //In case of more hits on Search-word.
         if (arrayPlace.size() > 1) {
             System.out.println("Vælg hvilken "+input+":");
             for (int c = 0; c < arrayPlace.size(); c++) {
-                System.out.println((c+1)+".");
-                printNrNameFromString(memberData.get(arrayPlace.get(c)));
+                System.out.println((c+1)+"."); //Displays index numbers+1
+                printNrNameFromString(memberData.get(arrayPlace.get(c))); //displays Name and NumberID only.
             }
             int reInput = UserInput.inputInt(1, arrayPlace.size(),"Skriv nr. for den " + input + " du vil vælge.")-1;
             return memberData.get(arrayPlace.get(reInput));
@@ -210,7 +218,7 @@ public class FileEditing {
     }
 
     //@author Gustav
-    //Printer ved hjælp af toStringMetoden i Member.java
+    //Prints MemberID and Name of the subject(data)
     void printNrNameFromString(String data) {
         Scanner scan = new Scanner(data);
         while (scan.hasNextLine()) {
