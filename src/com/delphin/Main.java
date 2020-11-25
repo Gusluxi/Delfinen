@@ -1,9 +1,6 @@
 package com.delphin;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class Main {
 
@@ -28,7 +25,7 @@ public class Main {
 
 
 
-        System.out.println(editMembership.findCrazyMember()); //Returner
+        System.out.println(fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ")); //Returner
         fileEditing.dataToArrayList();
 
     }

@@ -18,7 +18,7 @@ public class EditMembership {
 
         int memberID = idNumber.newMemberID();
         member.setAge(UserInput.inputInt(0,122,"Skriv en alder: "));
-        member.setName(UserInput.inputString("Skriv et fuldt navn: "));
+        member.setName(UserInput.inputString("Skriv et fuldt navn: ", true));
         member.setActivity(UserInput.validateStringToBoo("Aktiv","Passiv","Skriv aktiv eller passiv for medlemskabet: "));
         member.setCompetitor(UserInput.validateStringToBoo("Konkurrence","Atlet","Skriv konkurrence eller atlet for svømningsform"));
         member.setMemberID(memberID);
@@ -26,43 +26,6 @@ public class EditMembership {
         member.setSubscriptionPrice(member.calculatePrice(member));
 
         fileEditing.createNewMemberObjectFile(member);
-    }
-    //@author Gustav
-    String findCrazyMember() throws IOException {
-        ArrayList<Integer> arrayPlace = new ArrayList<>();
-        String input = UserInput.inputString("Skriv navn eller #nr. på den person der skal redigeres: ");
-        ArrayList<String> memberData = fileEditing.dataToArrayList();
-        for (int i = 0; i < memberData.size(); i++) {
-            if (memberData.get(i).contains(input)) {
-                arrayPlace.add(i);
-            }
-        }
-        if (arrayPlace.size() > 1) {
-            System.out.println("Vælg hvilken "+input+":");
-            for (int c = 0; c < arrayPlace.size(); c++) {
-                System.out.println((c+1)+".");
-                printNrNameFromString(memberData.get(arrayPlace.get(c)));
-            }
-            int reInput = UserInput.inputInt(1, arrayPlace.size(),"Skriv nr. for den " + input + " du vil vælge.")-1;
-            return memberData.get(arrayPlace.get(reInput));
-        }
-        return memberData.get(arrayPlace.get(0));
-    }
-
-    //auther Gustav
-    //Printer ved hjælp af toStringMetoden i Member.java
-    void printNrNameFromString(String data) {
-        Scanner scan = new Scanner(data);
-        while (scan.hasNextLine()) {
-            String line = scan.nextLine();
-            if (line.contains("MemberID:")) {
-                System.out.println(line);
-            }
-            if (line.contains("Navn:")) {
-                System.out.println(line+"\n");
-            }
-        }
-        scan.close();
     }
 
 }

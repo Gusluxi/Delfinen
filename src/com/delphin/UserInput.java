@@ -125,16 +125,19 @@ public class UserInput {
     }
 
     //@author Collective
-    public static String inputString(String msg) {
+    public static String inputString(String msg, Boolean checkForNumbers) {
         String word = "";
-        boolean test = true;
-        while(test){
+        if (!checkForNumbers) {
+            System.out.println(msg);
+            word = scan.nextLine();
+        }
+        while(checkForNumbers){
             System.out.println(msg);
             word = scan.nextLine();
             if (containsNumbers(word)){
-                test = true;
+                checkForNumbers = true;
 
-            } else test = false;
+            } else checkForNumbers = false;
         }
         return word;
     }
