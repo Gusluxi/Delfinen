@@ -10,6 +10,7 @@ public class Main {
         FileEditing fileEditing = new FileEditing();
         IDNumber idNumber = new IDNumber();
         TimeAndDate timeClass = new TimeAndDate();
+        TimeAndDate dateClass = new TimeAndDate();
 
         //Testcode
         //Opretter JESUS som medlem.
@@ -30,7 +31,7 @@ public class Main {
 
         boolean run = true;
         int choice;
-        String headertext = "Velkommen til Definens system  -  kl. " + timeClass.displayTime();
+        String headertext = "Velkommen til Definens system  -  kl. " + timeClass.displayTime() + "datoen er - " + dateClass.currentDate();
         String leadtext = "Indtast en valgmulighed: ";
         String[] menuitems = {"1. Formandens Menu", "2. Svømmetræner Menu", "3. Kasser Menu", "9. Afslut program."};
 
@@ -59,7 +60,7 @@ public class Main {
 
             public static void main (String[]args) throws IOException {
                 Main prg = new Main();
-             //   prg.run();
+                prg.run();
             }
 
             //void gammelKodetest(){

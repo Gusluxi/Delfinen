@@ -22,18 +22,20 @@ public class TimeAndDate {
         return timeTest;
     }
     // Calendar cal = TimeAndDate.setDate(2010, Calendar.MAY, 21);
-    public static Calendar setDate(int year, int month, int day) {
+    public static String setDate(int year, int month, int day) {
         cal.set(Calendar.YEAR, year);
         cal.set(Calendar.MONTH, month);
         cal.set(Calendar.DAY_OF_MONTH, day);
-        return cal;
+        String newDate = day + "/" + month + "-" + year;
+        return newDate;
     }
 
-    public static Calendar currentDate() {
-        cal.get(Calendar.YEAR);
-        cal.get(Calendar.MONTH);
-        cal.get(Calendar.DAY_OF_MONTH);
-        return cal;
+    public static String currentDate() {
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        String dateTest = day + "/" + month + "-" + year;
+        return dateTest;
     }
 
 
