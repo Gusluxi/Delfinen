@@ -16,19 +16,17 @@ public class Main {
         CurrentSubscriptions currentSubscriptions = new CurrentSubscriptions();
 
         //Testcode
-        ArrayList<String> testArray = new ArrayList<>();
-        testArray.add("HEJ");
-        testArray.add("NoO");
-        UserInput.validationStringArray(testArray, "Skriv brugernavn:");
+
         //Opretter JESUS som medlem.
         Member test3 = new Member(69, 35,"Jesus",true,false,true,true,1500);
-        Member test4 = new Member(idNumber.newMemberID(), 15,"Jesus2",true,false,true,true,1000);
+        //Member test4 = new Member(idNumber.newMemberID(), 15,"Jesus2",true,false,true,true,1000);
         fileEditing.createNewMemberObjectFile(test3);
+
         DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
-        disciplineFileRW.testerAddToFile();
-        fileEditing.createNewMemberObjectFile(test4);
+        //disciplineFileRW.testerAddToFile();
 
         CurrentSubscriptions.showTotalRevenue();
+        CurrentSubscriptions.showMembersWithDebt();
 
 
 

@@ -207,6 +207,20 @@ public class FileEditing {
         return memberData;
     }
 
+    ArrayList<Member> memberFilesDebt() throws IOException {
+        File directory = new File("src\\Members");
+        File[] fileArray = directory.listFiles();
+        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        ArrayList<Member> memberData = new ArrayList<>();
+
+        for (int i = 0; i < fileA.size(); i++ ) {
+            if (readFileAndConvertToObject(fileA.get(i)).isActiveDebt() == true);
+            memberData.add(readFileAndConvertToObject(fileA.get(i)));
+        }
+        return memberData;
+    }
+
+
     //@author Gustav
 
     //@author Gustav

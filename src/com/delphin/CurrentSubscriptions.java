@@ -24,6 +24,16 @@ public class CurrentSubscriptions {
         System.out.println(totalMembersRevenue);
     }
 
+    //Show Club members with debt.
+    public static void showMembersWithDebt() throws IOException {
+        ArrayList<Member> memberData = fileEditing.memberFilesDebt();
+
+        for (int i = 0; i < memberData.size(); i++) {
+            System.out.println("\n" + memberData.get(i).toStringDebt());
+            System.out.println();
+        }
+
+    }
 
 
 }

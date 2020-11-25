@@ -96,6 +96,13 @@ public class Member implements Serializable {
                 "\nKontingentet: " + subscriptionPrice + " kr.";
     }
 
+    public String toStringDebt() {
+        return "MemberID: #" + memberID +
+                "\nNavn: " + name +
+                "\nRestance: " + activeDebt +
+                "\nManglende betaling: " + subscriptionPrice + " kr.";
+    }
+
     //@author GroupCall
     //Calculates the price for a new member.
    static double calculatePrice(Member member) {
