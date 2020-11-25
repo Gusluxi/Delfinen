@@ -16,14 +16,18 @@ public class Main {
         Member test3 = new Member(69, 35,"Jesus",true,false,true,false,1500);
         fileEditing.createNewMemberObjectFile(test3);
 
-        editMembership.editMembership(fileEditing.readFileAndConvertToObject(69));
 
-        System.out.println(fileEditing.readFileAndConvertToObject(69).toString());
+        String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+        editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
+
+        System.out.println(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)).toString());
         /*
         //Edit membership
         editMembership.editMembership(fileEditing.readFileAndConvertToObject(69));
 
          */
+        //System.out.println(fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ")); //Returner
+        //fileEditing.dataToArrayList();
 
     }
 
