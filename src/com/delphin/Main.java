@@ -53,7 +53,6 @@ public class Main {
             choice = UserInput.inputInt(leadtext);
             switch (choice){
                 case 1: //Indtast brugernavn og kodeord?
-                    editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
                     break;
                 case 2: //Indtast brugernavn og kodeord?
                     break;
