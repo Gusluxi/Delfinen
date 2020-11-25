@@ -204,6 +204,8 @@ public class FileEditing {
             }
             int reInput = UserInput.inputInt(1, arrayPlace.size(),"Skriv nr. for den " + input + " du vil vælge.")-1;
             return memberData.get(arrayPlace.get(reInput));
+        } else if (arrayPlace.size() <= 0) { //Runs the same method untill the user finds a corret value.
+            return findSpecificFileValues("Fejl, " + input + " findes ikke.\nSkriv navn eller #nr. på den person der skal redigeres: ");
         }
         return memberData.get(arrayPlace.get(0));
     }
