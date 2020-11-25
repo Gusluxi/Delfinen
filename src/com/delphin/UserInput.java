@@ -193,7 +193,7 @@ public class UserInput {
 
     //@author Gustav
     //Does the same as the method above, but more user-proof.
-    public static boolean validateStringToBoo(String trueStatement, String falseStatement, String msg) {
+    public static boolean validateStringToBoolean(String trueStatement, String falseStatement, String msg) {
         boolean valid = true;
         boolean statement = false;
         String trueS = trueStatement.toLowerCase();

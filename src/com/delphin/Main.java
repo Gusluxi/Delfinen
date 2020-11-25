@@ -11,22 +11,19 @@ public class Main {
         IDNumber idNumber = new IDNumber();
 
         //Testcode
-                    //Opretter JESUS som medlem.
+
+        //Opretter JESUS som medlem.
         Member test3 = new Member(69, 35,"Jesus",true,false,true,false,1500);
         fileEditing.createNewMemberObjectFile(test3);
 
-        //editMembership.newMembership();
+        editMembership.editMembership(fileEditing.readFileAndConvertToObject(69));
 
-        Member test = fileEditing.readFileAndConvertToObject(69); //henter JESUS medlemsnummer
-        System.out.println(test.toString()); //Viser Jesus som objekt
-        test.setActivity(false); //ændrer på ham som object
-        System.out.println(test.toString()); //viser ændringen
-        fileEditing.createNewMemberObjectFile(test); //sætter ham tilbage i fil som object
+        System.out.println(fileEditing.readFileAndConvertToObject(69).toString());
+        /*
+        //Edit membership
+        editMembership.editMembership(fileEditing.readFileAndConvertToObject(69));
 
-
-
-        System.out.println(fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ")); //Returner
-        fileEditing.dataToArrayList();
+         */
 
     }
 
@@ -48,6 +45,20 @@ public class Main {
         //fileEditing.readSpecificFile("50");
         //editMembership.findCrazyMember();
         //System.out.println(editMembership.findCrazyMember());
+
+        /*
+        Member test = fileEditing.readFileAndConvertToObject(69); //henter JESUS medlemsnummer
+        System.out.println(test.toString()); //Viser Jesus som objekt
+        test.setActivity(false); //ændrer på ham som object
+        System.out.println(test.toString()); //viser ændringen
+        fileEditing.createNewMemberObjectFile(test); //sætter ham tilbage i fil som object
+        */
+
+        //editMembership.newMembership();
+        //System.out.println(fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ")); //Returner
+        //fileEditing.dataToArrayList();
+
+
 
     }
 }
