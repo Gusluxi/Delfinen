@@ -37,7 +37,6 @@ public class FileEditing {
          *into the class into which we try to cast the read object.
          *If it is unable to map the respective object exactly then it throws a ClassNotFound exception.
          */
-
         //import ObjectInputStream to to read objects from a file.
 
         String path = "src\\Members\\"+IDNumber+".txt";
@@ -160,12 +159,13 @@ public class FileEditing {
         tempFile.renameTo(inputFile);
     }
 
+    //@author Ludvig
+    //Adds String to textfile.
     void addToFile(String string, String inputFraBruger) throws IOException {
         File inputFile = new File("src\\Disciplines\\" + inputFraBruger + ".txt");
      BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile,true));
      writer.write("\n" + string);
      writer.close();
-
     }
 
     //@author Mick
@@ -195,22 +195,26 @@ public class FileEditing {
         return memberData;
     }
 
+    //@author Kristian
+    //Collects all the members' subscriptions in an Arraylist
     ArrayList<Double> memberFilesSubscription() throws IOException {
         File directory = new File("src\\Members");
         File[] fileArray = directory.listFiles();
-        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray)); //Converts array to arraylist
         ArrayList<Double> memberData = new ArrayList<>();
         for (int i = 0; i < fileA.size(); i++ ) {
-            //adds a string that contains the file-object's toString
-            memberData.add(readFileAndConvertToObject(fileA.get(i)).getSubscriptionPrice());
+            double memberSubPrice = readFileAndConvertToObject(fileA.get(i)).getSubscriptionPrice();
+            memberData.add(memberSubPrice);
         }
         return memberData;
     }
 
+    //@author Kristian
+    //Returns an Arraylist of members with debt
     ArrayList<Member> memberFilesDebt() throws IOException {
         File directory = new File("src\\Members");
         File[] fileArray = directory.listFiles();
-        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray)); //Convert array to arraylist
         ArrayList<Member> memberData = new ArrayList<>();
 
         for (int i = 0; i < fileA.size(); i++ ) {
@@ -219,9 +223,6 @@ public class FileEditing {
         }
         return memberData;
     }
-
-
-    //@author Gustav
 
     //@author Gustav
     //Looks for a specific member by String or Number.
@@ -269,6 +270,7 @@ public class FileEditing {
         }
         scan.close();
     }
+
     //@author Gustav
     //Prints each line in a String as a list of 1. 2. 3...
     void printStringAsList(String data) {

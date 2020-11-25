@@ -9,9 +9,10 @@ import java.util.Scanner;
 public class CurrentSubscriptions {
     static FileEditing fileEditing = new FileEditing();
 
+    //@author Kristian
     //Show Total expected subscription income.
     public static void showTotalRevenue() throws IOException {
-        ArrayList<Double> memberData = fileEditing.memberFilesSubscription();
+        ArrayList<Double> memberData = fileEditing.memberFilesSubscription(); //gets all subscriptions in Dir
         System.out.println(memberData);
 
         double membersRevenue;
@@ -24,6 +25,7 @@ public class CurrentSubscriptions {
         System.out.println(totalMembersRevenue);
     }
 
+    //@author Kristian
     //Show Club members with debt.
     public static void showMembersWithDebt() throws IOException {
         ArrayList<Member> memberData = fileEditing.memberFilesDebt();
@@ -34,6 +36,7 @@ public class CurrentSubscriptions {
         }
 
     }
+
 
 
 }

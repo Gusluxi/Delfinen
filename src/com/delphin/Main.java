@@ -22,10 +22,15 @@ public class Main {
         Login Formand = new Login("Formand","JegErDejlig","Kurt Kurt");
         Login Traener = new Login("Traener","JegErDenHurtigeste","Hurtig Kurt");
         Login Kasser = new Login("Kasser","JegElskerTal","Kvinde Kurt");
-        Member test3 = new Member(69, 35,"Jesus",true,false,true,true,1500);
+        Member test3 = new Member(69, 35,"Jesus",true,false,true,false,1500);
         Member test4 = new Member(idNumber.newMemberID(), 15,"Jesus2",true,false,true,true,1000);
         fileEditing.createNewMemberObjectFile(test3);
         fileEditing.createNewMemberObjectFile(test4);
+
+        CurrentSubscriptions.showTotalRevenue();
+        CurrentSubscriptions.showMembersWithDebt();
+
+
 
     }
 

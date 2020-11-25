@@ -11,9 +11,6 @@ public class EditMembership {
     //@author Gustav &the gang
     void newMembership() throws IOException {
         Member member = new Member();
-        boolean juniorSenior;
-        boolean activeDebt = false;
-        double subscriptionPrice;
 
         int memberID = idNumber.newMemberID();
         member.setAge(UserInput.inputInt(0,122,"Skriv en alder: "));
@@ -25,13 +22,10 @@ public class EditMembership {
         member.setMemberID(memberID);
         member.setJunior(member.calculateJuniorSenior(member));
         member.setSubscriptionPrice(member.calculatePrice(member));
+        member.setActiveDebt(false);
 
         fileEditing.createNewMemberObjectFile(member);
     }
-
-    //@author Mick
-    //A menu to Display when editing memberships.
-
 
     //@author MIck
     //A switch case to edit in a member's data.
@@ -101,7 +95,8 @@ public class EditMembership {
 
     }
 
-
+    //@author Gustav
+    //
     int getMemberIDFromString(String data) {
         Scanner scan = new Scanner(data);
         String memberID = "MemberID: #";
