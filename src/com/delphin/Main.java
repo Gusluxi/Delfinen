@@ -74,7 +74,7 @@ public class Main {
         ArrayList<String> testArray = new ArrayList<>();
         testArray.add("HEJ");
         testArray.add("NoO");
-        UserInput.validationStringArray(testArray, "Skriv brugernavn:");
+        System.out.println(UserInput.validationStringArray(testArray, "Skriv brugernavn:"));
          */
 
 

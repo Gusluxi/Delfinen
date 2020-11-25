@@ -144,7 +144,6 @@ public class UserInput {
     }
     // Validerer om brugeren skriver
     public static boolean validationStringArray(ArrayList<String> checkStrings, String msg) {
-        System.out.print(msg);
         //Variables
         boolean isInputThere = false;
         boolean validated = false;
@@ -152,11 +151,13 @@ public class UserInput {
 
         //LoopValidation
         while (!validated) {
+            System.out.print(msg + "\n");
             String usrInput = scan.nextLine();
             for (int i = 0; i < checkStrings.size(); i++) {
                 validationChecker = usrInput.compareTo(checkStrings.get(i));
                 if (validationChecker == 0) {
                     isInputThere = true;
+                    validated = true;
                 }
             }
         }
