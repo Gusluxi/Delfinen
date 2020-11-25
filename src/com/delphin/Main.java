@@ -14,33 +14,18 @@ public class Main {
         FileEditing fileEditing = new FileEditing();
         IDNumber idNumber = new IDNumber();
         CurrentSubscriptions currentSubscriptions = new CurrentSubscriptions();
+        DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
 
         //Testcode
 
         //Opretter JESUS som medlem.
+        Login Formand = new Login("Formand","JegErDejlig","Kurt Kurt");
+        Login Traener = new Login("Traener","JegErDenHurtigeste","Hurtig Kurt");
+        Login Kasser = new Login("Kasser","JegElskerTal","Kvinde Kurt");
         Member test3 = new Member(69, 35,"Jesus",true,false,true,true,1500);
-        //Member test4 = new Member(idNumber.newMemberID(), 15,"Jesus2",true,false,true,true,1000);
+        Member test4 = new Member(idNumber.newMemberID(), 15,"Jesus2",true,false,true,true,1000);
         fileEditing.createNewMemberObjectFile(test3);
-
-        DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
-        //disciplineFileRW.testerAddToFile();
-
-        CurrentSubscriptions.showTotalRevenue();
-        CurrentSubscriptions.showMembersWithDebt();
-
-
-
-        String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
-        editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
-
-        System.out.println(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)).toString());
-        /*
-        //Edit membership
-        editMembership.editMembership(fileEditing.readFileAndConvertToObject(69));
-
-         */
-        //System.out.println(fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ")); //Returner
-        //fileEditing.dataToArrayList();
+        fileEditing.createNewMemberObjectFile(test4);
 
     }
 
@@ -75,10 +60,31 @@ public class Main {
         //System.out.println(fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ")); //Returner
         //fileEditing.dataToArrayList();
 
+        //disciplineFileRW.testerAddToFile();
+
+        /*
+        //Edit membership
+        editMembership.editMembership(fileEditing.readFileAndConvertToObject(69));
+         */
+
+        //System.out.println(fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ")); //Returner
+        //fileEditing.dataToArrayList();
+
+        /*
+        ArrayList<String> testArray = new ArrayList<>();
+        testArray.add("HEJ");
+        testArray.add("NoO");
+        System.out.println(UserInput.validationStringArray(testArray, "Skriv brugernavn:"));
+         */
 
 
+         /* Edit membership
+        String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+        editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
+        System.out.println(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)).toString());
+         */
 
-
+        //CurrentSubscriptions.showTotalRevenue();
     }
 }
 
