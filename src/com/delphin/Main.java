@@ -2,7 +2,6 @@ package com.delphin;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import static com.delphin.EditMembership.fileEditing;
 import static com.delphin.UserInput.scan;
 
@@ -19,19 +18,68 @@ public class Main {
         //Testcode
 
         //Opretter JESUS som medlem.
-        Login Formand = new Login("Formand","JegErDejlig","Kurt Kurt");
-        Login Traener = new Login("Traener","JegErDenHurtigeste","Hurtig Kurt");
-        Login Kasser = new Login("Kasser","JegElskerTal","Kvinde Kurt");
-        Member test3 = new Member(69, 35,"Jesus",true,false,true,false,1500);
-        Member test4 = new Member(idNumber.newMemberID(), 15,"Jesus2",true,false,true,true,1000);
-        fileEditing.createNewMemberObjectFile(test3);
-        fileEditing.createNewMemberObjectFile(test4);
+        //Member test3 = new Member(69, 35,"Jesus",true,false,true,false,1500);
+        //Member test4 = new Member(idNumber.newMemberID(), 15,"Jesus2",true,false,true,true,1000);
+        //fileEditing.createNewMemberObjectFile(test3);
+        //fileEditing.createNewMemberObjectFile(test4);
+        
+        //Menu
+        boolean run = true;
+        int menuChoice;
+        String headertext = "Delfin Klubben.";
+        String leadtext = "Indtast en valgmulighed: ";
+        String[] menuItems = {"1. testA Add New Membership", "2. testB Edit Membership", "3. testC display total revenue & members with debt",
+                "4. testD leg med Login", "5. testE Display content of all members", "6. testF", "7. testG", "8. testH", "9. testI", "0. Afslut"};
+        while (run){
+            Menu menu = new Menu(headertext, leadtext, menuItems);
+            menu.printMenu();
+            menuChoice = UserInput.inputInt(leadtext);
+            switch (menuChoice){
+                case 0: //End program
+                    run = false;
+                    break;
+                case 1: //testA new membership
+                    editMembership.newMembership();
+                    break;
+                case 2: //testB edit membership
+                    //asks user to type a single Name or #ID which it will return to memberData.
+                    String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+                    //Uses the selected memberID via getMemberIdFromString() to access the connected ID.txt file and run editMembership(with user selected file).
+                    editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
+                    System.out.println(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)).toString());
 
-        CurrentSubscriptions.showTotalRevenue();
-        CurrentSubscriptions.showMembersWithDebt();
+                    break;
+                case 3: //testC Display total revenue and members with debt.
+                    CurrentSubscriptions.showTotalRevenue();
+                    CurrentSubscriptions.showMembersWithDebt();
+                    break;
+                case 4: //testD Play with Username input
+                    ArrayList<String> testArray = new ArrayList<>();
+                    Login chairman = new Login("Formand","JegErDejlig","Kurt Kurt"); //Hardcode for now
+                    testArray.add(chairman.getUserName());
+                    Login trainer = new Login("Traener","JegErDenHurtigeste","Hurtig Kurt"); //Hardcode for now
+                    testArray.add(trainer.getUserName());
+                    Login cashier = new Login("Kasser","JegElskerTal","Kvinde Kurt"); //Hardcode for now
+                    testArray.add(cashier.getUserName());
 
-
-
+                    System.out.println(UserInput.validationStringArray(testArray, "Skriv brugernavn:"));
+                    break;
+                case 5: //testE
+                    for (String i : fileEditing.dataToArrayList())
+                    System.out.println(i);
+                    break;
+                case 6: //testF
+                    break;
+                case 7: //testG
+                    break;
+                case 8: //testH
+                    break;
+                case 9: //testI
+                    break;
+                default:
+                    menu.printMenu();
+            }
+        }
     }
 
 
@@ -50,8 +98,6 @@ public class Main {
         //fileEditing.sortTextFile();
 
         //fileEditing.readSpecificFile("50");
-        //editMembership.findCrazyMember();
-        //System.out.println(editMembership.findCrazyMember());
 
         /*
         Member test = fileEditing.readFileAndConvertToObject(69); //henter JESUS medlemsnummer
@@ -62,34 +108,9 @@ public class Main {
         */
 
         //editMembership.newMembership();
-        //System.out.println(fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ")); //Returner
         //fileEditing.dataToArrayList();
 
         //disciplineFileRW.testerAddToFile();
-
-        /*
-        //Edit membership
-        editMembership.editMembership(fileEditing.readFileAndConvertToObject(69));
-         */
-
-        //System.out.println(fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ")); //Returner
-        //fileEditing.dataToArrayList();
-
-        /*
-        ArrayList<String> testArray = new ArrayList<>();
-        testArray.add("HEJ");
-        testArray.add("NoO");
-        System.out.println(UserInput.validationStringArray(testArray, "Skriv brugernavn:"));
-         */
-
-
-         /* Edit membership
-        String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
-        editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
-        System.out.println(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)).toString());
-         */
-
-        //CurrentSubscriptions.showTotalRevenue();
     }
 }
 

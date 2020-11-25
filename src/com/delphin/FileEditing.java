@@ -1,13 +1,12 @@
 package com.delphin;
 
 import java.io.*;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class FileEditing {
+public class FileEditing  {
 
     //@author Mick
     //Finds a file with given string-name, displays it.
@@ -61,9 +60,10 @@ public class FileEditing {
 
     //Gustav Overloaded Mick's method
     //Overloading to take File as a parameter instead.
-    static Member readFileAndConvertToObject(File file) throws IOException {
+    Member readFileAndConvertToObject(File file) throws IOException {
 
         //import ObjectInputStream to to read objects from a file.
+
         try{
             FileInputStream fi = new FileInputStream(file);
             ObjectInputStream oi = new ObjectInputStream(fi);
@@ -167,7 +167,6 @@ public class FileEditing {
      BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile,true));
      writer.write("\n" + string);
      writer.close();
-
     }
 
     //@author Mick
@@ -194,6 +193,7 @@ public class FileEditing {
             //adds a string that contains the file-object's toString
             memberData.add(readFileAndConvertToObject(fileA.get(i)).toString());
         }
+        System.out.println("File[]: "+fileArray+ "\nfileA: "+fileA+"\nmemberData: "+memberData);
         return memberData;
     }
 
