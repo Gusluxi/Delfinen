@@ -28,6 +28,8 @@ public class EditMembership {
         fileEditing.createNewMemberObjectFile(member);
     }
 
+    //@author Mick
+    //A menu to Display when editing memberships.
     void menuEditMembership() {
         System.out.println("\nMenu:");
         System.out.println("1 Ændre Alder");
@@ -39,6 +41,9 @@ public class EditMembership {
         System.out.println("7 Forlad menuen");
     }
 
+    //@author MIck
+    //A switch case to edit in a member's data.
+    //Uses UserInput and getter/setters from Member.
     void editMembership(Member member){
         System.out.println(member.toString());
         boolean stayInLoop = true;
