@@ -61,7 +61,7 @@ public class FileEditing {
 
     //Gustav Overloaded Mick's method
     //Overloading to take File as a parameter instead.
-    Member readFileAndConvertToObject(File file) throws IOException {
+    static Member readFileAndConvertToObject(File file) throws IOException {
 
         //import ObjectInputStream to to read objects from a file.
         try{
@@ -183,6 +183,18 @@ public class FileEditing {
         for (int i = 0; i < fileA.size(); i++ ) {
             //adds a string that contains the file-object's toString
             memberData.add(readFileAndConvertToObject(fileA.get(i)).toString());
+        }
+        return memberData;
+    }
+
+    ArrayList<Double> memberFilesSubscription() throws IOException {
+        File directory = new File("src\\Members");
+        File[] fileArray = directory.listFiles();
+        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        ArrayList<Double> memberData = new ArrayList<>();
+        for (int i = 0; i < fileA.size(); i++ ) {
+            //adds a string that contains the file-object's toString
+            memberData.add(readFileAndConvertToObject(fileA.get(i)).getSubscriptionPrice());
         }
         return memberData;
     }
