@@ -13,6 +13,7 @@ public class Main {
         FileEditing fileEditing = new FileEditing();
         IDNumber idNumber = new IDNumber();
         CurrentSubscriptions currentSubscriptions = new CurrentSubscriptions();
+        TimeAndDate timeClass = new TimeAndDate();
 
         //Testcode
 
@@ -40,8 +41,37 @@ public class Main {
         //System.out.println(fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ")); //Returner
         //fileEditing.dataToArrayList();
 
-    }
+        boolean run = true;
+        int choice;
+        String headertext = "Velkommen til Delfinens system kl. er - " + TimeAndDate.displayTime() + " datoen er - " + TimeAndDate.currentDate();
+        String leadtext = "Indtast en valgmulighed: ";
+        String[] menuitems = {"1. Formandslogin", "2. Trænerlogin", "3. Kassérlogin", "9. Afslut program."};
 
+        while (run){
+            Menu menu = new Menu(headertext,leadtext,menuitems);
+            menu.printMenu();
+            choice = UserInput.inputInt(leadtext);
+            switch (choice){
+                case 1: //Indtast brugernavn og kodeord?
+                    editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
+                    break;
+                case 2: //Indtast brugernavn og kodeord?
+                    break;
+                case 3: //Indtast brugernavn og kodeord?
+                    break;
+                case 9: //Terminates program (if needed).
+                    System.out.println("Afslutter program...");
+                    int confirmEnd = UserInput.inputInt(1,2,"Er du sikker på at afslutte programmet?\n1. for Ja, 2. for Nej: ");
+                    if (confirmEnd == 1)
+                        run = false;
+                    break;
+                default:
+                    menu.printMenu();
+            }
+        }
+
+
+    }
 
     public static void main(String[] args) throws IOException {
         Main prg = new Main();

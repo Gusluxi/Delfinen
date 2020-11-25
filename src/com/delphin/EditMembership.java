@@ -33,37 +33,41 @@ public class EditMembership {
     //A menu to Display when editing memberships.
     void menuEditMembership() {
         System.out.println("\nMenu:");
-        System.out.println("1. Ændre Alder");
-        System.out.println("2. Ændre Navn");
-        System.out.println("3. Ændre Aktivitets-niveau");
-        System.out.println("4. Ændre Konkurrence-status");
-        System.out.println("5. Ændre Aktiv Gæld");
-        System.out.println("6. Vis medlemmets informationer");
-        System.out.println("7. Forlad menuen");
+        System.out.println("1. Tilføj Medlem");
+        System.out.println("2. Ændre Alder");
+        System.out.println("3. Ændre Navn");
+        System.out.println("4. Ændre Aktivitets-niveau");
+        System.out.println("5. Ændre Konkurrence-status");
+        System.out.println("6. Ændre Aktiv Gæld");
+        System.out.println("7. Vis medlemmets informationer");
+        System.out.println("8. Forlad menuen");
     }
 
     //@author MIck
     //A switch case to edit in a member's data.
     //Uses UserInput and getter/setters from Member.
-    void editMembership(Member member){
+    void editMembership(Member member) throws IOException {
         System.out.println(member.toString());
         boolean stayInLoop = true;
         while(stayInLoop) {
 
             menuEditMembership();
-            int inputNumber = UserInput.inputInt(1, 7, "Indtast et tal mellem 1-7");
+            int inputNumber = UserInput.inputInt(1, 8, "Indtast et tal mellem 1-8");
 
             switch (inputNumber) {
                 case 1:
+                    newMembership();
+                    break;
+                case 2:
                     member.setAge(UserInput.inputInt("Indsæt den nye alder"));
                     Member.calculateJuniorSenior(member);
                     System.out.println("Den nye alder er sat til: "+ member.getAge());
                     break;
-                case 2:
+                case 3:
                     member.setName(UserInput.inputString("Skriv det nye navn: ",true));
                     System.out.println("Det nye navn er sat til: "+ member.getName());
                     break;
-                case 3:
+                case 4:
                     member.setActivity(UserInput.validateStringToBoolean("Aktiv","Passiv",
                             "Er medlemmet aktiv eller passiv?"));
                     if (member.isActivity()==true){
@@ -72,12 +76,12 @@ public class EditMembership {
                         System.out.println("Medlemmet er nu passivt, og kan ikke længere bruge vores svømmehal.");
                     }
                     break;
-                case 4:
+                case 5:
                     member.setCompetitor(UserInput.validateStringToBoolean("Kompetitiv","Afslappet",
                             "Er medlemmet kompetitiv eller afslappet?"));
                     System.out.println("Den nye konkurrence tilstand er sat til: "+ member.isCompetitor());
                     break;
-                case 5:
+                case 6:
                     member.setActiveDebt(UserInput.validateStringToBoolean("Godkendt","Mangelfuld",
                             "Er medlemmets betaling godkendt eller mangelfuld?\nEller tryk 1. for at skylde penge, 2 for at der er betalt"));
                     if (member.isActiveDebt()==true){
@@ -86,10 +90,10 @@ public class EditMembership {
                         System.out.println("Medlemmet skylder ikke længere penge.");
                     }
                     break;
-                case 6:
+                case 7:
                     System.out.println(member.toString());
                     break;
-                case 7:
+                case 8:
                     stayInLoop=false;
                     break;
 

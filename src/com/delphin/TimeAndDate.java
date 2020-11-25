@@ -10,7 +10,7 @@ public class TimeAndDate {
     static Calendar cal = Calendar.getInstance();
 
     //@author last project
-    public String displayTime(){
+    public static String displayTime(){
         return currentRealTime;
     }
 
