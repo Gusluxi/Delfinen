@@ -19,6 +19,16 @@ public class FileEditing {
         }
     }
 
+    void displaySpecificFileList(int fileName) throws FileNotFoundException {
+        File file = new File("src\\Members\\"+fileName+".txt");
+        int count = 0;
+        Scanner readFile = new Scanner(file);
+        while (readFile.hasNextLine()){
+            count++;
+            System.out.println(count + ". " + readFile.nextLine());
+        }
+    }
+
     //@author Mick
     //Reads a given filename as an Object (member)
     //Returns the member-object.
@@ -51,7 +61,7 @@ public class FileEditing {
 
     //Gustav Overloaded Mick's method
     //Overloading to take File as a parameter instead.
-    Member readFileAndConvertToObject(File file) throws IOException {
+    static Member readFileAndConvertToObject(File file) throws IOException {
 
         //import ObjectInputStream to to read objects from a file.
         try{
@@ -177,6 +187,18 @@ public class FileEditing {
         return memberData;
     }
 
+    ArrayList<Double> memberFilesSubscription() throws IOException {
+        File directory = new File("src\\Members");
+        File[] fileArray = directory.listFiles();
+        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        ArrayList<Double> memberData = new ArrayList<>();
+        for (int i = 0; i < fileA.size(); i++ ) {
+            //adds a string that contains the file-object's toString
+            memberData.add(readFileAndConvertToObject(fileA.get(i)).getSubscriptionPrice());
+        }
+        return memberData;
+    }
+
     //@author Gustav
 
     //@author Gustav
@@ -204,7 +226,7 @@ public class FileEditing {
             }
             int reInput = UserInput.inputInt(1, arrayPlace.size(),"Skriv nr. for den " + input + " du vil vælge.")-1;
             return memberData.get(arrayPlace.get(reInput));
-        } else if (arrayPlace.size() <= 0) { //Runs the same method untill the user finds a corret value.
+        } else if (arrayPlace.size() <= 0) { //Runs the same method until the user finds a correct value. (called "Recursion
             return findSpecificFileValues("Fejl, " + input + " findes ikke.\nSkriv navn eller #nr. på den person der skal redigeres: ");
         }
         return memberData.get(arrayPlace.get(0));
@@ -225,4 +247,17 @@ public class FileEditing {
         }
         scan.close();
     }
+    //@author Gustav
+    //Prints each line in a String as a list of 1. 2. 3...
+    void printStringAsList(String data) {
+        Scanner scan = new Scanner (data);
+        int count = 0;
+        while (scan.hasNextLine()) {
+            count++;
+            String line = scan.nextLine();
+            System.out.println(count + ". " + line);
+        }
+        scan.close();
+    }
+
 }

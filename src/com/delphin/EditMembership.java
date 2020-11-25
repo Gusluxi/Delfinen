@@ -1,6 +1,7 @@
 package com.delphin;
 
 import java.io.*;
+import java.util.Scanner;
 
 public class EditMembership {
     static IDNumber idNumber = new IDNumber();
@@ -32,13 +33,13 @@ public class EditMembership {
     //A menu to Display when editing memberships.
     void menuEditMembership() {
         System.out.println("\nMenu:");
-        System.out.println("1 Ændre Alder");
-        System.out.println("2 Ændre Navn");
-        System.out.println("3 Ændre Aktivitets-niveau");
-        System.out.println("4 Ændre Konkurrence-status");
-        System.out.println("5 Ændre Aktiv Gæld");
-        System.out.println("6 Vis medlemmets informationer");
-        System.out.println("7 Forlad menuen");
+        System.out.println("1. Ændre Alder");
+        System.out.println("2. Ændre Navn");
+        System.out.println("3. Ændre Aktivitets-niveau");
+        System.out.println("4. Ændre Konkurrence-status");
+        System.out.println("5. Ændre Aktiv Gæld");
+        System.out.println("6. Vis medlemmets informationer");
+        System.out.println("7. Forlad menuen");
     }
 
     //@author MIck
@@ -99,6 +100,22 @@ public class EditMembership {
         //When out of the loop, store the information
         fileEditing.createNewMemberObjectFile(member);
 
+    }
+
+
+    int getMemberIDFromString(String data) {
+        Scanner scan = new Scanner(data);
+        String memberID = "MemberID: #";
+        String stringID;
+        int intID = 0;
+        while (scan.hasNextLine()) {
+            String line = scan.nextLine();
+            if (line.contains(memberID)) {
+                stringID = line.substring(memberID.length());
+                intID = Integer.parseInt(stringID);
+            }
+        }
+        return intID;
     }
 
 }

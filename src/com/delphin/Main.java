@@ -9,21 +9,31 @@ public class Main {
         EditMembership editMembership = new EditMembership();
         FileEditing fileEditing = new FileEditing();
         IDNumber idNumber = new IDNumber();
+        CurrentSubscriptions currentSubscriptions = new CurrentSubscriptions();
 
         //Testcode
 
         //Opretter JESUS som medlem.
-        Member test3 = new Member(69, 35,"Jesus",true,false,true,false,1500);
+        Member test3 = new Member(69, 35,"Jesus",true,false,true,true,1500);
+        Member test4 = new Member(idNumber.newMemberID(), 15,"Jesus2",true,false,true,true,1000);
         fileEditing.createNewMemberObjectFile(test3);
+        fileEditing.createNewMemberObjectFile(test4);
 
-        editMembership.editMembership(fileEditing.readFileAndConvertToObject(69));
+        CurrentSubscriptions.showTotalRevenue();
 
-        System.out.println(fileEditing.readFileAndConvertToObject(69).toString());
+
+
+        String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+        editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
+
+        System.out.println(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)).toString());
         /*
         //Edit membership
         editMembership.editMembership(fileEditing.readFileAndConvertToObject(69));
 
          */
+        //System.out.println(fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ")); //Returner
+        //fileEditing.dataToArrayList();
 
     }
 
@@ -48,15 +58,17 @@ public class Main {
 
         /*
         Member test = fileEditing.readFileAndConvertToObject(69); //henter JESUS medlemsnummer
-        System.out.println(test.toString()); //Viser Jesus som objekt
-        test.setActivity(false); //ændrer på ham som object
-        System.out.println(test.toString()); //viser ændringen
+        //System.out.println(test.toString()); //Viser Jesus som objekt
+        //test.setActivity(false); //ændrer på ham som object
+        //System.out.println(test.toString()); //viser ændringen
         fileEditing.createNewMemberObjectFile(test); //sætter ham tilbage i fil som object
         */
 
         //editMembership.newMembership();
         //System.out.println(fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ")); //Returner
         //fileEditing.dataToArrayList();
+
+
 
 
 
