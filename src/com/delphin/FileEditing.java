@@ -39,7 +39,7 @@ public class FileEditing {
 
             oi.close();
             fi.close();
-            return aMember;
+            return aMember; //returns a member-object
 
         } catch (ClassNotFoundException e){
             e.printStackTrace();
@@ -48,13 +48,10 @@ public class FileEditing {
         return null;
     }
 
-    //Gustav Overloaded Mick's metode
-    //Overloading til at modtage en fil som parameter.
+    //Gustav Overloaded Mick's method
+    //Overloading to take File as a parameter instead.
     Member readFileAndConvertToObject(File file) throws IOException {
-        /*On reading objects, the ObjectInputStream directly tries to map all the attributes
-         *into the class into which we try to cast the read object.
-         *If it is unable to map the respective object exactly then it throws a ClassNotFound exception.
-         */
+
         //import ObjectInputStream to to read objects from a file.
         try{
             FileInputStream fi = new FileInputStream(file);
@@ -79,6 +76,7 @@ public class FileEditing {
     void createNewMemberObjectFile(Member member){
         //import ObjectOutputStream to write objects to a file.
 
+        //Finds the correct filepath
         int IDNumber = member.getMemberID();
         String path = "src\\Members\\"+IDNumber+".txt";
 
@@ -98,25 +96,24 @@ public class FileEditing {
     }
 
     //@author Mick
-    //Copies a file into an Arraylist, sorts it, then sends it back.
+    //Copies a file into an Arraylist, sorts it, then sends it back to the file.
     //Sorts after numbers first, then abc..
     void sortTextFile() throws IOException {
 
+        //File, Scanner(read), FileWriter instances
         File inputFile = new File("src\\com\\delphin\\sortTest.txt");
-        System.out.println(inputFile.canRead()+"Filen kan læses");
         Scanner readFile = new Scanner(inputFile);
-
         ArrayList<String> stringArrayList = new ArrayList<>();
-
-        while (readFile.hasNextLine()){
-            stringArrayList.add(readFile.nextLine());
-        }
-        readFile.close();
-        System.out.println(stringArrayList.toString()+" Dette er arraylisten efter overførelse");
         FileWriter fileWriter = new FileWriter(inputFile);
 
-        Collections.sort(stringArrayList);
-        for (String eachString:stringArrayList){
+        while (readFile.hasNextLine()){
+            stringArrayList.add(readFile.nextLine()); //adds text-lines to String arraylist
+        }
+        readFile.close();
+
+        Collections.sort(stringArrayList); //Sorts the list
+
+        for (String eachString:stringArrayList){ //Writes it back to the file, sorted.
             fileWriter.write(eachString+"\n");
         }
         fileWriter.close();
@@ -129,47 +126,33 @@ public class FileEditing {
     void removeLineFromText(String string) throws IOException {
 
         File inputFile = new File("src\\com\\delphin\\testFile.txt");
-        if (inputFile.createNewFile()){
-            System.out.println("Filen er oprettet: "+inputFile.getName()); //prints filename
-        } else {
-            System.out.println("Filen findes:" +inputFile.getName());
-        }
-
         File tempFile = new File("src\\com\\delphin\\tempTestFile.txt");
-        if (tempFile.createNewFile()){
-            System.out.println("Filen er oprettet: "+inputFile.getName()); //prints filename
-        } else {
-            System.out.println("Filen findes: "+tempFile.getName());
-        }
+
         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
         BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
 
         String lineToRemove = string;
         String currentLine;
 
-        while ((currentLine = reader.readLine()) != null) {
-            // trim newline when comparing with lineToRemove
+        while ((currentLine = reader.readLine()) != null) { //As long as the line exists
+            //trim newline when comparing with lineToRemove
             String trimmedLine = currentLine.trim();
-            if (trimmedLine.contains(lineToRemove)) continue;
+            if (trimmedLine.contains(lineToRemove)) continue; //Skips the line that matches our input String
             writer.write(currentLine + "\n");
         }
-        //writer.flush();
+
         writer.close();
         reader.close();
 
+        //Deletes the original file. Renames the new one to what the last file was.
         inputFile.delete();
         tempFile.renameTo(inputFile);
     }
 
     //@author Mick
-    //Displays a file for the user..
+    //Displays a file for the user.. Just a print method atm
     void displayTextFile() throws IOException{
         File inputFile = new File("src\\com\\delphin\\testFile.txt");
-        if (inputFile.createNewFile()){
-            System.out.println("Filen er oprettet: "+inputFile.getName()); //prints filename
-        } else {
-            System.out.println("Filen findes:" +inputFile.getName());
-        }
 
         Scanner textFile = new Scanner(inputFile);
         while (textFile.hasNextLine()){
@@ -179,20 +162,25 @@ public class FileEditing {
     }
 
     //@author Gustav
+    //"fileArray" is a list of all files. The method adds each file object's toString to "memberData"
+    //Returns an Arraylist of String with memberData
     ArrayList<String> dataToArrayList() throws IOException {
         ArrayList<String> memberData = new ArrayList<>();
-        ArrayList<File> fileArray = filesToArrayList();
+        ArrayList<File> fileArray = filesToArrayList(); //arraylist of all files
         for (int i = 0; i < fileArray.size(); i++ ) {
-            File file = fileArray.get(i);
+            //adds a string that contains the file-object's toString
             memberData.add(readFileAndConvertToObject(fileArray.get(i)).toString());
         }
         return memberData;
     }
+
     //@author Gustav
+    //Creates an Arraylist with all the files in Members Directory.
     ArrayList<File> filesToArrayList() throws IOException {
         File directory = new File("src\\Members");
         File[] fileArray = directory.listFiles();
         ArrayList<File> fileNames = new ArrayList<>();
+
         for (int i = 0; i < fileArray.length; i++) {
             fileNames.add(fileArray[i]);
         }
