@@ -3,6 +3,7 @@ package com.delphin;
 import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -165,52 +166,52 @@ public class FileEditing {
     //"fileArray" is a list of all files. The method adds each file object's toString to "memberData"
     //Returns an Arraylist of String with memberData
     ArrayList<String> dataToArrayList() throws IOException {
+        File directory = new File("src\\Members");
+        File[] fileArray = directory.listFiles();
+        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
         ArrayList<String> memberData = new ArrayList<>();
-        ArrayList<File> fileArray = filesToArrayList(); //arraylist of all files
-        for (int i = 0; i < fileArray.size(); i++ ) {
+        for (int i = 0; i < fileA.size(); i++ ) {
             //adds a string that contains the file-object's toString
-            memberData.add(readFileAndConvertToObject(fileArray.get(i)).toString());
+            memberData.add(readFileAndConvertToObject(fileA.get(i)).toString());
         }
         return memberData;
     }
 
     //@author Gustav
-    //Creates an Arraylist with all the files in Members Directory.
-    ArrayList<File> filesToArrayList() throws IOException {
-        File directory = new File("src\\Members");
-        File[] fileArray = directory.listFiles();
-        ArrayList<File> fileNames = new ArrayList<>();
 
-        for (int i = 0; i < fileArray.length; i++) {
-            fileNames.add(fileArray[i]);
-        }
-
-        return fileNames;
-    }
-
+    //@author Gustav
+    //Looks for a specific member by String or Number.
+    //If multiply users appear, you can choose by using the ID-number
     String findSpecificFileValues(String usrMsg) throws IOException {
+
         ArrayList<Integer> arrayPlace = new ArrayList<>();
         String input = UserInput.inputString(usrMsg, false);
-        ArrayList<String> memberData = dataToArrayList();
+        ArrayList<String> memberData = dataToArrayList(); //Returns an Arraylist of Strings with each member instead.
+        //so when searching for "Gus" it finds all members named something with "Gus"
+
         for (int i = 0; i < memberData.size(); i++) {
             if (memberData.get(i).contains(input)) {
                 arrayPlace.add(i);
             }
         }
+
+        //In case of more hits on Search-word.
         if (arrayPlace.size() > 1) {
             System.out.println("Vælg hvilken "+input+":");
             for (int c = 0; c < arrayPlace.size(); c++) {
-                System.out.println((c+1)+".");
-                printNrNameFromString(memberData.get(arrayPlace.get(c)));
+                System.out.println((c+1)+"."); //Displays index numbers+1
+                printNrNameFromString(memberData.get(arrayPlace.get(c))); //displays Name and NumberID only.
             }
             int reInput = UserInput.inputInt(1, arrayPlace.size(),"Skriv nr. for den " + input + " du vil vælge.")-1;
             return memberData.get(arrayPlace.get(reInput));
+        } else if (arrayPlace.size() <= 0) { //Runs the same method untill the user finds a corret value.
+            return findSpecificFileValues("Fejl, " + input + " findes ikke.\nSkriv navn eller #nr. på den person der skal redigeres: ");
         }
         return memberData.get(arrayPlace.get(0));
     }
 
     //@author Gustav
-    //Printer ved hjælp af toStringMetoden i Member.java
+    //Prints MemberID and Name of the subject(data)
     void printNrNameFromString(String data) {
         Scanner scan = new Scanner(data);
         while (scan.hasNextLine()) {
