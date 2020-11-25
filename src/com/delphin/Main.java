@@ -2,6 +2,9 @@ package com.delphin;
 
 import java.io.IOException;
 
+import static com.delphin.EditMembership.fileEditing;
+import static com.delphin.UserInput.scan;
+
 public class Main {
 
     void run() throws IOException {
@@ -17,6 +20,8 @@ public class Main {
         Member test3 = new Member(69, 35,"Jesus",true,false,true,true,1500);
         Member test4 = new Member(idNumber.newMemberID(), 15,"Jesus2",true,false,true,true,1000);
         fileEditing.createNewMemberObjectFile(test3);
+        DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
+        disciplineFileRW.testerAddToFile();
         fileEditing.createNewMemberObjectFile(test4);
 
         CurrentSubscriptions.showTotalRevenue();
