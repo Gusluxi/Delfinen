@@ -54,6 +54,7 @@ public class UserInput {
             scan.next();
         }
         number = scan.nextInt();
+        scan.nextLine();
         return number;
     }
 

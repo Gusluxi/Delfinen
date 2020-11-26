@@ -60,11 +60,11 @@ public class FileEditing  {
 
     //Gustav Overloaded Mick's method
     //Overloading to take File as a parameter instead.
-    Member readFileAndConvertToObject(File file) throws IOException {
+    static Member readFileAndConvertToObject(File file) throws IOException {
 
         //import ObjectInputStream to to read objects from a file.
 
-        try{
+        try {
             FileInputStream fi = new FileInputStream(file);
             ObjectInputStream oi = new ObjectInputStream(fi);
 
@@ -74,7 +74,9 @@ public class FileEditing  {
             oi.close();
             fi.close();
             return aMember;
-
+        } catch (IOException ex) {
+            System.out.println("IOException is caught");
+            ex.printStackTrace();
         } catch (ClassNotFoundException e){
             e.printStackTrace();
         }
@@ -192,8 +194,8 @@ public class FileEditing  {
         for (int i = 0; i < fileA.size(); i++ ) {
             //adds a string that contains the file-object's toString
             memberData.add(readFileAndConvertToObject(fileA.get(i)).toString());
+
         }
-        System.out.println("File[]: "+fileArray+ "\nfileA: "+fileA+"\nmemberData: "+memberData);
         return memberData;
     }
 
@@ -234,7 +236,7 @@ public class FileEditing  {
     //If multiply users appear, you can choose by using the ID-number
     String findSpecificFileValues(String usrMsg) throws IOException {
 
-        ArrayList<Integer> arrayPlace = new ArrayList<>();
+        ArrayList<Integer> arrayPlace = new ArrayList<>(); //Keeps track of each search result.
         String input = UserInput.inputString(usrMsg, false);
         ArrayList<String> memberData = dataToArrayList(); //Returns an Arraylist of Strings with each member instead.
         //so when searching for "Gus" it finds all members named something with "Gus"
@@ -254,6 +256,7 @@ public class FileEditing  {
             }
             int reInput = UserInput.inputInt(1, arrayPlace.size(),"Skriv nr. for den " + input + " du vil vælge.")-1;
             return memberData.get(arrayPlace.get(reInput));
+            //in case the search has 0 results
         } else if (arrayPlace.size() <= 0) { //Runs the same method until the user finds a correct value. (called "Recursion
             return findSpecificFileValues("Fejl, " + input + " findes ikke.\nSkriv navn eller #nr. på den person der skal redigeres: ");
         }

@@ -66,7 +66,7 @@ public class Main {
                     break;
                 case 5: //testE
                     for (String i : fileEditing.dataToArrayList())
-                    System.out.println(i);
+                    System.out.println("\n"+i);
                     break;
                 case 6: //testF
                     break;

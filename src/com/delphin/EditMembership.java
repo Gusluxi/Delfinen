@@ -35,10 +35,10 @@ public class EditMembership {
         boolean stayInLoop = true;
         //Menu
 
-        String headerText2 = "Menu til at tilføje rekordtider til svømmediscipliner";
+        String headerText2 = "Redigerings menu";
         String leadText2 = "Indtast et tal for at tilføj til specifik disciplin";
-        String[] menuItems2 = {"1. Ændre Alder", "2. Ændre Navn", "3. Ændre Aktivitets-niveau",
-                "4. Ændre Konkurrence-status","5. Ændre Aktiv Gæld","6. Vis medlemmets informationer","7. Forlad menuen"};
+        String[] menuItems2 = {"1. Rediger Alder", "2. Rediger Navn", "3. Rediger Aktivitets-niveau",
+                "4. Rediger Konkurrence-status","5. Rediger Aktiv Gæld","6. Vis medlemmets informationer","7. Forlad menuen"};
         Menu menu = new Menu(headerText2, leadText2, menuItems2); // Create new menu instance
 
         //Whileloop to stay in menu
@@ -85,7 +85,6 @@ public class EditMembership {
                 case 7://Leave the loop
                     stayInLoop=false;
                     break;
-
                 default:
                     System.out.println("Do something");
             }
