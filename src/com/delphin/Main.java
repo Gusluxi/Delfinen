@@ -29,7 +29,7 @@ public class Main {
         String headertext = "Delfin Klubben.";
         String leadtext = "Indtast en valgmulighed: ";
         String[] menuItems = {"1. testA Add New Membership", "2. testB Edit Membership", "3. testC display total revenue & members with debt",
-                "4. testD leg med Login", "5. testE Display content of all members", "6. testF", "7. testG", "8. testH", "9. testI", "0. Afslut"};
+                "4. testD leg med Login", "5. testE Display content of all members", "6. Tilføje rekordtider til discipliner", "7. testG", "8. testH", "9. testI", "0. Afslut"};
         while (run){
             Menu menu = new Menu(headertext, leadtext, menuItems);
             menu.printMenu();
@@ -68,7 +68,8 @@ public class Main {
                     for (String i : fileEditing.dataToArrayList())
                     System.out.println("\n"+i);
                     break;
-                case 6: //testF
+                case 6: //testF Menu til at tilføje rekordtider til disciplin
+                    disciplineFileRW.testerAddToFile();
                     break;
                 case 7: //testG
                     break;
