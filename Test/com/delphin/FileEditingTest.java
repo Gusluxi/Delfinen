@@ -83,35 +83,6 @@ class FileEditingTest {
 
     @Test
         //@author Mick
-    void removeLineFromText() throws IOException {
-        FileEditing fileEditing = new FileEditing();
-        String path = "src\\Disciplines\\JuniorBryst.txt";
-        File file = new File(path);
-        //insert file to Arraylist, remove line from file, insert file to new arraylist, compare.
-        ArrayList<String> firstAL = new ArrayList<>();
-        ArrayList<String> secondAL = new ArrayList<>();
-
-        Scanner readFile = new Scanner(file);
-        while (readFile.hasNextLine()){
-            firstAL.add(readFile.nextLine());
-        }
-        System.out.println(firstAL.toString());
-        readFile.close();
-
-        fileEditing.removeLineFromText("Mick","Disciplines","JuniorBryst");
-
-        File file2 = new File(path);
-        Scanner readFile2 = new Scanner(file2);
-        while (readFile2.hasNextLine()){
-            secondAL.add(readFile2.nextLine());
-        }
-        System.out.println(secondAL.toString());
-        readFile2.close();
-        assertNotEquals(firstAL,secondAL);
-    }
-
-    @Test
-        //@author Mick
     void addToFile() throws IOException {
         FileEditing fileEditing = new FileEditing();
         String path = "src\\Disciplines\\JuniorBryst.txt";
@@ -129,6 +100,35 @@ class FileEditingTest {
         readFile.close();
 
         fileEditing.addToFile("YayeetDAB","Disciplines","JuniorBryst");
+
+        File file2 = new File(path);
+        Scanner readFile2 = new Scanner(file2);
+        while (readFile2.hasNextLine()){
+            secondAL.add(readFile2.nextLine());
+        }
+        System.out.println(secondAL.toString());
+        readFile2.close();
+        assertNotEquals(firstAL,secondAL);
+    }
+
+    @Test
+        //@author Mick
+    void removeLineFromText() throws IOException {
+        FileEditing fileEditing = new FileEditing();
+        String path = "src\\Disciplines\\JuniorBryst.txt";
+        File file = new File(path);
+        //insert file to Arraylist, remove line from file, insert file to new arraylist, compare.
+        ArrayList<String> firstAL = new ArrayList<>();
+        ArrayList<String> secondAL = new ArrayList<>();
+
+        Scanner readFile = new Scanner(file);
+        while (readFile.hasNextLine()){
+            firstAL.add(readFile.nextLine());
+        }
+        System.out.println(firstAL.toString());
+        readFile.close();
+
+        fileEditing.removeLineFromText("YayeetDAB","Disciplines","JuniorBryst");
 
         File file2 = new File(path);
         Scanner readFile2 = new Scanner(file2);
