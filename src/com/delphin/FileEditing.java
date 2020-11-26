@@ -8,6 +8,10 @@ import java.util.Scanner;
 
 public class FileEditing  {
 
+    //When asked for directory, DELPHIN works as a path name.
+    static final String DELPHIN = "com\\delphin";
+
+
     //@author Mick
     //Finds a file with given string-name, displays it.
     void readSpecificFile(int fileName) throws FileNotFoundException {
