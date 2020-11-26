@@ -60,7 +60,7 @@ public class FileEditing  {
 
     //Gustav Overloaded Mick's method
     //Overloading to take File as a parameter instead.
-    static Member readFileAndConvertToObject(File file) throws IOException {
+    Member readFileAndConvertToObject(File file) throws IOException {
 
         //import ObjectInputStream to to read objects from a file.
 
@@ -111,26 +111,32 @@ public class FileEditing  {
     //@author Mick
     //Copies a file into an Arraylist, sorts it, then sends it back to the file.
     //Sorts after numbers first, then abc..
-    void sortTextFile() throws IOException {
+    void sortTextFile(String directory,String fileName) throws IOException {
 
         //File, Scanner(read), FileWriter instances
-        File inputFile = new File("src\\com\\delphin\\sortTest.txt");
+        File inputFile = new File("src\\"+directory+"\\"+fileName+".txt");
         Scanner readFile = new Scanner(inputFile);
         ArrayList<String> stringArrayList = new ArrayList<>();
-        FileWriter fileWriter = new FileWriter(inputFile);
 
         while (readFile.hasNextLine()){
             stringArrayList.add(readFile.nextLine()); //adds text-lines to String arraylist
         }
         readFile.close();
 
-        Collections.sort(stringArrayList); //Sorts the list
+        //DELETE WHEN DONE
+        //System.out.println(stringArrayList.toString());
+        //Collections.sort(stringArrayList); //Sorts the list
+        //System.out.println(stringArrayList.toString());
 
-        for (String eachString:stringArrayList){ //Writes it back to the file, sorted.
-            fileWriter.write(eachString+"\n");
+        FileWriter fileWriter = new FileWriter(inputFile);
+        for (String str : stringArrayList){
+            fileWriter.write(str+"\n");
         }
         fileWriter.close();
     }
+
+
+
 
 
     //@author Mick
@@ -170,6 +176,7 @@ public class FileEditing  {
      writer.write("\n" + string);
      writer.close();
     }
+
 
     //@author Mick
     //Displays a file for the user.. Just a print method atm
@@ -252,7 +259,7 @@ public class FileEditing  {
             System.out.println("Vælg hvilken "+input+":");
             for (int c = 0; c < arrayPlace.size(); c++) {
                 System.out.println((c+1)+"."); //Displays index numbers+1
-                printNrNameFromString(memberData.get(arrayPlace.get(c))); //displays Name and NumberID only.
+                printNrNameFromString(memberData.get(arrayPlace.get(c))); //displays Name and NumberID only.T
             }
             int reInput = UserInput.inputInt(1, arrayPlace.size(),"Skriv nr. for den " + input + " du vil vælge.")-1;
             return memberData.get(arrayPlace.get(reInput));
