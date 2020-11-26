@@ -8,7 +8,7 @@ public class DisciplineFileRW {
 
     //@author Ludvig, men har bare genbrugt switch fra mariopizza?
     //A switch where you can add times to specific disciplines
-    void testerAddToFile() throws IOException {
+    void addSwimtimeToFile() throws IOException {
         boolean run = true;
         int choice2;
         String headerText2 = "Menu til at tilføje rekordtider til svømmediscipliner";

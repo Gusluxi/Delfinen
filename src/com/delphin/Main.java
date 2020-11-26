@@ -79,7 +79,7 @@ public class Main {
                     System.out.println("\n"+i);
                     break;
                 case 6: //testF Menu til at tilføje rekordtider til disciplin
-                    disciplineFileRW.testerAddToFile();
+                    disciplineFileRW.addSwimtimeToFile();
                     break;
                 case 7: //testG
                     break;
