@@ -170,6 +170,7 @@ class FileEditingTest {
         assertNotEquals(firstAL,secondAL);
     }
     @Test
+        //@Author Gustav
     void testDataToArrayList() {
         File directory = new File("test\\TestMembers");
         File[] fileArray = directory.listFiles();
@@ -188,6 +189,7 @@ class FileEditingTest {
     }
 
     @Test
+        //@Author Gustav
     void testMemberFilesSubscription() {
         File directory = new File("test\\TestMembers");
         File[] fileArray = directory.listFiles();
@@ -206,6 +208,7 @@ class FileEditingTest {
     }
 
     @Test
+        //@Author Gustav
     void testMemberFilesDebt() {
         File directory = new File("test\\TestMembers");
         File[] fileArray = directory.listFiles();
@@ -224,6 +227,7 @@ class FileEditingTest {
         assertEquals(1, memberData.size()); //Tests if for loop was properly looped through.
     }
     @Test
+        //@Author Gustav
     void testFindSpecificFileValues() {
         ArrayList<Integer> arrayPlace = new ArrayList<>();
         String input = "Gustav";
@@ -256,6 +260,7 @@ class FileEditingTest {
     }
 
     @Test
+        //@Author Gustav
     void testPrintNrNameFromString() {
         //TestData
         String dataLineOneAge = "This is line one Alder: ";
@@ -282,6 +287,7 @@ class FileEditingTest {
     }
 
     @Test
+        //@Author Gustav
     void testPrintStringAsList() {
         String dataLineOneAge = "This is line one Alder: ";
         String dataLineTwoName = "This is line two Navn: ";
