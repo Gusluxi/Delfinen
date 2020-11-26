@@ -6,11 +6,12 @@ public class Login {
     private String userName;
     private String userPassword;
     private String name;
+    private int status;
 
     Login() throws IOException {
     }
 
-    Login(String userName, String userPassword, String name) throws IOException {
+    Login(String userName, String userPassword, String name, int status) throws IOException {
         this.userName = userName;
         this.userPassword = userPassword;
         this.name = name;
@@ -40,11 +41,18 @@ public class Login {
         this.name = name;
     }
 
+    public int getStatus() { return status; }
+
+    public void setStatus(int status) { this.status = status; }
+
     @Override
     public String toString() {
         return "UserName: #" + userName +
                 "\nPassword: " + userPassword +
-                "\nNavn: " + name;
+                "\nNavn: " + name +
+                "\nStatus: " + status;
     }
+
+
 }
 

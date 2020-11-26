@@ -65,11 +65,11 @@ public class Main {
                     break;
                 case 4: //testD Play with Username input
                     ArrayList<String> testArray = new ArrayList<>();
-                    Login chairman = new Login("Formand","JegErDejlig","Kurt Kurt"); //Hardcode for now
+                    Login chairman = new Login("Formand","JegErDejlig","Kurt Kurt", 1); //Hardcode for now
                     testArray.add(chairman.getUserName());
-                    Login trainer = new Login("Traener","JegErDenHurtigeste","Hurtig Kurt"); //Hardcode for now
+                    Login trainer = new Login("Traener","JegErDenHurtigeste","Hurtig Kurt", 2); //Hardcode for now
                     testArray.add(trainer.getUserName());
-                    Login cashier = new Login("Kasser","JegElskerTal","Kvinde Kurt"); //Hardcode for now
+                    Login cashier = new Login("Kasser","JegElskerTal","Kvinde Kurt", 3); //Hardcode for now
                     testArray.add(cashier.getUserName());
 
                     System.out.println(UserInput.validationStringArray(testArray, "Skriv brugernavn:"));
