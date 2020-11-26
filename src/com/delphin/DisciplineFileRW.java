@@ -7,13 +7,14 @@ import static com.delphin.UserInput.scan;
 public class DisciplineFileRW {
 
     //@author Ludvig, men har bare genbrugt switch fra mariopizza?
+    //A switch where you can add times to specific disciplines
     void testerAddToFile() throws IOException {
         boolean run = true;
         int choice2;
         String headerText2 = "Menu til at tilføje rekordtider til svømmediscipliner";
         String leadText2 = "Indtast et tal for at tilføje til specifik disciplin";
         String[] menuItems2 = {"1. JuniorBryst", "2. JuniorButterfly", "3. JunirCrawl",
-                "4. JuniorRygcrawl","5. SeniorBryst","6. SeniorButterfly","7. SeniorCrawl", "8. SeniorRygcrawl", "9. Afslut program."};
+                "4. JuniorRygcrawl","5. SeniorBryst","6. SeniorButterfly","7. SeniorCrawl", "8. SeniorRygcrawl", "9. Gå tilbage til hovedmenu"};
         FileEditing fileEditing = new FileEditing();
         Menu menu2 = new Menu(headerText2, leadText2, menuItems2); // Create new menu instance
         menu2.printMenu(); // Print menu
@@ -53,7 +54,6 @@ public class DisciplineFileRW {
                     run = false;
                     break;
                 case 9: //Terminates program (if needed).
-                    System.out.println("Afslutter program...");
                         run = false;
                 default:
                     menu2.printMenu();

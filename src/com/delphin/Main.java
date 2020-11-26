@@ -28,7 +28,7 @@ public class Main {
         int menuChoice;
         String headertext = "Delfin Klubben.";
         String leadtext = "Indtast en valgmulighed: ";
-        String[] menuItems = {"1. testA Add New Membership", "2. testB Edit Membership", "3. testC display total revenue & members with debt",
+        String[] menuItems = {"1. testA Tilføj nyt medlem", "2. testB Rediger medlem", "3. testC Vis omsættelse og medlemmer i restance ",
                 "4. testD leg med Login", "5. testE Display content of all members", "6. Tilføje rekordtider til discipliner", "7. testG", "8. testH", "9. testI", "0. Afslut"};
         while (run){
             Menu menu = new Menu(headertext, leadtext, menuItems);
