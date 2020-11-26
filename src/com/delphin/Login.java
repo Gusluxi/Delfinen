@@ -1,6 +1,7 @@
 package com.delphin;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 public class Login {
     private String userName;
@@ -15,6 +16,7 @@ public class Login {
         this.userName = userName;
         this.userPassword = userPassword;
         this.name = name;
+        this.status = status;
     }
 
     public String getUserName() {

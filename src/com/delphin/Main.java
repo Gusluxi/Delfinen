@@ -14,6 +14,7 @@ public class Main {
         IDNumber idNumber = new IDNumber();
         CurrentSubscriptions currentSubscriptions = new CurrentSubscriptions();
         DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
+        EditUserLogin editUserLogin = new EditUserLogin();
 
 
         final String DELPHIN = "src\\Disciplines";
@@ -84,10 +85,10 @@ public class Main {
                 case 7: //testG
                     break;
                 case 8: //test MICK
-
                     fileEditing.displayTop5File(JB);
                     break;
                 case 9: //testI
+                    editUserLogin.newUser();
                     break;
                 default:
                     menu.printMenu();

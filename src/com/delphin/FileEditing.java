@@ -110,6 +110,36 @@ public class FileEditing  {
         return null;
     }
 
+    //Frederik Kopieret Read to object membermetode til USERLOGINmetode
+    Login readFileAndConvertToObjectLogin(File file) throws IOException {
+        /*On reading objects, the ObjectInputStream directly tries to map all the attributes
+         *into the class into which we try to cast the read object.
+         *If it is unable to map the respective object exactly then it throws a ClassNotFound exception.
+         */
+
+        //import ObjectInputStream to to read objects from a file.
+
+        // String path = "src\\UserLogin\\"+name+".txt";
+        try{
+            FileInputStream fi = new FileInputStream(file);
+            ObjectInputStream oi = new ObjectInputStream(fi);
+
+            //Read Object
+            Login aLogin = (Login) oi.readObject();
+
+            oi.close();
+            fi.close();
+            return aLogin; //returns a login-object
+
+        } catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
+
     //@author Mick
     //Stores our members as objects in files.
     void createNewMemberObjectFile(Member member){
@@ -125,6 +155,29 @@ public class FileEditing  {
 
             //Write object to file
             o.writeObject(member);
+            o.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println("Error initializing stream");
+        }
+    }
+
+    //Kopi af createNewMemberObjectFile kopi frederik (:
+    void createNewUserLoginObjectFile(Login login){
+        //import ObjectOutputStream to write objects to a file.
+
+        //Finds the correct filepath
+        String name = login.getName();
+        String path = "src\\UserLogin\\"+name+".txt";
+
+        try{
+            FileOutputStream f = new FileOutputStream(new File(path));
+            ObjectOutputStream o = new ObjectOutputStream(f);
+
+            //Write object to file
+            o.writeObject(login);
             o.close();
 
         } catch (FileNotFoundException e) {
@@ -238,6 +291,19 @@ public class FileEditing  {
             System.out.println(textFile.nextLine());
         }
         textFile.close();
+    }
+
+    ArrayList<String> dataToArrayListLogin() throws IOException {
+        File directory = new File("src\\UserLogin");
+        File[] fileArray = directory.listFiles();
+        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        ArrayList<String> loginData = new ArrayList<>();
+        for (int i = 0; i < fileA.size(); i++ ) {
+            //adds a string that contains the file-object's toString
+            loginData.add(readFileAndConvertToObjectLogin(fileA.get(i)).toString());
+
+        }
+        return loginData;
     }
 
     //@author Gustav
