@@ -21,35 +21,35 @@ public class DisciplineFileRW {
             choice2 = UserInput.inputInt(leadText2);
             switch (choice2) {
                 case 1:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false), "JuniorBryst");
+                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false),"Disciplines", "JuniorBryst");
                     run = false;
                     break;
                 case 2:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false), "JuniorButterfly");
+                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false),"Disciplines", "JuniorButterfly");
                     run = false;
                     break;
                 case 3:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false), "JuniorCrawl");
+                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false),"Disciplines", "JuniorCrawl");
                     run = false;
                     break;
                 case 4:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false), "JuniorRygcrawl");
+                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false), "Disciplines","JuniorRygcrawl");
                     run = false;
                     break;
                 case 5:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false), "SeniorBryst");
+                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false),"Disciplines", "SeniorBryst");
                     run = false;
                     break;
                 case 6:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false), "SeniorButterfly");
+                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false),"Disciplines", "SeniorButterfly");
                     run = false;
                     break;
                 case 7:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false), "SeniorCrawl");
+                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false),"Disciplines", "SeniorCrawl");
                     run = false;
                     break;
                 case 8:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false), "SeniorRygcrawl");
+                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false), "Disciplines","SeniorRygcrawl");
                     run = false;
                     break;
                 case 9: //Terminates program (if needed).

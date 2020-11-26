@@ -123,10 +123,7 @@ public class FileEditing  {
         }
         readFile.close();
 
-        //DELETE WHEN DONE
-        //System.out.println(stringArrayList.toString());
-        //Collections.sort(stringArrayList); //Sorts the list
-        //System.out.println(stringArrayList.toString());
+        Collections.sort(stringArrayList); //Sorts the list
 
         FileWriter fileWriter = new FileWriter(inputFile);
         for (String str : stringArrayList){
@@ -136,16 +133,13 @@ public class FileEditing  {
     }
 
 
-
-
-
     //@author Mick
     //Searches file for a given String. Writes all the code (except the string)..
     //into another file. Deletes the old file and renames the new one.
-    void removeLineFromText(String string) throws IOException {
+    void removeLineFromText(String string,String directory,String filename) throws IOException {
 
-        File inputFile = new File("src\\com\\delphin\\testFile.txt");
-        File tempFile = new File("src\\com\\delphin\\tempTestFile.txt");
+        File inputFile = new File("src\\"+directory+"\\"+filename+".txt");
+        File tempFile = new File("src\\"+directory+"\\tempTestFile.txt");
 
         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
         BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
@@ -170,11 +164,20 @@ public class FileEditing  {
 
     //@author Ludvig
     //Adds String to textfile.
-    void addToFile(String string, String inputFraBruger) throws IOException {
-        File inputFile = new File("src\\Disciplines\\" + inputFraBruger + ".txt");
+    void addToFile(String string,String directory, String fileName) throws IOException {
+        File inputFile = new File("src\\"+directory+"\\" + fileName + ".txt");
      BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile,true));
      writer.write("\n" + string);
      writer.close();
+    }
+
+    //@author Ludvig OVERLOAD FILE PARAMETER
+    //Adds String to textfile.
+    void addToFile(String string,File file) throws IOException {
+        File inputFile = file;
+        BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile,true));
+        writer.write("\n" + string);
+        writer.close();
     }
 
 
