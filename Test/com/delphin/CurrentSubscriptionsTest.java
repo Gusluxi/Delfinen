@@ -13,8 +13,8 @@ class CurrentSubscriptionsTest {
     @Test
     void showTotalRevenue() throws IOException {
             Member member = new Member();
-
             ArrayList<Double> subscriptionPrice = new ArrayList<Double>();
+
             subscriptionPrice.add(member.SENIORPRICE);
             subscriptionPrice.add(member.JUNIORPRICE);
             subscriptionPrice.add(member.JUNIORPRICE);
@@ -25,7 +25,7 @@ class CurrentSubscriptionsTest {
             double result = 0;
 
             for (int i = 0; i < subscriptionPrice.size(); i++) {
-                Double tempTotal = subscriptionPrice.get(i);
+                double tempTotal = subscriptionPrice.get(i);
                 result += tempTotal;
             }
             assertEquals(expected, result);
