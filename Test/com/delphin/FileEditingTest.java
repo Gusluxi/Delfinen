@@ -6,15 +6,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FileEditingTest {
 
+class FileEditingTest {
     @Test
-    //@author Mick
-    //asserts that when it retrieves a file, it is readable as member
+        //@author Mick
+        //asserts that when it retrieves a file, it is readable as member
     void readFileAndConvertToObject() throws IOException {
         FileEditing fileEditing = new FileEditing();
         Member member;
@@ -22,9 +23,8 @@ class FileEditingTest {
 
         assertTrue(member instanceof Member);
     }
-
     @Test
-    //asserts that when it retrieves a file, it is readable as member
+        //asserts that when it retrieves a file, it is readable as member
     void testReadFileAndConvertToObject() throws IOException {
         FileEditing fileEditing = new FileEditing();
         String path = "src\\Members\\87.txt";
@@ -33,10 +33,9 @@ class FileEditingTest {
 
         assertTrue(member instanceof Member);
     }
-
     @Test
-    //@author Mick
-    //asserts that the method makes a file and that it is convertable.
+        //@author Mick
+        //asserts that the method makes a file and that it is convertable.
     void createNewMemberObjectFile() throws IOException {
         FileEditing fileEditing = new FileEditing();
         Member member;
@@ -53,7 +52,7 @@ class FileEditingTest {
     }
 
     @Test
-    //@author Mick
+        //@author Mick
     void sortTextFile() throws IOException {
         FileEditing fileEditing = new FileEditing();
         String path = "src\\Disciplines\\JuniorBryst.txt";
@@ -83,7 +82,7 @@ class FileEditingTest {
     }
 
     @Test
-    //@author Mick
+        //@author Mick
     void removeLineFromText() throws IOException {
         FileEditing fileEditing = new FileEditing();
         String path = "src\\Disciplines\\JuniorBryst.txt";
@@ -112,7 +111,7 @@ class FileEditingTest {
     }
 
     @Test
-    //@author Mick
+        //@author Mick
     void addToFile() throws IOException {
         FileEditing fileEditing = new FileEditing();
         String path = "src\\Disciplines\\JuniorBryst.txt";
@@ -142,7 +141,7 @@ class FileEditingTest {
     }
 
     @Test
-    //@author Mick
+        //@author Mick
     void testAddToFile() throws IOException {
         FileEditing fileEditing = new FileEditing();
         String path = "src\\Disciplines\\JuniorBryst.txt";
@@ -170,30 +169,90 @@ class FileEditingTest {
         readFile2.close();
         assertNotEquals(firstAL,secondAL);
     }
-
     @Test
-    void dataToArrayList() {
+    void testDataToArrayList() {
+        File directory = new File("test\\TestMembers");
+        File[] fileArray = directory.listFiles();
+        File testDirectory = new File("test\\TestMembers\\107.txt");
+        assertNotEquals(directory, testDirectory); //Tests that directory and testDirectory is not equals each other.
+        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        ArrayList<File> fileB = new ArrayList<>(Arrays.asList(testDirectory)); //TestArrayList for a later Assertion
+        ArrayList<String> memberData = new ArrayList<>();
+        assertEquals(fileA, fileB); //Tests that he list of files from directory is the same as file from testDirectory
+
+        for (int i = 0; i < fileA.size(); i++) {
+            memberData.add(fileA.get(i).toString());
+            assertEquals(fileA.get(i),fileB.get(i)); //Tests if the same ArrayListIndex is equals each other.
+        }
+        assertEquals(1, memberData.size()); //Tests if for loop was properly looped through.
     }
 
     @Test
-    void memberFilesSubscription() {
+    void testMemberFilesSubscription() {
+        File directory = new File("test\\TestMembers");
+        File[] fileArray = directory.listFiles();
+        File testDirectory = new File("test\\TestMembers\\107.txt");
+        assertNotEquals(directory, testDirectory); //Tests that directory and testDirectory is not equals each other.
+        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        ArrayList<File> fileB = new ArrayList<>(Arrays.asList(testDirectory)); //TestArrayList for a later Assertion
+        ArrayList<Integer> memberData = new ArrayList<>();
+        assertEquals(fileA, fileB);  //Tests that he list of files from directory is the same as file from testDirectory
+
+        for (int i = 0; i < fileA.size(); i++) {
+            memberData.add(i);
+            assertEquals(fileA.get(i),fileB.get(i)); //Tests if the same ArrayListIndex is equals each other.
+        }
+        assertEquals(1, memberData.size()); //Tests if for loop was properly looped through.
     }
 
     @Test
-    void memberFilesDebt() {
-    }
+    void testMemberFilesDebt() {
+        File directory = new File("test\\TestMembers");
+        File[] fileArray = directory.listFiles();
+        File testDirectory = new File("test\\TestMembers\\107.txt");
+        assertNotEquals(directory, testDirectory); //Tests that directory and testDirectory is not equals each other.
+        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        ArrayList<File> fileB = new ArrayList<>(Arrays.asList(testDirectory)); //TestArrayList for a later Assertion
+        ArrayList<Double> memberData = new ArrayList<>();
+        assertEquals(fileA, fileB); //Tests that he list of files from directory is the same as file from testDirectory
 
+        for (int i = 0; i < fileA.size(); i++) {
+            double testi = i;
+            memberData.add(testi);
+        assertEquals(fileA.get(i),fileB.get(i)); //Tests if the same ArrayListIndex is equals each other.
+        }
+        assertEquals(1, memberData.size()); //Tests if for loop was properly looped through.
+    }
     @Test
-    void findSpecificFileValues() {
+    void testFindSpecificFileValues() {
+        ArrayList<Integer> arrayPlace = new ArrayList<>();
+        String input = "Gustav";
+        ArrayList<String> memberData = new ArrayList<>();
+        memberData.add("Gustav 1"); //Test Index 0
+        memberData.add("Gustav 2"); //Test Index 1
+        memberData.add("Jesus 1"); //Test Index 2
+        // Tests that memberData.get("Jesus 1) is not equals input"Gustav"
+        assertFalse(memberData.get(2).contains(input));
+        for (int i = 0; i < memberData.size(); i++) {
+            if (memberData.get(i).contains(input)) {
+                // Tests that memberdata.get(i) actually contains input
+                assertTrue(memberData.get(i).contains(input), "True error");
+                arrayPlace.add(i);
+            } else {
+                // Tests that memberdata.get(i) does not contain input
+                assertFalse(memberData.get(i).contains(input), "False error");
+            }
+        }
+        //Tests if arrayPlace counted each memberdata that contains input more than twice
+        assertTrue(arrayPlace.size() > 1);
+        if (arrayPlace.size() > 1) {
+            for (int c = 0; c < arrayPlace.size(); c++) {
+                if (arrayPlace.get(c) == 0) //Tests if arrayPlace works and remembered the placemente of each data
+                    assertEquals(memberData.get(arrayPlace.get(c)), memberData.get(0));
+                else if (arrayPlace.get(c) == 1)
+                    assertEquals(memberData.get(arrayPlace.get(c)), memberData.get(1));
+            }
+        }
     }
-
-    @Test
-    void printNrNameFromString() {
-    }
-
-    @Test
-    void printStringAsList() {
-    }
-
 
 }
