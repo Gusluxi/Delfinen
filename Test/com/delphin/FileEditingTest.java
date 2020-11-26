@@ -255,4 +255,49 @@ class FileEditingTest {
         }
     }
 
+    @Test
+    void testPrintNrNameFromString() {
+        //TestData
+        String dataLineOneAge = "This is line one Alder: ";
+        String dataLineTwoName = "This is line two Navn: ";
+        String dataLineThreeMemberID = "This is line three MemberID:";
+        String data = "\n" + dataLineOneAge + "\n" + dataLineTwoName + "\n" + dataLineThreeMemberID; //What a data string would look like
+        Scanner scan = new Scanner(data);
+        while (scan.hasNextLine()) {
+            String line = scan.nextLine();
+            if (line.contains("MemberID:"))  {
+                //Tests to see if the specific Line 3 with MemberID: Matches and tests that the other lines did not
+                assertNotEquals(dataLineOneAge, line);
+                assertNotEquals(dataLineTwoName, line);
+                assertEquals(dataLineThreeMemberID, line);
+            }
+            if (line.contains("Navn:")) {
+                //Tests to see if the specific Line 2 with Navn: Matches and tests that the other lines did not.
+                assertNotEquals(dataLineOneAge, line);
+                assertEquals(dataLineTwoName, line);
+                assertNotEquals(dataLineThreeMemberID, line);
+            }
+
+        }
+    }
+
+    @Test
+    void testPrintStringAsList() {
+        String dataLineOneAge = "This is line one Alder: ";
+        String dataLineTwoName = "This is line two Navn: ";
+        String dataLineThreeMemberID = "This is line three MemberID:";
+        String data = "\n" + dataLineOneAge + "\n" + dataLineTwoName + "\n" + dataLineThreeMemberID; //What a data string would look like
+        Scanner scan = new Scanner(data);
+        int count = 0;
+
+        while (scan.hasNextLine()) {
+            count++;
+            String line = scan.nextLine();
+            //Tests that only one line gets scanned at a time.
+            assertTrue(dataLineOneAge.contains(line)|| dataLineTwoName.contains(line) || dataLineThreeMemberID.contains(line));
+        }
+        //Tests if count actually counted the number of lines
+        assertEquals(count, 3);
+    }
+
 }

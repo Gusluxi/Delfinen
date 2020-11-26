@@ -339,7 +339,7 @@ public class FileEditing  {
     //@author Gustav
     //Prints each line in a String as a list of 1. 2. 3...
     void printStringAsList(String data) {
-        Scanner scan = new Scanner (data);
+        Scanner scan = new Scanner(data);
         int count = 0;
         while (scan.hasNextLine()) {
             count++;
