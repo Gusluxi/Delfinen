@@ -10,6 +10,14 @@ public class FileEditing  {
 
     //When asked for directory, DELPHIN works as a path name.
     static final String DELPHIN = "com\\delphin";
+    static final String JB = "JuniorBryst";
+    static final String JBF = "JuniorButterfly";
+    static final String JC = "JuniorCrawl";
+    static final String JRC = "JuniorRygcrawl";
+    static final String SB = "SeniorBryst";
+    static final String SBF = "SeniorButterfly";
+    static final String SC = "SeniorCrawl";
+    static final String SRC = "SeniorRygcrawl";
 
 
     //@author Mick
@@ -22,6 +30,9 @@ public class FileEditing  {
         }
     }
 
+    //@author Mick
+    //Not sure if we're using this.
+    //it displays a file......
     void displaySpecificFileList(int fileName) throws FileNotFoundException {
         File file = new File("src\\Members\\"+fileName+".txt");
         int count = 0;
@@ -29,6 +40,17 @@ public class FileEditing  {
         while (readFile.hasNextLine()){
             count++;
             System.out.println(count + ". " + readFile.nextLine());
+        }
+    }
+
+    //@author Mick
+    //Displays the top5 of a given filename.
+    void displayTop5File(String fileName) throws IOException {
+        File file = new File("src\\Disciplines\\"+fileName+".txt");
+        Scanner readFile = new Scanner(file);
+        sortTextFile(file); //Sort method from below
+        for (int i = 0; i<5; i++){
+            System.out.println(readFile.nextLine());
         }
     }
 
@@ -119,6 +141,27 @@ public class FileEditing  {
 
         //File, Scanner(read), FileWriter instances
         File inputFile = new File("src\\"+directory+"\\"+fileName+".txt");
+        Scanner readFile = new Scanner(inputFile);
+        ArrayList<String> stringArrayList = new ArrayList<>();
+
+        while (readFile.hasNextLine()){
+            stringArrayList.add(readFile.nextLine()); //adds text-lines to String arraylist
+        }
+        readFile.close();
+
+        Collections.sort(stringArrayList); //Sorts the list
+
+        FileWriter fileWriter = new FileWriter(inputFile);
+        for (String str : stringArrayList){
+            fileWriter.write(str+"\n");
+        }
+        fileWriter.close();
+    }
+
+    //@author Mick OVERLOADED
+    void sortTextFile(File file) throws IOException {
+        //File, Scanner(read), FileWriter instances
+        File inputFile = file;
         Scanner readFile = new Scanner(inputFile);
         ArrayList<String> stringArrayList = new ArrayList<>();
 

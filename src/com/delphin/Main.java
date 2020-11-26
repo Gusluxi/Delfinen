@@ -15,6 +15,16 @@ public class Main {
         CurrentSubscriptions currentSubscriptions = new CurrentSubscriptions();
         DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
 
+
+        final String DELPHIN = "com\\delphin";
+        final String JB = "JuniorBryst";
+        final String JBF = "JuniorButterfly";
+        final String JC = "JuniorCrawl";
+        final String JRC = "JuniorRygcrawl";
+        final String SB = "SeniorBryst";
+        final String SBF = "SeniorButterfly";
+        final String SC = "SeniorCrawl";
+        final String SRC = "SeniorRygcrawl";
         //Testcode
 
         //Opretter JESUS som medlem.
@@ -29,7 +39,7 @@ public class Main {
         String headertext = "Delfin Klubben.";
         String leadtext = "Indtast en valgmulighed: ";
         String[] menuItems = {"1. testA Tilføj nyt medlem", "2. testB Rediger medlem", "3. testC Vis omsættelse og medlemmer i restance ",
-                "4. testD leg med Login", "5. testE Display content of all members", "6. Tilføje rekordtider til discipliner", "7. testG", "8. testH", "9. testI", "0. Afslut"};
+                "4. testD leg med Login", "5. testE Display content of all members", "6. Tilføje rekordtider til discipliner", "7. testG", "8. MICKS", "9. testI", "0. Afslut"};
         while (run){
             Menu menu = new Menu(headertext, leadtext, menuItems);
             menu.printMenu();
@@ -73,7 +83,9 @@ public class Main {
                     break;
                 case 7: //testG
                     break;
-                case 8: //testH
+                case 8: //test MICK
+
+                    fileEditing.displayTop5File(JB);
                     break;
                 case 9: //testI
                     break;
