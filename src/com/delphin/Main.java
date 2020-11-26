@@ -16,7 +16,7 @@ public class Main {
         DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
 
 
-        final String DELPHIN = "com\\delphin";
+        final String DELPHIN = "src\\Disciplines";
         final String JB = "JuniorBryst";
         final String JBF = "JuniorButterfly";
         final String JC = "JuniorCrawl";
