@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CurrentSubscriptionsTest {
 
-    //@author Kristian
     //Test of method, adding members subscription prices together through a for-loop.
     @Test
     void showTotalRevenue() throws IOException {
