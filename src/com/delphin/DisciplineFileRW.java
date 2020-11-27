@@ -61,6 +61,7 @@ public class DisciplineFileRW {
                     menu2.printMenu();
             }
         }
+        System.out.println(member.toStringTimes());
 
     }
 
