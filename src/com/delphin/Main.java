@@ -15,6 +15,7 @@ public class Main {
         CurrentSubscriptions currentSubscriptions = new CurrentSubscriptions();
         DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
         EditUserLogin editUserLogin = new EditUserLogin();
+        MenuSwitches menuSwitches = new MenuSwitches();
 
 
         final String DELPHIN = "src\\Disciplines";
@@ -83,15 +84,13 @@ public class Main {
                     disciplineFileRW.addSwimtimeToFile();
                     break;
                 case 7: //testG
+
                     break;
                 case 8: //test MICK
                     fileEditing.displayTop5File(JB);
                     break;
                 case 9: //testI
-                    editUserLogin.newUser("Formand","JegErFormand","Kurt",1);
-                    editUserLogin.newUser("Traener","JegErTraener","Hurtigere Kurt",2);
-                    editUserLogin.newUser("Kasser","JegErKasser","Dame Kurt",3);
-                    System.out.println(fileEditing.getUserStatusFromFile("Formand","JegErFormand"));
+                    menuSwitches.loginMenu();
                     break;
                 default:
                     menu.printMenu();
