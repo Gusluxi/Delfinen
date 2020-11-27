@@ -1,6 +1,8 @@
 package com.delphin;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.util.Scanner;
 
 public class EditMembership {
@@ -93,6 +95,20 @@ public class EditMembership {
         fileEditing.storeInObjectFile(member);
 
     }
+
+    //@author Kristian
+    //Deletes a member from the system.
+    void removeMemberFromSystem(int IDNumber) throws FileNotFoundException {
+        File file = new File("src\\Members\\" + IDNumber + ".txt");
+        if (file.delete()) {
+            System.out.println("Deleted the file: " + file.getName());
+        } else {
+            System.out.println("Failed to delete the file.");
+        }
+    }
+
+
+
 
     //@author Gustav
     //Used to extract MemberID from a String
