@@ -5,10 +5,11 @@ import java.io.IOException;
 import static com.delphin.FileEditing.JB;
 
 public class MenuSwitches {
-    static EditUserLogin editUserLogin = new EditUserLogin();
-    static FileEditing fileEditing = new FileEditing();
-    static EditMembership editMemberShip = new EditMembership();
+
     void loginMenu() throws IOException {
+        EditUserLogin editUserLogin = new EditUserLogin();
+        FileEditing fileEditing = new FileEditing();
+
 
         editUserLogin.newUser("Formand","JegErFormand","Kurt",1);
         editUserLogin.newUser("Traener","JegErTraener","Hurtigere Kurt",2);
@@ -106,6 +107,8 @@ public class MenuSwitches {
            //instances
            FileEditing fileEditing = new FileEditing();
            DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
+           EditMembership editMemberShip = new EditMembership();
+
            //print træner switchmenu
            System.out.println("jahejmegatestTRÆNER");
            //Menu
