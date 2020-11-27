@@ -29,13 +29,18 @@ public class Main {
         final String SRC = "SeniorRygcrawl";
         //Testcode
 
+        menuSwitches.loginMenu();
+
+
+
         //Opretter JESUS som medlem.
         //Member test3 = new Member(69, 35,"Jesus",true,false,true,false,1500);
         //Member test4 = new Member(idNumber.newMemberID(), 15,"Jesus2",true,false,true,true,1000);
         //fileEditing.createNewMemberObjectFile(test3);
         //fileEditing.createNewMemberObjectFile(test4);
         
-        //Menu
+        //Gammel switch main menu
+        /*
         boolean run = true;
         int menuChoice;
         String headertext = "Delfin Klubben.";
@@ -99,7 +104,7 @@ public class Main {
                 default:
                     menu.printMenu();
             }
-        }
+        }*/
     }
 
 
