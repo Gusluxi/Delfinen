@@ -409,6 +409,9 @@ public class FileEditing  {
         scan.close();
     }
 
+    //@author Mick
+    //Remade findSpecificFileValues to work with objects instead.
+
     Member findSpecificMemberAndConvert(String searchFor) throws IOException {
         ArrayList<File> everyMember = getAllFilesInDir("Members");
         ArrayList<Member> membersFound = new ArrayList<>();
@@ -434,7 +437,7 @@ public class FileEditing  {
             System.out.println((i + 1) + "."); //Displays index numbers+1
             System.out.println(membersFound.get(i).getName() + membersFound.get(i).getMemberID());
             }
-            int reInput = UserInput.inputInt(1, membersFound.size(),"Skriv nr. for den " + searchFor + " du vil vælge.")-1;
+            int reInput = UserInput.inputInt(1, membersFound.size(),"Skriv ID-nummer for den " + searchFor + " du vil vælge.")-1;
             return readFileAndConvertToObject(reInput);
         }
 
