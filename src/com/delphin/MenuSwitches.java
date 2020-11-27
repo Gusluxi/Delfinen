@@ -6,6 +6,7 @@ import static com.delphin.FileEditing.JB;
 
 public class MenuSwitches {
 
+    //@author ludvig+frederik
     void loginMenu() throws IOException {
         EditUserLogin editUserLogin = new EditUserLogin();
         FileEditing fileEditing = new FileEditing();
@@ -14,6 +15,7 @@ public class MenuSwitches {
         editUserLogin.newUser("Formand","JegErFormand","Kurt",1);
         editUserLogin.newUser("Traener","JegErTraener","Hurtigere Kurt",2);
         editUserLogin.newUser("Kasser","JegErKasser","Dame Kurt",3);
+        editUserLogin.newUser("admin","admin","admin",4);
 
     boolean run = true;
     int menuChoice;
@@ -61,6 +63,7 @@ public class MenuSwitches {
     }
 }
 
+    //@author ludvig+frederik
    void formandMenu() throws IOException {
 
        //Instances
@@ -105,6 +108,7 @@ public class MenuSwitches {
        }
    }
 
+       //@author ludvig+frederik
        void traenerMenu() throws IOException {
            //instances
            FileEditing fileEditing = new FileEditing();
@@ -142,6 +146,7 @@ public class MenuSwitches {
            }
        }
 
+    //@author ludvig+frederik
     void kasserMenu() throws IOException {
         //print kasser swtichmenu
         System.out.println("jahejmegatestKASSER");
@@ -171,6 +176,11 @@ public class MenuSwitches {
                     kasserMenu();
             }
         }
+    }
+
+    //potentiel admin menu
+    void adminMenu() throws IOException {
+
     }
 
 
