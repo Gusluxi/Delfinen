@@ -311,6 +311,36 @@ public class FileEditing  {
         return memberData;
     }
 
+    ArrayList<Integer> userStatus() throws IOException {
+        File directory = new File("src\\UserLogin");
+        File[] fileArray = directory.listFiles();
+        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        ArrayList<Integer> loginData = new ArrayList<>();
+
+        for (int i = 0; i < fileA.size(); i++ ) {
+            //adds a string that contains the file-object's toString
+            loginData.add(readFileAndConvertToObjectLogin(fileA.get(i)).getStatus());
+
+        }
+        return loginData;
+    }
+
+   int getUserStatusFromFile(String username, String password) throws IOException {
+        File directory = new File("src\\UserLogin");
+        File[] fileArray = directory.listFiles();
+        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        int status = 0;
+
+        for (int i = 0; i<fileA.size(); i++) {
+            if (readFileAndConvertToObjectLogin(fileA.get(i)).getUserName().compareTo(username)==0  &&
+                    readFileAndConvertToObjectLogin(fileA.get(i)).getUserPassword().compareTo(password)==0) {
+            status=readFileAndConvertToObjectLogin(fileA.get(i)).getStatus();
+            }
+        }
+        return status;
+    }
+
+
     //@author Kristian
     //Returns personal subscription Price for each club member.
     ArrayList<Double> memberFilesSubscription() throws IOException {
