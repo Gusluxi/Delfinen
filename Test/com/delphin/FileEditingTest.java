@@ -3,7 +3,6 @@ package com.delphin;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,7 +44,7 @@ class FileEditingTest {
 
         assertTrue(member instanceof Member);
 
-        fileEditing.createNewMemberObjectFile(member);
+        fileEditing.storeInObjectFile(member);
 
         assertTrue(file instanceof File); //Is converted
         assertTrue(fileEditing.readFileAndConvertToObject(file) instanceof Member); //is convertable

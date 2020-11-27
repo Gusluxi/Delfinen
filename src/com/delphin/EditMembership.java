@@ -24,7 +24,7 @@ public class EditMembership {
         member.setSubscriptionPrice(member.calculatePrice(member));
         member.setActiveDebt(false);
 
-        fileEditing.createNewMemberObjectFile(member);
+        fileEditing.storeInObjectFile(member);
     }
 
     //@author MIck
@@ -90,7 +90,7 @@ public class EditMembership {
             }
         }
         //When out of the loop, store the information
-        fileEditing.createNewMemberObjectFile(member);
+        fileEditing.storeInObjectFile(member);
 
     }
 

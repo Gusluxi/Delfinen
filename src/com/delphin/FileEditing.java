@@ -110,7 +110,7 @@ public class FileEditing  {
         return null;
     }
 
-    //Frederik Kopieret Read to object membermetode til USERLOGINmetode
+    //Frederik Overloaded previous method to fit Login
     Login readFileAndConvertToObjectLogin(File file) throws IOException {
         /*On reading objects, the ObjectInputStream directly tries to map all the attributes
          *into the class into which we try to cast the read object.
@@ -142,7 +142,7 @@ public class FileEditing  {
 
     //@author Mick
     //Stores our members as objects in files.
-    void createNewMemberObjectFile(Member member){
+    void storeInObjectFile(Member member){
         //import ObjectOutputStream to write objects to a file.
 
         //Finds the correct filepath
@@ -164,8 +164,8 @@ public class FileEditing  {
         }
     }
 
-    //Kopi af createNewMemberObjectFile kopi frederik (:
-    void createNewUserLoginObjectFile(Login login){
+    //Overloaded to fit Login
+    void storeInObjectFile(Login login){
         //import ObjectOutputStream to write objects to a file.
 
         //Finds the correct filepath
@@ -278,19 +278,6 @@ public class FileEditing  {
         BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile,true));
         writer.write("\n" + string);
         writer.close();
-    }
-
-
-    //@author Mick
-    //Displays a file for the user.. Just a print method atm
-    void displayTextFile() throws IOException{
-        File inputFile = new File("src\\com\\delphin\\testFile.txt");
-
-        Scanner textFile = new Scanner(inputFile);
-        while (textFile.hasNextLine()){
-            System.out.println(textFile.nextLine());
-        }
-        textFile.close();
     }
 
     ArrayList<String> dataToArrayListLogin() throws IOException {
