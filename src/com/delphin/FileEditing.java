@@ -112,14 +112,7 @@ public class FileEditing  {
 
     //Frederik Overloaded previous method to fit Login
     Login readFileAndConvertToObjectLogin(File file) throws IOException {
-        /*On reading objects, the ObjectInputStream directly tries to map all the attributes
-         *into the class into which we try to cast the read object.
-         *If it is unable to map the respective object exactly then it throws a ClassNotFound exception.
-         */
 
-        //import ObjectInputStream to to read objects from a file.
-
-        // String path = "src\\UserLogin\\"+name+".txt";
         try{
             FileInputStream fi = new FileInputStream(file);
             ObjectInputStream oi = new ObjectInputStream(fi);
@@ -138,13 +131,9 @@ public class FileEditing  {
         return null;
     }
 
-
-
     //@author Mick
     //Stores our members as objects in files.
     void storeInObjectFile(Member member){
-
-        //import ObjectOutputStream to write objects to a file.
 
         //Finds the correct filepath
         int IDNumber = member.getMemberID();
@@ -167,7 +156,6 @@ public class FileEditing  {
 
     //Overloaded to fit Login
     void storeInObjectFile(Login login){
-        //import ObjectOutputStream to write objects to a file.
 
         //Finds the correct filepath
         String name = login.getName();
@@ -193,11 +181,11 @@ public class FileEditing  {
     //Sorts after numbers first, then abc..
     void sortTextFile(String directory,String fileName) throws IOException {
 
-        //File, Scanner(read), FileWriter instances
         File inputFile = new File("src\\"+directory+"\\"+fileName+".txt");
         Scanner readFile = new Scanner(inputFile);
         ArrayList<String> stringArrayList = new ArrayList<>();
 
+        //Read the file and pass it on
         while (readFile.hasNextLine()){
             stringArrayList.add(readFile.nextLine()); //adds text-lines to String arraylist
         }
@@ -205,6 +193,7 @@ public class FileEditing  {
 
         Collections.sort(stringArrayList); //Sorts the list
 
+        //Write to file
         FileWriter fileWriter = new FileWriter(inputFile);
         for (String str : stringArrayList){
             fileWriter.write(str+"\n");
@@ -214,11 +203,12 @@ public class FileEditing  {
 
     //@author Mick OVERLOADED
     void sortTextFile(File file) throws IOException {
-        //File, Scanner(read), FileWriter instances
+
         File inputFile = file;
         Scanner readFile = new Scanner(inputFile);
         ArrayList<String> stringArrayList = new ArrayList<>();
 
+        //Read file
         while (readFile.hasNextLine()){
             stringArrayList.add(readFile.nextLine()); //adds text-lines to String arraylist
         }
@@ -226,6 +216,7 @@ public class FileEditing  {
 
         Collections.sort(stringArrayList); //Sorts the list
 
+        //Write to file
         FileWriter fileWriter = new FileWriter(inputFile);
         for (String str : stringArrayList){
             fileWriter.write(str+"\n");
@@ -265,57 +256,46 @@ public class FileEditing  {
 
     //@author Ludvig
     //Adds String to textfile.
-    void addToFile(String string,String directory, String fileName) throws IOException {
+    void addToFile(String stringToFile,String directory, String fileName) throws IOException {
         File inputFile = new File("src\\"+directory+"\\" + fileName + ".txt");
      BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile,true));
-     writer.write("\n" + string);
+     writer.write("\n" + stringToFile);
      writer.close();
     }
 
     //@author Ludvig OVERLOAD FILE PARAMETER
     //Adds String to textfile.
-    void addToFile(String string,File file) throws IOException {
+    void addToFile(String stringToFile,File file) throws IOException {
         File inputFile = file;
         BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile,true));
-        writer.write("\n" + string);
+        writer.write("\n" + stringToFile);
         writer.close();
     }
-
-    //@author Frederik Overloaded dataToArrayList
-    //Gets all files in UserLogin-dir and return each login in as a String in an ArrayList.
-    ArrayList<String> dataToArrayListLogin() throws IOException {
-        File directory = new File("src\\UserLogin");
-        File[] fileArray = directory.listFiles();
-        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
-        ArrayList<String> loginData = new ArrayList<>();
-        for (int i = 0; i < fileA.size(); i++ ) {
-            //adds a string that contains the file-object's toString
-            loginData.add(readFileAndConvertToObjectLogin(fileA.get(i)).toString());
-
-        }
-        return loginData;
+    //@author Mick
+    //Added to avoid "DRY" coding. Adds all files in given dir to an ArrayList
+    ArrayList<File> getAllFilesInDir(String directory){
+        File dir = new File("src\\"+directory+"");
+        File[] fileArray = dir.listFiles();
+        ArrayList<File> arrayListOfFiles = new ArrayList<>(Arrays.asList(fileArray)); //Converts Array to ArrayList
+        return arrayListOfFiles;
     }
 
     //@author Gustav
     //"fileArray" is a list of all files. The method adds each file object's toString to "memberData"
     //Returns an Arraylist of String with memberData
-    ArrayList<String> dataToArrayList() throws IOException {
-        File directory = new File("src\\Members");
-        File[] fileArray = directory.listFiles();
-        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+    ArrayList<String> dataToArrayList(String dir) throws IOException {
+        ArrayList<File> fileArrayList = getAllFilesInDir(dir);
         ArrayList<String> memberData = new ArrayList<>();
-        for (int i = 0; i < fileA.size(); i++ ) {
+        for (int i = 0; i < fileArrayList.size(); i++ ) {
             //adds a string that contains the file-object's toString
-            memberData.add(readFileAndConvertToObject(fileA.get(i)).toString());
+            memberData.add(readFileAndConvertToObject(fileArrayList.get(i)).toString());
 
         }
         return memberData;
     }
 
     ArrayList<Integer> userStatus() throws IOException {
-        File directory = new File("src\\UserLogin");
-        File[] fileArray = directory.listFiles();
-        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        ArrayList<File> fileA = getAllFilesInDir("UserLogin");
         ArrayList<Integer> loginData = new ArrayList<>();
 
         for (int i = 0; i < fileA.size(); i++ ) {
@@ -327,32 +307,28 @@ public class FileEditing  {
     }
     //@Author Frederik
     //Overloaded method of memberFilesDebt
+    //Method searches all Login-objects for Username and password. If they fit a member, they return status int of member.
    int getUserStatusFromFile(String username, String password) throws IOException {
-        File directory = new File("src\\UserLogin");
-        File[] fileArray = directory.listFiles();
-        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+       ArrayList<File> fileArrayList = getAllFilesInDir("UserLogin");
         int status = 0;
 
-        for (int i = 0; i<fileA.size(); i++) {
-            if (readFileAndConvertToObjectLogin(fileA.get(i)).getUserName().compareTo(username)==0  &&
-                    readFileAndConvertToObjectLogin(fileA.get(i)).getUserPassword().compareTo(password)==0) {
-            status=readFileAndConvertToObjectLogin(fileA.get(i)).getStatus();
+        for (int i = 0; i<fileArrayList.size(); i++) {
+            if (readFileAndConvertToObjectLogin(fileArrayList.get(i)).getUserName().compareTo(username)==0  &&
+                    readFileAndConvertToObjectLogin(fileArrayList.get(i)).getUserPassword().compareTo(password)==0) {
+            status=readFileAndConvertToObjectLogin(fileArrayList.get(i)).getStatus();
             }
         }
         return status;
     }
 
-
     //@author Kristian
     //Returns personal subscription Price for each club member.
     ArrayList<Double> memberFilesSubscription() throws IOException {
-        File directory = new File("src\\Members");
-        File[] fileArray = directory.listFiles();
-        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        ArrayList<File> fileArrayList = getAllFilesInDir("Members");
         ArrayList<Double> memberData = new ArrayList<>();
-        for (int i = 0; i < fileA.size(); i++ ) {
+        for (int i = 0; i < fileArrayList.size(); i++ ) {
             //adds a string that contains the file-object's toString
-            memberData.add(readFileAndConvertToObject(fileA.get(i)).getSubscriptionPrice());
+            memberData.add(readFileAndConvertToObject(fileArrayList.get(i)).getSubscriptionPrice());
         }
         return memberData;
     }
@@ -360,14 +336,12 @@ public class FileEditing  {
     //@author Kristian
     //Returns all members with missing payment.
     ArrayList<Member> memberFilesDebt() throws IOException {
-        File directory = new File("src\\Members");
-        File[] fileArray = directory.listFiles();
-        ArrayList<File> fileA = new ArrayList<>(Arrays.asList(fileArray));
+        ArrayList<File> fileArrayList = getAllFilesInDir("Members");
         ArrayList<Member> memberData = new ArrayList<>();
 
-        for (int i = 0; i < fileA.size(); i++ ) {
-            if (readFileAndConvertToObject(fileA.get(i)).isActiveDebt() == true);
-            memberData.add(readFileAndConvertToObject(fileA.get(i)));
+        for (int i = 0; i < fileArrayList.size(); i++ ) {
+            if (readFileAndConvertToObject(fileArrayList.get(i)).isActiveDebt() == true);
+            memberData.add(readFileAndConvertToObject(fileArrayList.get(i)));
         }
         return memberData;
     }
@@ -382,7 +356,7 @@ public class FileEditing  {
 
         ArrayList<Integer> arrayPlace = new ArrayList<>(); //Keeps track of each search result.
         String input = UserInput.inputString(usrMsg, false);
-        ArrayList<String> memberData = dataToArrayList(); //Returns an Arraylist of Strings with each member instead.
+        ArrayList<String> memberData = dataToArrayList("Members"); //Returns an Arraylist of Strings with each member instead.
         //so when searching for "Gus" it finds all members named something with "Gus"
 
         for (int i = 0; i < memberData.size(); i++) {
