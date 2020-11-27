@@ -193,7 +193,7 @@ public class UserInput {
         double number1 = minuteInt;
         double number2 = number/100 + number1;
 
-        System.out.println(number2);
+        System.out.println(number2 + "Jeg ligger i UserInput INPUTTIMEDOUBLE og jeg skal slettes");
         return number2;
     }
 

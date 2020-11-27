@@ -251,6 +251,15 @@ public class FileEditing  {
      writer.close();
     }
 
+    //OVERLOADED.
+    //Removed a nextline because of top5 formatting.
+    void addToFileTop5(String stringToFile,String directory, String fileName) throws IOException {
+        File inputFile = new File("src\\"+directory+"\\" + fileName + ".txt");
+        BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile,true));
+        writer.write(stringToFile);
+        writer.close();
+    }
+
     //@author Ludvig OVERLOAD FILE PARAMETER
     //Adds String to textfile.
     void addToFile(String stringToFile,File file) throws IOException {

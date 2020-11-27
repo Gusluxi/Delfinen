@@ -17,6 +17,7 @@ public class DisciplineFileRW {
     static final String SC = "SeniorCrawl";
     static final String SRC = "SeniorRygcrawl";
 
+
     //@author Ludvig, men har bare genbrugt switch fra mariopizza?
     //A switch where you can add times to specific disciplines
     void addSwimTimeToFile(Member member) throws IOException {
@@ -36,67 +37,102 @@ public class DisciplineFileRW {
             choice2 = UserInput.inputInt(leadText2);
             switch (choice2) {
                 case 1:
-                    member.setJuniorButterflyTid(userInput.inputTimeDouble("Indtast tid"));
-                    member.setJuniorButterfly("\nJunior bryst: ");
-                    fileEditing.storeInObjectFile(member);
+                    double time = userInput.inputTimeDouble("Indtast tid");
+                    String place = "Junior Bryst: Træning";
+                    member.setJuniorBrystTid(time);
+                    member.setJuniorBryst(place);
+                    String membersTimeAndInfo = stringWithTimeAndName(place,time,member);
+
+                    fileEditing.addToFileTop5(membersTimeAndInfo,"Disciplines",JB);
+                    //fileEditing.storeInObjectFile(member);
                     break;
                 case 2:
-                    member.setJuniorButterflyTid(userInput.inputTimeDouble("Indtast tid"));
-                    member.setJuniorButterfly("\nJunior butterfly: ");
-                    fileEditing.storeInObjectFile(member);
+                    double time2 = userInput.inputTimeDouble("Indtast tid");
+                    String place2 = "Junior ButterFly: Træning";
+                    member.setJuniorButterflyTid(time2);
+                    member.setJuniorButterfly(place2);
+                    String membersTimeAndInfo2 = stringWithTimeAndName(place2,time2,member);
+
+                    fileEditing.addToFileTop5(membersTimeAndInfo2,"Disciplines",JBF);
+                    //fileEditing.storeInObjectFile(member);
                     break;
                 case 3:
-                    member.setJuniorCrawlTid(userInput.inputTimeDouble("Indtast tid"));
-                    member.setJuniorCrawl("\nJunior crawl: ");
-                    fileEditing.storeInObjectFile(member);
+                    double time3 = userInput.inputTimeDouble("Indtast tid");
+                    String place3 = "Junior Crawl: Træning";
+                    member.setJuniorCrawlTid(time3);
+                    member.setJuniorCrawl(place3);
+                    String membersTimeAndInfo3 = stringWithTimeAndName(place3,time3,member);
+
+                    fileEditing.addToFileTop5(membersTimeAndInfo3,"Disciplines",JC);
+                    //fileEditing.storeInObjectFile(member);
                     break;
                 case 4:
-                    member.setJuniorRygcrawlTid(userInput.inputTimeDouble("Indtast tid"));
-                    member.setJuniorRygcrawl("\nJunior rygcrawl: ");
-                    fileEditing.storeInObjectFile(member);
+                    double time4 = userInput.inputTimeDouble("Indtast tid");
+                    String place4 = "Junior RygCrawl: Træning";
+                    member.setJuniorCrawlTid(time4);
+                    member.setJuniorCrawl(place4);
+                    String membersTimeAndInfo4 = stringWithTimeAndName(place4,time4,member);
+
+                    fileEditing.addToFileTop5(membersTimeAndInfo4,"Disciplines",JRC);
+                    //fileEditing.storeInObjectFile(member);
                     break;
                 case 5:
-                    member.setSeniorBrystTid(userInput.inputTimeDouble("Indtast tid"));
-                    member.setSeniorBryst("\nSenior bryst: ");
-                    fileEditing.storeInObjectFile(member);
+                    double time5 = userInput.inputTimeDouble("Indtast tid");
+                    String place5 = "Senior Bryst: Træning";
+                    member.setSeniorCrawlTid(time5);
+                    member.setSeniorCrawl(place5);
+                    String membersTimeAndInfo5 = stringWithTimeAndName(place5,time5,member);
+
+                    fileEditing.addToFileTop5(membersTimeAndInfo5,"Disciplines",SB);
+                    //fileEditing.storeInObjectFile(member);
                     break;
                 case 6:
-                    member.setSeniorButterflyTid(userInput.inputTimeDouble("Indtast tid"));
-                    member.setSeniorButterfly("\nSenior butterfly: ");
-                    fileEditing.storeInObjectFile(member);
+                    double time6 = userInput.inputTimeDouble("Indtast tid");
+                    String place6 = "Senior ButterFly: Træning";
+                    member.setSeniorCrawlTid(time6);
+                    member.setSeniorCrawl(place6);
+                    String membersTimeAndInfo6 = stringWithTimeAndName(place6,time6,member);
+
+                    fileEditing.addToFileTop5(membersTimeAndInfo6,"Disciplines",SBF);
+                    //fileEditing.storeInObjectFile(member);
                     break;
                 case 7:
-                    member.setSeniorCrawlTid(userInput.inputTimeDouble("Indtast tid"));
-                    member.setSeniorCrawl("\nSenior crawl: ");
-                    fileEditing.storeInObjectFile(member);
+                    double time7 = userInput.inputTimeDouble("Indtast tid");
+                    String place7 = "Senior Crawl: Træning";
+                    member.setSeniorCrawlTid(time7);
+                    member.setSeniorCrawl(place7);
+                    String membersTimeAndInfo7 = stringWithTimeAndName(place7,time7,member);
+
+                    fileEditing.addToFileTop5(membersTimeAndInfo7,"Disciplines",SC);
+                    //fileEditing.storeInObjectFile(member);
                     break;
                 case 8:
-                    member.setSeniorRygCrawlTid(userInput.inputTimeDouble("Indtast tid"));
-                    member.setSeniorRygCrawl("\nSenior rygcrawl: ");
-                    fileEditing.storeInObjectFile(member);
+                    double time8 = userInput.inputTimeDouble("Indtast tid");
+                    String place8 = "Senior RygCrawl: Træning";
+                    member.setSeniorCrawlTid(time8);
+                    member.setSeniorCrawl(place8);
+                    String membersTimeAndInfo8 = stringWithTimeAndName(place8,time8,member);
+
+                    fileEditing.addToFileTop5(membersTimeAndInfo8,"Disciplines",SRC);
+                    //fileEditing.storeInObjectFile(member);
                     break;
                 case 9: //Terminates program (if needed).
                     run = false;
+                    fileEditing.storeInObjectFile(member);
                 default:
                     menu2.printMenu();
             }
         }
 
-        System.out.println(member.toStringTimes());
+        System.out.println(member.toStringTimes() + " DEBUG LINJE, SLET MIG I DISCIPLINEFILERW");
 
+    }//end of addSwimTimeToFile
+
+    String stringWithTimeAndName(String place, Double time,Member member){
+        String timeConverted = Double.toString(time);
+        String line = timeConverted + " Member: " + member.getName() + ". Time recorded here: "+place;
+        return line;
     }
-
-        void choseMemberToEdit(Member member) throws Exception {
-        FileEditing fileEditing = new FileEditing();
-        EditMembership editMembership = new EditMembership();
-
-
-            //asks user to type a single Name or #ID which it will return to memberData.
-            String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
-
-            addSwimTimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
-
-        }
 
     //@author Mick
     //Displays the top5 of a given filename.
@@ -111,6 +147,8 @@ public class DisciplineFileRW {
         }
     }
 
+    //@author Mick
+    //A switch menu that displays top5 dependent of which discipline you want
     void displayTop5() throws IOException {
             boolean run = true;
             int choice2;
@@ -118,8 +156,6 @@ public class DisciplineFileRW {
             String leadText2 = "Indtast et tal for at tilføje til specifik disciplin";
             String[] menuItems2 = {"1. JuniorBryst", "2. JuniorButterfly", "3. JunirCrawl",
                     "4. JuniorRygcrawl", "5. SeniorBryst", "6. SeniorButterfly", "7. SeniorCrawl", "8. SeniorRygcrawl", "9. Gå tilbage til hovedmenu"};
-            FileEditing fileEditing = new FileEditing();
-            UserInput userInput = new UserInput();
             Menu menu2 = new Menu(headerText2, leadText2, menuItems2); // Create new menu instance
 
             while (run) {
@@ -159,6 +195,17 @@ public class DisciplineFileRW {
 
         }
 
+    void choseMemberToEdit(Member member) throws Exception {
+        FileEditing fileEditing = new FileEditing();
+        EditMembership editMembership = new EditMembership();
+
+
+        //asks user to type a single Name or #ID which it will return to memberData.
+        String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+
+        addSwimTimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
+
+    }
 }
 
 
