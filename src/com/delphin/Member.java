@@ -1,5 +1,6 @@
 package com.delphin;
 import java.io.*;
+import java.util.ArrayList;
 
 //Serialization is the conversion of the state of an object into a byte stream;
 //deserialization does the opposite. Stated differently, serialization is the
@@ -24,7 +25,7 @@ public class Member implements Serializable {
     private String seniorBryst;
     private String seniorButterfly;
     private String seniorCrawl;
-    private String SeniorRygCrawl;
+    private String seniorRygCrawl;
 
     private double juniorBrystTid;
     private double juniorButterflyTid;
@@ -33,7 +34,7 @@ public class Member implements Serializable {
     private double seniorBrystTid;
     private double seniorButterflyTid;
     private double seniorCrawlTid;
-    private double SeniorRygCrawlTid;
+    private double seniorRygCrawlTid;
 
     static final double SENIORPRICE = 1600;
     static final double JUNIORPRICE = 1000;
@@ -160,11 +161,11 @@ public class Member implements Serializable {
     }
 
     public String getSeniorRygCrawl() {
-        return SeniorRygCrawl;
+        return seniorRygCrawl;
     }
 
     public void setSeniorRygCrawl(String seniorRygCrawl) {
-        SeniorRygCrawl = seniorRygCrawl;
+        this.seniorRygCrawl = seniorRygCrawl;
     }
 
     public double getJuniorBrystTid() {
@@ -224,11 +225,11 @@ public class Member implements Serializable {
     }
 
     public double getSeniorRygCrawlTid() {
-        return SeniorRygCrawlTid;
+        return seniorRygCrawlTid;
     }
 
     public void setSeniorRygCrawlTid(double seniorRygCrawlTid) {
-        SeniorRygCrawlTid = seniorRygCrawlTid;
+        this.seniorRygCrawlTid = seniorRygCrawlTid;
     }
 
 
@@ -252,11 +253,35 @@ public class Member implements Serializable {
      }
 
      public String toStringTimes() {
-        return "\n" + juniorBryst + " " + juniorBrystTid +
-                "\n" + juniorButterfly + " " + juniorButterfly +
-                "\n" + juniorCrawl + " " + juniorCrawlTid +
-                "\n" + juniorRygcrawlTid " " + juniorRygcrawlTid +
-                "\n" + ;
+         ArrayList<String> times = new ArrayList<>();
+         times.add(juniorBryst);
+         times.add(String.valueOf(juniorBrystTid));
+         times.add(juniorButterfly);
+         times.add(String.valueOf(juniorButterflyTid));
+         times.add(juniorCrawl);
+         times.add(String.valueOf(juniorCrawlTid));
+         times.add(juniorRygcrawl);
+         times.add(String.valueOf(juniorRygcrawlTid));
+         times.add(seniorBryst);
+         times.add(String.valueOf(seniorBrystTid));
+         times.add(seniorButterfly);
+         times.add(String.valueOf(seniorButterflyTid));
+         times.add(seniorCrawl);
+         times.add(String.valueOf(seniorCrawlTid));
+         times.add(seniorRygCrawl);
+         times.add(String.valueOf(seniorCrawlTid));
+
+         ArrayList<String> test = new ArrayList<>();
+
+         for (int i = 0; i < times.size(); i++) {
+             System.out.println(times.get(i));
+             if (times.get(i) != null || times.get(i).compareTo("0.0") == 0) {
+                 test.add(times.get(i));
+
+             }
+         }
+
+         return test.toString();
      }
 
 
