@@ -167,7 +167,7 @@ public class MenuSwitches {
         }
     }
 
-    //@author ludvig+frederik test push
+    //@author ludvig+frederik test push pls commit
     void adminMenu() throws IOException {
 
         //Instances
