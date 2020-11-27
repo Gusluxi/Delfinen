@@ -26,35 +26,43 @@ public class DisciplineFileRW {
                 case 1:
                     member.setJuniorBrystTid(userInput.inputTimeDouble("Indtast tid"));
                     member.setJuniorBryst("\nJunior bryst: ");
+                    fileEditing.storeInObjectFile(member);
 
                     break;
                 case 2:
                     member.setJuniorButterflyTid(userInput.inputTimeDouble("Indtast tid"));
                     member.setJuniorButterfly("\nJunior butterfly: ");
+                    fileEditing.storeInObjectFile(member);
                     break;
                 case 3:
                     member.setJuniorCrawlTid(userInput.inputTimeDouble("Indtast tid"));
                     member.setJuniorCrawl("\nJunior crawl: ");
+                    fileEditing.storeInObjectFile(member);
                     break;
                 case 4:
                     member.setJuniorRygcrawlTid(userInput.inputTimeDouble("Indtast tid"));
                     member.setJuniorRygcrawl("\nJunior rygcrawl: ");
+                    fileEditing.storeInObjectFile(member);
                     break;
                 case 5:
                     member.setSeniorBrystTid(userInput.inputTimeDouble("Indtast tid"));
                     member.setSeniorBryst("\nSenior bryst: ");
+                    fileEditing.storeInObjectFile(member);
                     break;
                 case 6:
                     member.setJuniorButterflyTid(userInput.inputTimeDouble("Indtast tid"));
                     member.setSeniorButterfly("\nSenior butterfly: ");
+                    fileEditing.storeInObjectFile(member);
                     break;
                 case 7:
                     member.setSeniorCrawlTid(userInput.inputTimeDouble("Indtast tid"));
                     member.setSeniorCrawl("\nSenior crawl: ");
+                    fileEditing.storeInObjectFile(member);
                     break;
                 case 8:
                     member.setSeniorRygCrawlTid(userInput.inputTimeDouble("Indtast tid"));
                     member.setSeniorRygCrawl("\nSenior rygcrawl: ");
+                    fileEditing.storeInObjectFile(member);
                     break;
                 case 9: //Terminates program (if needed).
                     run = false;
@@ -63,7 +71,7 @@ public class DisciplineFileRW {
             }
         }
 
-        //System.out.println(member.toStringTimes());
+        System.out.println(member.toStringTimes());
 
     }
 
