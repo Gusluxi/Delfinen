@@ -25,6 +25,8 @@ public class DisciplineFileRW {
             switch (choice2) {
                 case 1:
                     member.setJuniorBrystTid(userInput.inputTimeDouble("Indtast tid"));
+                    member.setJuniorBryst("Junior bryst: ");
+
 
                     break;
                 case 2:
@@ -61,6 +63,8 @@ public class DisciplineFileRW {
                     menu2.printMenu();
             }
         }
+
+        System.out.println(member.toStringTimes());
 
     }
 

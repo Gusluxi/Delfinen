@@ -251,6 +251,15 @@ public class Member implements Serializable {
                  "\nManglende betaling: " + subscriptionPrice + " kr.";
      }
 
+     public String toStringTimes() {
+        return "\n" + juniorBryst + " " + juniorBrystTid +
+                "\n" + juniorButterfly + " " + juniorButterfly +
+                "\n" + juniorCrawl + " " + juniorCrawlTid +
+                "\n" + juniorRygcrawlTid " " + juniorRygcrawlTid +
+                "\n" + ;
+     }
+
+
      //@author GroupCall
      //Calculates the price for a new member.
     static double calculatePrice(Member member) {
