@@ -77,7 +77,7 @@ public class Main {
                     System.out.println(UserInput.validationStringArray(testArray, "Skriv brugernavn:"));
                     break;
                 case 5: //testE
-                    for (String i : fileEditing.dataToArrayList())
+                    for (String i : fileEditing.dataToArrayList("Members"))
                     System.out.println("\n"+i);
                     break;
                 case 6: //testF Menu til at tilføje rekordtider til disciplin
