@@ -89,6 +89,7 @@ public class Main {
                     break;
                 case 9: //testI
                     editUserLogin.newUser();
+                    System.out.println(fileEditing.dataToArrayListLogin().toString());
 
                     break;
                 default:

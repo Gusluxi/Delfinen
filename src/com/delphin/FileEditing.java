@@ -280,6 +280,8 @@ public class FileEditing  {
         writer.close();
     }
 
+    //Overloaded dataToArrayList
+    //Gets all files in UserLogin-dir and return each login in as a String in an ArrayList.
     ArrayList<String> dataToArrayListLogin() throws IOException {
         File directory = new File("src\\UserLogin");
         File[] fileArray = directory.listFiles();
