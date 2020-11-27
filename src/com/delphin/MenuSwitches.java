@@ -5,10 +5,11 @@ import java.io.IOException;
 import static com.delphin.FileEditing.JB;
 
 public class MenuSwitches {
-
+    static EditUserLogin editUserLogin = new EditUserLogin();
+    static FileEditing fileEditing = new FileEditing();
+    static EditMembership editMemberShip = new EditMembership();
     void loginMenu() throws IOException {
-        EditUserLogin editUserLogin = new EditUserLogin();
-        FileEditing fileEditing = new FileEditing();
+
         editUserLogin.newUser("Formand","JegErFormand","Kurt",1);
         editUserLogin.newUser("Traener","JegErTraener","Hurtigere Kurt",2);
         editUserLogin.newUser("Kasser","JegErKasser","Dame Kurt",3);
@@ -122,7 +123,8 @@ public class MenuSwitches {
                        loginMenu();
                        break;
                    case 1: //shows total revenue
-                       disciplineFileRW.addSwimtimeToFile();
+                       String searchForID = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+                       disciplineFileRW.addSwimtimeToFile(fileEditing.readFileAndConvertToObject(editMemberShip.getMemberIDFromString(searchForID)));
                        break;
                    case 2: //shows memberARREARS?!
                        fileEditing.displayTop5File(JB);
