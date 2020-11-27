@@ -22,8 +22,8 @@ public class FileEditing  {
 
     //@author Mick
     //Finds a file with given string-name, displays it.
-    void readSpecificFile(int fileName) throws FileNotFoundException {
-        File file = new File("src\\Members\\"+fileName+".txt");
+    void readSpecificFile(String path, String fileName) throws FileNotFoundException {
+        File file = new File(path+"\\"+fileName+".txt"); //path = ex. "src\\Disciplines" & fileName = ex. "107".
         Scanner readFile = new Scanner(file);
         while (readFile.hasNextLine()){
             System.out.println(readFile.nextLine());
@@ -33,8 +33,8 @@ public class FileEditing  {
     //@author Mick
     //Not sure if we're using this.
     //it displays a file......
-    void displaySpecificFileList(int fileName) throws FileNotFoundException {
-        File file = new File("src\\Members\\"+fileName+".txt");
+    void displaySpecificFileList(String path, String fileName) throws FileNotFoundException {
+        File file = new File(path+"\\"+fileName+".txt"); //path = ex. "src\\Disciplines" & fileName = ex. "107"
         int count = 0;
         Scanner readFile = new Scanner(file);
         while (readFile.hasNextLine()){
@@ -143,6 +143,7 @@ public class FileEditing  {
     //@author Mick
     //Stores our members as objects in files.
     void storeInObjectFile(Member member){
+
         //import ObjectOutputStream to write objects to a file.
 
         //Finds the correct filepath

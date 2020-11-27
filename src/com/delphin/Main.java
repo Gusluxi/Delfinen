@@ -81,17 +81,21 @@ public class Main {
                     System.out.println("\n"+i);
                     break;
                 case 6: //testF Menu til at tilføje rekordtider til disciplin
-                    disciplineFileRW.addSwimtimeToFile();
+                    String searchForID = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+                    disciplineFileRW.addSwimtimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(searchForID)));
                     break;
                 case 7: //testG
 
                     break;
                 case 8: //test MICK
                     fileEditing.displayTop5File(JB);
+                    fileEditing.displaySpecificFileList("src\\Disciplines",JB);
                     break;
                 case 9: //testI
                     menuSwitches.loginMenu();
                     break;
+                case 10:
+
                 default:
                     menu.printMenu();
             }
