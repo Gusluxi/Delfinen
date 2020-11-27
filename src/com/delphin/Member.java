@@ -247,6 +247,19 @@ public class Member implements Serializable {
                  "\nKontingentet: " + subscriptionPrice + " kr.";
      }
 
+     public String toStringWithTimes() {
+        String times = toStringTimes();
+         return "MemberID: #" + memberID +
+                 "\nAlder: " + age +
+                 "\nNavn: " + name +
+                 "\nAktiv: " + activity +
+                 "\njunior: " + junior +
+                 "\nKonkurrence: " + competitor +
+                 "\nRestance: " + activeDebt +
+                 "\nKontingentet: " + subscriptionPrice + " kr." +
+                 "\n"+times;
+     }
+
      public String toStringDebt() {
          return "MemberID: #" + memberID +
                  "\nNavn: " + name +
@@ -255,65 +268,63 @@ public class Member implements Serializable {
      }
 
      public String toStringTimes() {
-         ArrayList<String> times = new ArrayList<>();
-         ArrayList<Double> times2 = new ArrayList<>();
-         times.add(juniorBryst);
-         //times.add(String.valueOf(juniorBrystTid));
-         times.add(juniorButterfly);
-         //times.add(String.valueOf(juniorButterflyTid));
-         times.add(juniorCrawl);
-         //times.add(String.valueOf(juniorCrawlTid));
-         times.add(juniorRygcrawl);
-         //times.add(String.valueOf(juniorRygcrawlTid));
-         times.add(seniorBryst);
-         //times.add(String.valueOf(seniorBrystTid));
-         times.add(seniorButterfly);
-         //times.add(String.valueOf(seniorButterflyTid));
-         times.add(seniorCrawl);
-         //times.add(String.valueOf(seniorCrawlTid));
-         times.add(seniorRygCrawl);
-         //times.add(String.valueOf(seniorCrawlTid));
-         times2.add(juniorBrystTid);
-         times2.add(juniorButterflyTid);
-         times2.add(juniorCrawlTid);
-         times2.add(juniorRygcrawlTid);
-         times2.add(seniorBrystTid);
-         times2.add(seniorButterflyTid);
-         times2.add(seniorCrawlTid);
-         times2.add(seniorRygCrawlTid);
+         ArrayList<String> disciplines = new ArrayList<>();
+         ArrayList<Double> disciplineTime = new ArrayList<>();
+         disciplines.add(juniorBryst);
+         disciplines.add(juniorButterfly);
+         disciplines.add(juniorCrawl);
+         disciplines.add(juniorRygcrawl);
+         disciplines.add(seniorBryst);
+         disciplines.add(seniorButterfly);
+         disciplines.add(seniorCrawl);
+         disciplines.add(seniorRygCrawl);
 
-         ArrayList<Double> testDouble = new ArrayList<>();
-         ArrayList<String> test = new ArrayList<>();
-         ArrayList<String> testDConvert = new ArrayList<>();
-         ArrayList<String> lastAL = new ArrayList<>();
+         disciplineTime.add(juniorBrystTid);
+         disciplineTime.add(juniorButterflyTid);
+         disciplineTime.add(juniorCrawlTid);
+         disciplineTime.add(juniorRygcrawlTid);
+         disciplineTime.add(seniorBrystTid);
+         disciplineTime.add(seniorButterflyTid);
+         disciplineTime.add(seniorCrawlTid);
+         disciplineTime.add(seniorRygCrawlTid);
+
+         ArrayList<Double> zeroNullDoubles = new ArrayList<>();
+         ArrayList<String> zeroNullStrings = new ArrayList<>();
+         ArrayList<String> convertedDoubles = new ArrayList<>();
+         ArrayList<String> disciplinesAndTimes = new ArrayList<>();
 
          //for loop for string nulls
-         for (int i = 0; i < times.size(); i++) {
-             if (times.get(i) != null) {
-                 test.add(times.get(i));
+         for (int i = 0; i < disciplines.size(); i++) {
+             if (disciplines.get(i) != null) {
+                 zeroNullStrings.add(disciplines.get(i));
              }
          }
         //for loop for double nulls  (0.0)
-         for (int i =0;i<times2.size();i++){
-             if (times2.get(i) != 0.0){
-                testDouble.add(times2.get(i));
+         for (int i =0;i<disciplineTime.size();i++){
+             if (disciplineTime.get(i) != 0.0){
+                zeroNullDoubles.add(disciplineTime.get(i));
              }
          }
 
          //Convert double to String
-         for (int i = 0; i<testDouble.size();i++){
-             testDConvert.add(String.valueOf(testDouble.get(i)));
+         for (int i = 0; i<zeroNullDoubles.size();i++){
+             convertedDoubles.add(String.valueOf(zeroNullDoubles.get(i)));
          }
 
          //Put into ONE list
-         for (int i=0;i<test.size();i++){
-             lastAL.add(test.get(i));
-             lastAL.add(testDConvert.get(i));
+         for (int i=0;i<zeroNullStrings.size();i++){
+             disciplinesAndTimes.add(zeroNullStrings.get(i));
+             disciplinesAndTimes.add(convertedDoubles.get(i));
          }
 
-         return lastAL.toString();
-     }
+         String timesAndDiscString="";
 
+         for (String str:disciplinesAndTimes){
+             timesAndDiscString += str;
+         }
+
+         return "Medlemmets bedste tider er: \n" + timesAndDiscString;
+     }
 
      //@author GroupCall
      //Calculates the price for a new member.

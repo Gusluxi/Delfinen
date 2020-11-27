@@ -126,10 +126,10 @@ public class MenuSwitches {
                        break;
                    case 1: //Add new swimtime/best swimtime
                        String searchForID = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
-                       disciplineFileRW.addSwimtimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(searchForID)));
+                       disciplineFileRW.addSwimTimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(searchForID)));
                        break;
                    case 2: //Show top 5 swimmmers in disciplines
-                       fileEditing.displayTop5File(JB);
+                       disciplineFileRW.displayTop5();
                        break;
                    default:
                        traenerMenu();
@@ -209,10 +209,10 @@ public class MenuSwitches {
                     break;
                 case 4: //Add new swimtime/best swimtime
                     String searchForID = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
-                    disciplineFileRW.addSwimtimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(searchForID)));
+                    disciplineFileRW.addSwimTimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(searchForID)));
                     break;
                 case 5: //Show top 5 swimmmers in disciplines
-                    fileEditing.displayTop5File(JB);
+                    disciplineFileRW.displayTop5();
                     break;
                 case 6: //shows total revenue
                     CurrentSubscriptions.showTotalRevenue();

@@ -44,17 +44,6 @@ public class FileEditing  {
     }
 
     //@author Mick
-    //Displays the top5 of a given filename.
-    void displayTop5File(String fileName) throws IOException {
-        File file = new File("src\\Disciplines\\"+fileName+".txt");
-        Scanner readFile = new Scanner(file);
-        sortTextFile(file); //Sort method from below
-        for (int i = 0; i<5; i++){
-            System.out.println(readFile.nextLine());
-        }
-    }
-
-    //@author Mick
     //Reads a given filename as an Object (member)
     //Returns the member-object.
     Member readFileAndConvertToObject(int IDNumber) throws IOException {
@@ -224,7 +213,6 @@ public class FileEditing  {
         fileWriter.close();
     }
 
-
     //@author Mick
     //Searches file for a given String. Writes all the code (except the string)..
     //into another file. Deletes the old file and renames the new one.
@@ -271,8 +259,10 @@ public class FileEditing  {
         writer.write("\n" + stringToFile);
         writer.close();
     }
+
     //@author Mick
-    //Added to avoid "DRY" coding. Adds all files in given dir to an ArrayList
+    //Added to avoid "DRY" coding.
+    //Adds all files in given dir to an ArrayList
     ArrayList<File> getAllFilesInDir(String directory){
         File dir = new File("src\\"+directory+"");
         File[] fileArray = dir.listFiles();
@@ -348,8 +338,6 @@ public class FileEditing  {
 
 
     //@author Gustav
-
-    //@author Gustav
     //Looks for a specific member by String or Number.
     //If multiply users appear, you can choose by using the ID-number
     String findSpecificFileValues(String usrMsg) throws IOException {
@@ -372,8 +360,10 @@ public class FileEditing  {
                 System.out.println((c+1)+"."); //Displays index numbers+1
                 printNrNameFromString(memberData.get(arrayPlace.get(c))); //displays Name and NumberID only.T
             }
+
             int reInput = UserInput.inputInt(1, arrayPlace.size(),"Skriv nr. for den " + input + " du vil vælge.")-1;
             return memberData.get(arrayPlace.get(reInput));
+
             //in case the search has 0 results
         } else if (arrayPlace.size() <= 0) { //Runs the same method until the user finds a correct value. (called "Recursion
             return findSpecificFileValues("Fejl, " + input + " findes ikke.\nSkriv navn eller #nr. på den person der skal redigeres: ");
@@ -409,5 +399,38 @@ public class FileEditing  {
         }
         scan.close();
     }
+
+    Member findSpecificMemberAndConvert(String searchFor) throws IOException {
+        ArrayList<File> everyMember = getAllFilesInDir("Members");
+        ArrayList<Member> membersFound = new ArrayList<>();
+
+        //Loop through and find matches to "searchFor". Send to arraylist.
+        for (int i = 0; i<everyMember.size(); i++) {
+            //Convert MemberID to string
+            String word = Integer.toString(readFileAndConvertToObject(everyMember.get(i)).getMemberID());
+
+            if (readFileAndConvertToObject(everyMember.get(i)).getName().contains(searchFor) ||
+                    word.compareTo(searchFor)==0) {
+                membersFound.add(readFileAndConvertToObject(everyMember.get(i)));
+            }
+        }
+
+        //With only one hit
+        if (membersFound.size() ==1){
+            return membersFound.get(0);
+        } else {
+
+        //More than one hit
+        for (int i = 0; i < membersFound.size(); i++) {
+            System.out.println((i + 1) + "."); //Displays index numbers+1
+            System.out.println(membersFound.get(i).getName() + membersFound.get(i).getMemberID());
+            }
+            int reInput = UserInput.inputInt(1, membersFound.size(),"Skriv nr. for den " + searchFor + " du vil vælge.")-1;
+            return readFileAndConvertToObject(reInput);
+        }
+
+    }
+
+
 
 }
