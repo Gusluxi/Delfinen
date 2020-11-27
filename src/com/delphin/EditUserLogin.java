@@ -3,6 +3,7 @@ package com.delphin;
 import java.io.*;
 import java.util.Scanner;
 
+//@author Frederik (partial copy of EditMembership)
 public class EditUserLogin {
     static FileEditing fileEditing = new FileEditing();
 

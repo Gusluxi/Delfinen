@@ -3,6 +3,7 @@ package com.delphin;
 import java.io.IOException;
 import java.io.Serializable;
 
+//@author Frederik (copied from member partially)
 public class Login implements Serializable {
     private String userName;
     private String userPassword;

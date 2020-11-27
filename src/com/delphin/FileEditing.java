@@ -281,7 +281,7 @@ public class FileEditing  {
         writer.close();
     }
 
-    //Overloaded dataToArrayList
+    //@author Frederik Overloaded dataToArrayList
     //Gets all files in UserLogin-dir and return each login in as a String in an ArrayList.
     ArrayList<String> dataToArrayListLogin() throws IOException {
         File directory = new File("src\\UserLogin");
@@ -325,7 +325,8 @@ public class FileEditing  {
         }
         return loginData;
     }
-
+    //@Author Frederik
+    //Overloaded method of memberFilesDebt
    int getUserStatusFromFile(String username, String password) throws IOException {
         File directory = new File("src\\UserLogin");
         File[] fileArray = directory.listFiles();
