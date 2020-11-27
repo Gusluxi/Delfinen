@@ -15,6 +15,7 @@ public class MenuSwitches {
         editUserLogin.newUser("Formand","JegErFormand","Kurt",1);
         editUserLogin.newUser("Traener","JegErTraener","Hurtigere Kurt",2);
         editUserLogin.newUser("Kasser","JegErKasser","Dame Kurt",3);
+        editUserLogin.newUser("admin","admin","admin",4);
 
     boolean run = true;
     int menuChoice;
@@ -175,6 +176,11 @@ public class MenuSwitches {
                     kasserMenu();
             }
         }
+    }
+
+    //potentiel admin menu
+    void adminMenu() throws IOException {
+
     }
 
 
