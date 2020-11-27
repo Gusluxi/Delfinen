@@ -6,13 +6,13 @@ import java.util.Scanner;
 public class EditUserLogin {
     static FileEditing fileEditing = new FileEditing();
 
-            void newUser() throws IOException {
-                Login login = new Login();
-        login.setName("Kurt");
-        login.setStatus(1);
-        login.setUserName("Formand");
-        login.setUserPassword("JegErFormand");
+        void newUser() throws IOException {
+        Login userLogin = new Login();
+        userLogin.setName("Kurt");
+        userLogin.setStatus(1);
+        userLogin.setUserName("Formand");
+        userLogin.setUserPassword("JegErFormand");
 
-                fileEditing.storeInObjectFile(login);
+        fileEditing.storeInObjectFile(userLogin);
             }
 }

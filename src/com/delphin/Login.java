@@ -23,7 +23,7 @@ public class Login implements Serializable {
         return this.userName;
     }
 
-    public void setUserName(String memberID) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
