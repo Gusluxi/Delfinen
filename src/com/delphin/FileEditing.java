@@ -272,7 +272,7 @@ public class FileEditing  {
         writer.close();
     }
     //@author Mick
-    //Added to avoid "DRY" coding
+    //Added to avoid "DRY" coding. Adds all files in given dir to an ArrayList
     ArrayList<File> getAllFilesInDir(String directory){
         File dir = new File("src\\"+directory+"");
         File[] fileArray = dir.listFiles();
