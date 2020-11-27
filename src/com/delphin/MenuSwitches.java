@@ -16,6 +16,7 @@ public class MenuSwitches {
         editUserLogin.newUser("Traener","JegErTraener","Hurtigere Kurt",2);
         editUserLogin.newUser("Kasser","JegErKasser","Dame Kurt",3);
         editUserLogin.newUser("admin","admin","admin",4);
+        editUserLogin.newUser("luk","luk","luk",9);
 
     boolean run = true;
     int menuChoice;
@@ -30,31 +31,25 @@ public class MenuSwitches {
             case 0: //End program
                 System.out.println("Wrong Username and or Password");
                 loginMenu();
-                run = false;
                 break;
-            case 1: //testA new membership
+            case 1: //FormandsMenu
                 System.out.println("Tilykke du er logget ind som Formand");
                 formandMenu();
                 break;
-            case 2: //testB edit membership
+            case 2: //TraenerMenu
                 System.out.println("Tilykke du er logget ind som Traener");
                 traenerMenu();
                 break;
-            case 3: //testC Display total revenue and members with debt.
+            case 3: //KasserMenu
                 System.out.println("Tilykke du er logget ind som Kasser");
                 kasserMenu();
                 break;
-            case 4: //testD Play with Username input
+            case 4: //AdminMenu
+                System.out.println("Tilykke du er admin, you win REEEEEEEEE PEPEGAPLS");
+                adminMenu();
                 break;
-            case 5: //testE
-                break;
-            case 6: //testF Menu til at tilføje rekordtider til disciplin
-                break;
-            case 7: //testG
-                break;
-            case 8: //test MICK
-                break;
-            case 9: //testI
+            case 9: //Luk
+                run = false;
                 break;
             default:
                 loginMenu();
@@ -77,7 +72,7 @@ public class MenuSwitches {
        String headertext = "Formands valgmuligheder";
        String leadtext = "Indtast en valgmulighed: ";
        String[] menuItems = {"1. Tilføj nyt medlem", "2. Rediger medlem", "3. Slet medlem",
-               "4. ", "9. Luk computeren", "0. Log ud af din bruger"};
+               "4. ", "0. Log ud af din bruger"};
        while (run) {
            Menu menu = new Menu(headertext, leadtext, menuItems);
            menu.printMenu();
@@ -100,8 +95,6 @@ public class MenuSwitches {
                    CurrentSubscriptions.showTotalRevenue();
                    CurrentSubscriptions.showMembersWithDebt();
                    break;
-               case 9:
-                   run = false;
                default:
                    formandMenu();
            }
@@ -113,7 +106,7 @@ public class MenuSwitches {
            //instances
            FileEditing fileEditing = new FileEditing();
            DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
-           EditMembership editMemberShip = new EditMembership();
+           EditMembership editMembership = new EditMembership();
 
            //print træner switchmenu
            System.out.println("jahejmegatestTRÆNER");
@@ -122,7 +115,7 @@ public class MenuSwitches {
            int menuChoice;
            String headertext = "Træner valgmuligheder";
            String leadtext = "Indtast en valgmulighed: ";
-           String[] menuItems = {"1. Indtast bedste svømmetid", "2. Vis top5 svømmere indenfor alle discipliner", "9. Luk computeren", "0. Log ud af din bruger"};
+           String[] menuItems = {"1. Indtast bedste svømmetid", "2. Vis top5 svømmere indenfor alle discipliner", "0. Log ud af din bruger"};
            while (run) {
                Menu menu = new Menu(headertext, leadtext, menuItems);
                menu.printMenu();
@@ -131,15 +124,13 @@ public class MenuSwitches {
                    case 0: //End program
                        loginMenu();
                        break;
-                   case 1: //shows total revenue
+                   case 1: //Add new swimtime/best swimtime
                        String searchForID = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
-                       disciplineFileRW.addSwimtimeToFile(fileEditing.readFileAndConvertToObject(editMemberShip.getMemberIDFromString(searchForID)));
+                       disciplineFileRW.addSwimtimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(searchForID)));
                        break;
-                   case 2: //shows memberARREARS?!
+                   case 2: //Show top 5 swimmmers in disciplines
                        fileEditing.displayTop5File(JB);
                        break;
-                   case 9:
-                       run = false;
                    default:
                        traenerMenu();
                }
@@ -155,7 +146,7 @@ public class MenuSwitches {
         int menuChoice;
         String headertext = "Kasser valgmuligheder";
         String leadtext = "Indtast en valgmulighed: ";
-        String[] menuItems = {"1. Vis omsættelse", "2. Vis medlemmer i restance", "9. Luk computeren", "0. Log ud af din bruger"};
+        String[] menuItems = {"1. Vis omsættelse", "2. Vis medlemmer i restance", "0. Log ud af din bruger"};
         while (run) {
             Menu menu = new Menu(headertext, leadtext, menuItems);
             menu.printMenu();
@@ -170,18 +161,69 @@ public class MenuSwitches {
                 case 2: //shows memberARREARS?!
                     CurrentSubscriptions.showMembersWithDebt();
                     break;
-                case 9:
-                    run = false;
                 default:
                     kasserMenu();
             }
         }
     }
 
-    //potentiel admin menu
+    //@author ludvig+frederik test push pls commit
     void adminMenu() throws IOException {
 
+        //Instances
+        FileEditing fileEditing = new FileEditing();
+        EditMembership editMembership = new EditMembership();
+        DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
+
+        //print admin swtichmenu
+        System.out.println("admin virker kekw");
+        //Menu
+        boolean run = true;
+        int menuChoice;
+        String headertext = "admin valgmuligheder";
+        String leadtext = "Indtast en valgmulighed: ";
+        String[] menuItems = {"1. Tilføj nyt medlem", "2. Rediger medlem", "3. Slet medlem",
+                "4. Indtast bedste svømmetid", "5. Vis top5 svømmere indenfor alle discipliner",
+                "6. Vis omsættelse", "7. Vis medlemmer i restance", "0. Log ud af din bruger"};
+        while (run) {
+            Menu menu = new Menu(headertext, leadtext, menuItems);
+            menu.printMenu();
+            menuChoice = UserInput.inputInt(leadtext);
+            switch (menuChoice) {
+                case 0: //End program
+                    loginMenu();
+                    break;
+                case 1: //testA new membership
+                    editMembership.newMembership();
+                    break;
+                case 2: //testB edit membership
+                    //asks user to type a single Name or #ID which it will return to memberData.
+                    String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+                    //Uses the selected memberID via getMemberIdFromString() to access the connected ID.txt file and run editMembership(with user selected file).
+                    editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
+                    System.out.println(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)).toString());
+                    break;
+                case 3: //testC Display total revenue and members with debt.
+                    CurrentSubscriptions.showTotalRevenue();
+                    CurrentSubscriptions.showMembersWithDebt();
+                    break;
+                case 4: //Add new swimtime/best swimtime
+                    String searchForID = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+                    disciplineFileRW.addSwimtimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(searchForID)));
+                    break;
+                case 5: //Show top 5 swimmmers in disciplines
+                    fileEditing.displayTop5File(JB);
+                    break;
+                case 6: //shows total revenue
+                    CurrentSubscriptions.showTotalRevenue();
+                    break;
+                case 7: //shows memberARREARS?!
+                    CurrentSubscriptions.showMembersWithDebt();
+                    break;
+                default:
+                    adminMenu();
+            }
+
+        }
     }
-
-
 }
