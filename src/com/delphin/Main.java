@@ -15,6 +15,7 @@ public class Main {
         CurrentSubscriptions currentSubscriptions = new CurrentSubscriptions();
         DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
         EditUserLogin editUserLogin = new EditUserLogin();
+        UserInput userInput = new UserInput();
 
 
         final String DELPHIN = "src\\Disciplines";
@@ -80,7 +81,9 @@ public class Main {
                     System.out.println("\n"+i);
                     break;
                 case 6: //testF Menu til at tilføje rekordtider til disciplin
-                    disciplineFileRW.addSwimtimeToFile();
+                    Member member = fileEditing.readFileAndConvertToObject(UserInput.inputInt("message"));
+                    disciplineFileRW.addSwimtimeToFile(member);
+                    System.out.println(member.getJuniorBrystTid());
                     break;
                 case 7: //testG
                     break;
