@@ -88,8 +88,10 @@ public class Main {
                     fileEditing.displayTop5File(JB);
                     break;
                 case 9: //testI
-                    editUserLogin.newUser();
-                    System.out.println(fileEditing.dataToArrayListLogin().toString());
+                    editUserLogin.newUser("Formand","JegErFormand","Kurt",1);
+                    editUserLogin.newUser("Traener","JegErTraener","Hurtigere Kurt",2);
+                    editUserLogin.newUser("Kasser","JegErKasser","Dame Kurt",3);
+                    System.out.println(fileEditing.getUserStatusFromFile("Formand","JegErFormand"));
                     break;
                 default:
                     menu.printMenu();

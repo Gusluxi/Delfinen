@@ -49,7 +49,7 @@ public class Login implements Serializable {
 
     @Override
     public String toString() {
-        return "UserName: #" + userName +
+        return "\nUserName: #" + userName +
                 "\nPassword: " + userPassword +
                 "\nNavn: " + name +
                 "\nStatus: " + status;
