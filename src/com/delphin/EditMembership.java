@@ -127,29 +127,3 @@ public class EditMembership {
     }
 
 }
-
-    //Old, maybe reuseable.
-    //@author Mick
-    //Saves a member in a textfile in case of program crashes.
-    /*
-    void createNewMemberFile(Member member) throws IOException {
-        int IDNumber = member.getMemberID();
-        String path = "src\\Members\\"+IDNumber+".txt";
-        try{
-            File viProver = new File(path);
-            if (viProver.createNewFile()){
-                System.out.println("File created: " + viProver.getName());
-            }else {
-                System.out.println("File already exists");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        FileWriter fw = new FileWriter(path,true);
-        PrintWriter writeToFile = new PrintWriter(fw);
-        writeToFile.println(member.toString());
-        writeToFile.flush();
-        writeToFile.close();
-    }
-     */
