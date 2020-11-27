@@ -74,7 +74,7 @@ public class MenuSwitches {
        String headertext = "Formands valgmuligheder";
        String leadtext = "Indtast en valgmulighed: ";
        String[] menuItems = {"1. Tilføj nyt medlem", "2. Rediger medlem", "3. Slet medlem",
-               "4. ", "0. Afslut"};
+               "4. ", "9. Luk computeren", "0. Log ud af din bruger"};
        while (run) {
            Menu menu = new Menu(headertext, leadtext, menuItems);
            menu.printMenu();
@@ -97,6 +97,8 @@ public class MenuSwitches {
                    CurrentSubscriptions.showTotalRevenue();
                    CurrentSubscriptions.showMembersWithDebt();
                    break;
+               case 9:
+                   run = false;
                default:
                    formandMenu();
            }
@@ -116,7 +118,7 @@ public class MenuSwitches {
            int menuChoice;
            String headertext = "Træner valgmuligheder";
            String leadtext = "Indtast en valgmulighed: ";
-           String[] menuItems = {"1. Indtast bedste svømmetid", "2. Vis top5 svømmere indenfor alle discipliner", "0. Afslut"};
+           String[] menuItems = {"1. Indtast bedste svømmetid", "2. Vis top5 svømmere indenfor alle discipliner", "9. Luk computeren", "0. Log ud af din bruger"};
            while (run) {
                Menu menu = new Menu(headertext, leadtext, menuItems);
                menu.printMenu();
@@ -132,6 +134,8 @@ public class MenuSwitches {
                    case 2: //shows memberARREARS?!
                        fileEditing.displayTop5File(JB);
                        break;
+                   case 9:
+                       run = false;
                    default:
                        traenerMenu();
                }
@@ -146,7 +150,7 @@ public class MenuSwitches {
         int menuChoice;
         String headertext = "Kasser valgmuligheder";
         String leadtext = "Indtast en valgmulighed: ";
-        String[] menuItems = {"1. Vis omsættelse", "2. Vis medlemmer i restance", "0. Afslut"};
+        String[] menuItems = {"1. Vis omsættelse", "2. Vis medlemmer i restance", "9. Luk computeren", "0. Log ud af din bruger"};
         while (run) {
             Menu menu = new Menu(headertext, leadtext, menuItems);
             menu.printMenu();
@@ -161,6 +165,8 @@ public class MenuSwitches {
                 case 2: //shows memberARREARS?!
                     CurrentSubscriptions.showMembersWithDebt();
                     break;
+                case 9:
+                    run = false;
                 default:
                     kasserMenu();
             }

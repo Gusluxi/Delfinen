@@ -21,6 +21,7 @@ public class TimeAndDate {
         String timeTest = setTime.toString();
         return timeTest;
     }
+    //@author PepegaPls
     // Calendar cal = TimeAndDate.setDate(2010, Calendar.MAY, 21);
     public static String setDate(int year, int month, int day) {
         cal.set(Calendar.YEAR, year);
@@ -29,7 +30,7 @@ public class TimeAndDate {
         String newDate = day + "/" + month + "-" + year;
         return newDate;
     }
-
+    //@author PepegaPls
     public static String currentDate() {
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
