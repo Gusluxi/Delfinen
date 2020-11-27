@@ -17,6 +17,24 @@ public class Member implements Serializable {
     private boolean activeDebt; //true = has arrears
     private double subscriptionPrice; //use method to calculate
 
+    private String juniorBryst;
+    private String juniorButterfly;
+    private String juniorCrawl;
+    private String juniorRygcrawl;
+    private String seniorBryst;
+    private String seniorButterfly;
+    private String seniorCrawl;
+    private String SeniorRygCrawl;
+
+    private double juniorBrystTid;
+    private double juniorButterflyTid;
+    private double juniorCrawlTid;
+    private double juniorRygcrawlTid;
+    private double seniorBrystTid;
+    private double seniorButterflyTid;
+    private double seniorCrawlTid;
+    private double SeniorRygCrawlTid;
+
     static final double SENIORPRICE = 1600;
     static final double JUNIORPRICE = 1000;
     static final double DISCOUNT = 0.25;
@@ -84,6 +102,135 @@ public class Member implements Serializable {
 
     public String getName() {return this.name;}
     public void setName(String name) {this.name=name;}
+
+    public String getJuniorBryst() {
+        return juniorBryst;
+    }
+
+    public void setJuniorBryst(String juniorBryst) {
+        this.juniorBryst = juniorBryst;
+    }
+
+    public String getJuniorButterfly() {
+        return juniorButterfly;
+    }
+
+    public void setJuniorButterfly(String juniorButterfly) {
+        this.juniorButterfly = juniorButterfly;
+    }
+
+    public String getJuniorCrawl() {
+        return juniorCrawl;
+    }
+
+    public void setJuniorCrawl(String juniorCrawl) {
+        this.juniorCrawl = juniorCrawl;
+    }
+
+    public String getJuniorRygcrawl() {
+        return juniorRygcrawl;
+    }
+
+    public void setJuniorRygcrawl(String juniorRygcrawl) {
+        this.juniorRygcrawl = juniorRygcrawl;
+    }
+
+    public String getSeniorBryst() {
+        return seniorBryst;
+    }
+
+    public void setSeniorBryst(String seniorBryst) {
+        this.seniorBryst = seniorBryst;
+    }
+
+    public String getSeniorButterfly() {
+        return seniorButterfly;
+    }
+
+    public void setSeniorButterfly(String seniorButterfly) {
+        this.seniorButterfly = seniorButterfly;
+    }
+
+    public String getSeniorCrawl() {
+        return seniorCrawl;
+    }
+
+    public void setSeniorCrawl(String seniorCrawl) {
+        this.seniorCrawl = seniorCrawl;
+    }
+
+    public String getSeniorRygCrawl() {
+        return SeniorRygCrawl;
+    }
+
+    public void setSeniorRygCrawl(String seniorRygCrawl) {
+        SeniorRygCrawl = seniorRygCrawl;
+    }
+
+    public double getJuniorBrystTid() {
+        return juniorBrystTid;
+    }
+
+    public void setJuniorBrystTid(double juniorBrystTid) {
+        this.juniorBrystTid = juniorBrystTid;
+    }
+
+    public double getJuniorButterflyTid() {
+        return juniorButterflyTid;
+    }
+
+    public void setJuniorButterflyTid(double juniorButterflyTid) {
+        this.juniorButterflyTid = juniorButterflyTid;
+    }
+
+    public double getJuniorCrawlTid() {
+        return juniorCrawlTid;
+    }
+
+    public void setJuniorCrawlTid(double juniorCrawlTid) {
+        this.juniorCrawlTid = juniorCrawlTid;
+    }
+
+    public double getJuniorRygcrawlTid() {
+        return juniorRygcrawlTid;
+    }
+
+    public void setJuniorRygcrawlTid(double juniorRygcrawlTid) {
+        this.juniorRygcrawlTid = juniorRygcrawlTid;
+    }
+
+    public double getSeniorBrystTid() {
+        return seniorBrystTid;
+    }
+
+    public void setSeniorBrystTid(double seniorBrystTid) {
+        this.seniorBrystTid = seniorBrystTid;
+    }
+
+    public double getSeniorButterflyTid() {
+        return seniorButterflyTid;
+    }
+
+    public void setSeniorButterflyTid(double seniorButterflyTid) {
+        this.seniorButterflyTid = seniorButterflyTid;
+    }
+
+    public double getSeniorCrawlTid() {
+        return seniorCrawlTid;
+    }
+
+    public void setSeniorCrawlTid(double seniorCrawlTid) {
+        this.seniorCrawlTid = seniorCrawlTid;
+    }
+
+    public double getSeniorRygCrawlTid() {
+        return SeniorRygCrawlTid;
+    }
+
+    public void setSeniorRygCrawlTid(double seniorRygCrawlTid) {
+        SeniorRygCrawlTid = seniorRygCrawlTid;
+    }
+
 
      @Override
      public String toString() {

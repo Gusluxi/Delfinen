@@ -8,58 +8,77 @@ public class DisciplineFileRW {
 
     //@author Ludvig, men har bare genbrugt switch fra mariopizza?
     //A switch where you can add times to specific disciplines
-    void addSwimtimeToFile() throws IOException {
+    void addSwimtimeToFile(Member member) throws IOException {
         boolean run = true;
         int choice2;
         String headerText2 = "Menu til at tilføje rekordtider til svømmediscipliner";
         String leadText2 = "Indtast et tal for at tilføje til specifik disciplin";
         String[] menuItems2 = {"1. JuniorBryst", "2. JuniorButterfly", "3. JunirCrawl",
-                "4. JuniorRygcrawl","5. SeniorBryst","6. SeniorButterfly","7. SeniorCrawl", "8. SeniorRygcrawl", "9. Gå tilbage til hovedmenu"};
+                "4. JuniorRygcrawl", "5. SeniorBryst", "6. SeniorButterfly", "7. SeniorCrawl", "8. SeniorRygcrawl", "9. Gå tilbage til hovedmenu"};
         FileEditing fileEditing = new FileEditing();
+        UserInput userInput = new UserInput();
         Menu menu2 = new Menu(headerText2, leadText2, menuItems2); // Create new menu instance
-        menu2.printMenu(); // Print menu
+
         while (run) {
+            menu2.printMenu(); // Print menu
             choice2 = UserInput.inputInt(leadText2);
             switch (choice2) {
                 case 1:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false),"Disciplines", "JuniorBryst");
-                    run = false;
+                    member.setJuniorBrystTid(userInput.inputTimeDouble("Indtast tid"));
+
                     break;
                 case 2:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false),"Disciplines", "JuniorButterfly");
-                    run = false;
+                    member.setJuniorButterflyTid(userInput.inputTimeDouble("Indtast tid"));
+
                     break;
                 case 3:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false),"Disciplines", "JuniorCrawl");
-                    run = false;
+                    member.setJuniorCrawlTid(userInput.inputTimeDouble("Indtast tid"));
+
                     break;
                 case 4:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false), "Disciplines","JuniorRygcrawl");
-                    run = false;
+                    member.setJuniorRygcrawlTid(userInput.inputTimeDouble("Indtast tid"));
+
                     break;
                 case 5:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false),"Disciplines", "SeniorBryst");
-                    run = false;
+                    member.setSeniorBrystTid(userInput.inputTimeDouble("Indtast tid"));
+
                     break;
                 case 6:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false),"Disciplines", "SeniorButterfly");
-                    run = false;
+                    member.setJuniorButterflyTid(userInput.inputTimeDouble("Indtast tid"));
+
                     break;
                 case 7:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false),"Disciplines", "SeniorCrawl");
-                    run = false;
+                    member.setSeniorCrawlTid(userInput.inputTimeDouble("Indtast tid"));
+
                     break;
                 case 8:
-                    fileEditing.addToFile(UserInput.inputString("Skriv hvad der skal tilføjes til filen", false), "Disciplines","SeniorRygcrawl");
-                    run = false;
+                    member.setSeniorRygCrawlTid(userInput.inputTimeDouble("Indtast tid"));
+
                     break;
                 case 9: //Terminates program (if needed).
-                        run = false;
+                    run = false;
                 default:
                     menu2.printMenu();
             }
         }
 
+    }
+
+        void choseMemberToEdit(Member member) throws Exception {
+        FileEditing fileEditing = new FileEditing();
+        EditMembership editMembership = new EditMembership();
+
+
+            //asks user to type a single Name or #ID which it will return to memberData.
+            String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+
+            addSwimtimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
+
+
+
         }
+
+
+
     }
 
