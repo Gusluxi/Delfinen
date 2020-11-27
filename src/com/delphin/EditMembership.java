@@ -98,16 +98,14 @@ public class EditMembership {
 
     //@author Kristian
     //Deletes a member from the system.
-    void removeMemberFromSystem(int IDNumber) throws FileNotFoundException {
-        File file = new File("src\\Members\\" + IDNumber + ".txt");
+    void removeMemberFromSystem(String directory, String IDNumber) throws FileNotFoundException {
+        File file = new File("src\\"+directory+"\\"+IDNumber+".txt");
         if (file.delete()) {
             System.out.println("Deleted the file: " + file.getName());
         } else {
             System.out.println("Failed to delete the file.");
         }
     }
-
-
 
 
     //@author Gustav
