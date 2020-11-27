@@ -44,7 +44,7 @@ public class DisciplineFileRW {
 
                     break;
                 case 6:
-                    member.setJuniorButterflyTid(userInput.inputTimeDouble("Indtast tid"));
+                    member.setSeniorButterflyTid(userInput.inputTimeDouble("Indtast tid"));
 
                     break;
                 case 7:
