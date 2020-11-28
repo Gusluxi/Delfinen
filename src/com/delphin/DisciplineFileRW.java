@@ -36,6 +36,11 @@ public class DisciplineFileRW {
             menu2.printMenu(); // Print menu
             choice2 = UserInput.inputInt(leadText2);
             switch (choice2) {
+
+                // Each case asks for the new Time to assign to a member.
+                // If the time given is worse than the old PersonalBest, it isn't registered.
+                // If better, it stores it with setters and at the end of the switch, it is stored in the file.
+                // @author Mick - "I AM AWARE IT'S MESSY AND DRY, BUT I DON'T KNOW HOW TO USE A METHOD AS A PARAMETER"
                 case 1:
                     double time = userInput.inputTimeDouble("Indtast tid");
                     String place = "Junior Bryst: Træning";
@@ -47,8 +52,6 @@ public class DisciplineFileRW {
 
                         fileEditing.addToFileTop5(membersTimeAndInfo,"Disciplines",JB);
                     }
-
-
 
                     break;
                 case 2:
@@ -63,7 +66,6 @@ public class DisciplineFileRW {
                         fileEditing.addToFileTop5(membersTimeAndInfo2,"Disciplines",JBF);
                     }
 
-
                     break;
                 case 3:
                     double time3 = userInput.inputTimeDouble("Indtast tid");
@@ -77,7 +79,6 @@ public class DisciplineFileRW {
 
                         fileEditing.addToFileTop5(membersTimeAndInfo3,"Disciplines",JC);
                     }
-
 
                     break;
                 case 4:
@@ -151,8 +152,8 @@ public class DisciplineFileRW {
                     menu2.printMenu();
             }
         }
-        fileEditing.storeInObjectFile(member);
-        System.out.println(member.toStringTimes() + " DEBUG LINJE, SLET MIG I DISCIPLINEFILERW");
+        fileEditing.storeInObjectFile(member); //Save the updates to the member in the file.
+
 
     }//end of addSwimTimeToFile
 

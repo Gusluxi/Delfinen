@@ -439,6 +439,7 @@ public class FileEditing  {
             int reInput = UserInput.inputInt("Skriv ID-nummer for den " + searchFor + " du vil vælge.");
             return readFileAndConvertToObject(reInput);
         } else {
+            //No hits on the search-term.
             System.out.println("Der kunne ikke findes nogen med søgningen: "+searchFor+ ". Prøv igen!" );
             findSpecificMemberAndConvert(UserInput.inputString("Skriv navn eller nummer på personen du vil finde"
                     ,false));

@@ -213,6 +213,7 @@ public class UserInput {
         }
         return word;
     }
+
     // Validerer om brugeren skriver
     public static boolean validationStringArray(ArrayList<String> checkStrings, String msg) {
         //Variables
