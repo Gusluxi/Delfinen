@@ -21,6 +21,7 @@ public class FileEditing  {
 
 
     //@author Mick
+    //Not sure if we're using this anymore.
     //Finds a file with given string-name, displays it.
     void readSpecificFile(String path, String fileName) throws FileNotFoundException {
         File file = new File(path+"\\"+fileName+".txt"); //path = ex. "src\\Disciplines" & fileName = ex. "107".
@@ -31,7 +32,7 @@ public class FileEditing  {
     }
 
     //@author Mick
-    //Not sure if we're using this.
+    //Not sure if we're using this anymore.
     //it displays a file......
     void displaySpecificFileList(String path, String fileName) throws FileNotFoundException {
         File file = new File(path+"\\"+fileName+".txt"); //path = ex. "src\\Disciplines" & fileName = ex. "107"
@@ -170,8 +171,8 @@ public class FileEditing  {
     //Sorts after numbers first, then abc..
     void sortTextFile(String directory,String fileName) throws IOException {
 
-        File inputFile = new File("src\\"+directory+"\\"+fileName+".txt");
-        Scanner readFile = new Scanner(inputFile);
+        File file = new File("src\\"+directory+"\\"+fileName+".txt");
+        Scanner readFile = new Scanner(file);
         ArrayList<String> stringArrayList = new ArrayList<>();
 
         //Read the file and pass it on
@@ -183,7 +184,7 @@ public class FileEditing  {
         Collections.sort(stringArrayList); //Sorts the list
 
         //Write to file
-        FileWriter fileWriter = new FileWriter(inputFile);
+        FileWriter fileWriter = new FileWriter(file);
         for (String str : stringArrayList){
             fileWriter.write(str+"\n");
         }
@@ -192,7 +193,6 @@ public class FileEditing  {
 
     //@author Mick OVERLOADED
     void sortTextFile(File file) throws IOException {
-
         File inputFile = file;
         Scanner readFile = new Scanner(inputFile);
         ArrayList<String> stringArrayList = new ArrayList<>();
@@ -411,7 +411,6 @@ public class FileEditing  {
 
     //@author Mick
     //Remade findSpecificFileValues to work with objects instead.
-
     Member findSpecificMemberAndConvert(String searchFor) throws IOException {
         ArrayList<File> everyMember = getAllFilesInDir("Members");
         ArrayList<Member> membersFound = new ArrayList<>();

@@ -2,8 +2,6 @@ package com.delphin;
 
 import java.io.IOException;
 
-import static com.delphin.FileEditing.JB;
-
 public class MenuSwitches {
 
     //@author ludvig+frederik
@@ -105,7 +103,7 @@ public class MenuSwitches {
        void traenerMenu() throws IOException {
            //instances
            FileEditing fileEditing = new FileEditing();
-           DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
+           SwimTimesAndStats swimTimesAndStats = new SwimTimesAndStats();
            EditMembership editMembership = new EditMembership();
 
            //print træner switchmenu
@@ -126,10 +124,10 @@ public class MenuSwitches {
                        break;
                    case 1: //Add new swimtime/best swimtime
                        String searchForID = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
-                       disciplineFileRW.addSwimTimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(searchForID)));
+                       swimTimesAndStats.addSwimTimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(searchForID)));
                        break;
                    case 2: //Show top 5 swimmmers in disciplines
-                       disciplineFileRW.displayTop5();
+                       swimTimesAndStats.displayTop5();
                        break;
                    default:
                        traenerMenu();
@@ -173,7 +171,7 @@ public class MenuSwitches {
         //Instances
         FileEditing fileEditing = new FileEditing();
         EditMembership editMembership = new EditMembership();
-        DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
+        SwimTimesAndStats swimTimesAndStats = new SwimTimesAndStats();
 
         //print admin swtichmenu
         System.out.println("admin virker kekw");
@@ -209,10 +207,10 @@ public class MenuSwitches {
                     break;
                 case 4: //Add new swimtime/best swimtime
                     String searchForID = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
-                    disciplineFileRW.addSwimTimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(searchForID)));
+                    swimTimesAndStats.addSwimTimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(searchForID)));
                     break;
                 case 5: //Show top 5 swimmmers in disciplines
-                    disciplineFileRW.displayTop5();
+                    swimTimesAndStats.displayTop5();
                     break;
                 case 6: //shows total revenue
                     CurrentSubscriptions.showTotalRevenue();

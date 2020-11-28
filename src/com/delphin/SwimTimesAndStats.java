@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class DisciplineFileRW {
+public class SwimTimesAndStats {
 
     //When asked for directory, DELPHIN works as a path name.
     static final String DELPHIN = "com\\delphin";
@@ -43,7 +43,8 @@ public class DisciplineFileRW {
                 // @author Mick - "I AM AWARE IT'S MESSY AND DRY, BUT I DON'T KNOW HOW TO USE A METHOD AS A PARAMETER"
                 case 1:
                     double time = userInput.inputTimeDouble("Indtast tid");
-                    String place = "Junior Bryst: Træning";
+                    String askForPlace = placeWhereTimeWasRecorded(); //asks user to specify training/comp
+                    String place = "Junior Bryst: " + askForPlace;
                     double lastPB = member.getJuniorBrystTid();
                     if (time <= lastPB){
                         member.setJuniorBrystTid(time);
@@ -56,7 +57,8 @@ public class DisciplineFileRW {
                     break;
                 case 2:
                     double time2 = userInput.inputTimeDouble("Indtast tid");
-                    String place2 = "Junior ButterFly: Træning";
+                    String askForPlace2 = placeWhereTimeWasRecorded();
+                    String place2 = "Junior ButterFly: "+askForPlace2;
                     double lastPB2 = member.getJuniorButterflyTid();
                     if (time2<lastPB2) {
                         member.setJuniorButterflyTid(time2);
@@ -69,7 +71,8 @@ public class DisciplineFileRW {
                     break;
                 case 3:
                     double time3 = userInput.inputTimeDouble("Indtast tid");
-                    String place3 = "Junior Crawl: Træning";
+                    String askForPlace3 = placeWhereTimeWasRecorded();
+                    String place3 = "Junior Crawl: "+askForPlace3;
 
                     double lastPB3 = member.getJuniorCrawlTid();
                     if (time3<lastPB3) {
@@ -83,7 +86,8 @@ public class DisciplineFileRW {
                     break;
                 case 4:
                     double time4 = userInput.inputTimeDouble("Indtast tid");
-                    String place4 = "Junior RygCrawl: Træning";
+                    String askForPlace4 = placeWhereTimeWasRecorded();
+                    String place4 = "Junior RygCrawl: "+askForPlace4;
                     double lastPB4 = member.getJuniorRygcrawlTid();
                     if (time4<lastPB4){
                         member.setJuniorRygcrawlTid(time4);
@@ -96,7 +100,8 @@ public class DisciplineFileRW {
                     break;
                 case 5:
                     double time5 = userInput.inputTimeDouble("Indtast tid");
-                    String place5 = "Senior Bryst: Træning";
+                    String askForPlace5 = placeWhereTimeWasRecorded();
+                    String place5 = "Senior Bryst: "+askForPlace5;
                     double lastPB5 = member.getSeniorBrystTid();
                     if(time5<lastPB5){
                         member.setSeniorBrystTid(time5);
@@ -109,7 +114,8 @@ public class DisciplineFileRW {
                     break;
                 case 6:
                     double time6 = userInput.inputTimeDouble("Indtast tid");
-                    String place6 = "Senior ButterFly: Træning";
+                    String askForPlace6 = placeWhereTimeWasRecorded();
+                    String place6 = "Senior ButterFly: "+askForPlace6;
                     double lastPB6 = member.getSeniorButterflyTid();
                     if(time6<lastPB6){
                         member.setSeniorButterflyTid(time6);
@@ -122,7 +128,8 @@ public class DisciplineFileRW {
                     break;
                 case 7:
                     double time7 = userInput.inputTimeDouble("Indtast tid");
-                    String place7 = "Senior Crawl: Træning";
+                    String askForPlace7 = placeWhereTimeWasRecorded();
+                    String place7 = "Senior Crawl: "+askForPlace7;
                     double lastPB7 = member.getSeniorCrawlTid();
                     if(time7<lastPB7){
                         member.setSeniorCrawlTid(time7);
@@ -135,7 +142,8 @@ public class DisciplineFileRW {
                     break;
                 case 8:
                     double time8 = userInput.inputTimeDouble("Indtast tid");
-                    String place8 = "Senior RygCrawl: Træning";
+                    String askForPlace8 = placeWhereTimeWasRecorded();
+                    String place8 = "Senior RygCrawl: "+askForPlace8;
                     double lastPB8 = member.getSeniorRygCrawlTid();
                     if(time8<lastPB8){
                         member.setSeniorRygCrawlTid(time8);
@@ -157,6 +165,36 @@ public class DisciplineFileRW {
 
     }//end of addSwimTimeToFile
 
+    //@author Mick
+    //Switch case to ask user, where the time was recorded (Træning eller stævne).
+    String placeWhereTimeWasRecorded() {
+        boolean menu = true;
+        int choice2;
+        String headerText2 = "Hvor blev tiden noteret?";
+        String leadText2 = "Indtast tallet for stedet:";
+        String[] menuItems2 = {"1. Træning", "2. Stævne"};
+
+        Menu menu3 = new Menu(headerText2, leadText2, menuItems2); // Create new menu instance
+        String placeOfTime = "";
+        while (menu) {
+            menu3.printMenu(); // Print menu
+            choice2 = UserInput.inputInt(leadText2);
+            switch (choice2) {
+                case 1: // Training exercise
+                    placeOfTime += "Træning";
+                    menu=false;
+                    break;
+                case 2: // Competition
+                    placeOfTime += UserInput.inputString("Skriv hvad stævnet hed: ",true);
+                    menu=false;
+                    break;
+                default:
+                    menu3.printMenu();
+            }
+
+        }
+        return placeOfTime;
+    }
 
     //@author Mick
     //Used to avoid DRY in switch above.. It makes a String with given values
@@ -225,18 +263,15 @@ public class DisciplineFileRW {
                 }
             }
 
-        }
+    } //end of DisplayTop5
 
     void choseMemberToEdit(Member member) throws Exception {
         FileEditing fileEditing = new FileEditing();
-        EditMembership editMembership = new EditMembership();
-
 
         //asks user to type a single Name or #ID which it will return to memberData.
-        String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+        fileEditing.findSpecificMemberAndConvert(UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
 
-        addSwimTimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
-
+        //Add method/switch to change/delete times
     }
 }
 

@@ -11,7 +11,7 @@ public class Main {
         FileEditing fileEditing = new FileEditing();
         IDNumber idNumber = new IDNumber();
         CurrentSubscriptions currentSubscriptions = new CurrentSubscriptions();
-        DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
+        SwimTimesAndStats swimTimesAndStats = new SwimTimesAndStats();
         EditUserLogin editUserLogin = new EditUserLogin();
         MenuSwitches menuSwitches = new MenuSwitches();
 
@@ -85,7 +85,7 @@ public class Main {
                 case 6: //Menu til at tilføje rekordtider til disciplin
                     Member member6 = fileEditing.findSpecificMemberAndConvert
                             (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
-                    disciplineFileRW.addSwimTimeToFile(member6);
+                    swimTimesAndStats.addSwimTimeToFile(member6);
                     break;
                 case 7: //toString WITH times
 
@@ -95,7 +95,7 @@ public class Main {
                     System.out.println(member7.toStringWithTimes());
                     break;
                 case 8: //Display top 5 Switch
-                    disciplineFileRW.displayTop5();
+                    swimTimesAndStats.displayTop5();
                     break;
                 case 9: //testI
                     menuSwitches.loginMenu();
