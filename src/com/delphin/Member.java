@@ -313,8 +313,8 @@ public class Member implements Serializable {
 
          //Put into ONE list
          for (int i=0;i<zeroNullStrings.size();i++){
-             disciplinesAndTimes.add(zeroNullStrings.get(i));
-             disciplinesAndTimes.add(convertedDoubles.get(i));
+             disciplinesAndTimes.add(convertedDoubles.get(i) + " ");
+             disciplinesAndTimes.add(zeroNullStrings.get(i)+"\n");
          }
 
          String timesAndDiscString="";
@@ -325,6 +325,7 @@ public class Member implements Serializable {
 
          return "Medlemmets bedste tider er: \n" + timesAndDiscString;
      }
+
 
      //@author GroupCall
      //Calculates the price for a new member.

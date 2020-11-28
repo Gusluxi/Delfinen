@@ -18,7 +18,7 @@ public class DisciplineFileRW {
     static final String SRC = "SeniorRygcrawl";
 
 
-    //@author Ludvig, men har bare genbrugt switch fra mariopizza?
+    //@author Ludvig,
     //A switch where you can add times to specific disciplines
     void addSwimTimeToFile(Member member) throws IOException {
         boolean run = true;
@@ -39,95 +39,126 @@ public class DisciplineFileRW {
                 case 1:
                     double time = userInput.inputTimeDouble("Indtast tid");
                     String place = "Junior Bryst: Træning";
-                    member.setJuniorBrystTid(time);
-                    member.setJuniorBryst(place);
-                    String membersTimeAndInfo = stringWithTimeAndName(place,time,member);
+                    double lastPB = member.getJuniorBrystTid();
+                    if (time <= lastPB){
+                        member.setJuniorBrystTid(time);
+                        member.setJuniorBryst(place);
+                        String membersTimeAndInfo = stringWithTimeAndName(place,time,member);
 
-                    fileEditing.addToFileTop5(membersTimeAndInfo,"Disciplines",JB);
-                    //fileEditing.storeInObjectFile(member);
+                        fileEditing.addToFileTop5(membersTimeAndInfo,"Disciplines",JB);
+                    }
+
+
+
                     break;
                 case 2:
                     double time2 = userInput.inputTimeDouble("Indtast tid");
                     String place2 = "Junior ButterFly: Træning";
-                    member.setJuniorButterflyTid(time2);
-                    member.setJuniorButterfly(place2);
-                    String membersTimeAndInfo2 = stringWithTimeAndName(place2,time2,member);
+                    double lastPB2 = member.getJuniorButterflyTid();
+                    if (time2<lastPB2) {
+                        member.setJuniorButterflyTid(time2);
+                        member.setJuniorButterfly(place2);
+                        String membersTimeAndInfo2 = stringWithTimeAndName(place2,time2,member);
 
-                    fileEditing.addToFileTop5(membersTimeAndInfo2,"Disciplines",JBF);
-                    //fileEditing.storeInObjectFile(member);
+                        fileEditing.addToFileTop5(membersTimeAndInfo2,"Disciplines",JBF);
+                    }
+
+
                     break;
                 case 3:
                     double time3 = userInput.inputTimeDouble("Indtast tid");
                     String place3 = "Junior Crawl: Træning";
-                    member.setJuniorCrawlTid(time3);
-                    member.setJuniorCrawl(place3);
-                    String membersTimeAndInfo3 = stringWithTimeAndName(place3,time3,member);
 
-                    fileEditing.addToFileTop5(membersTimeAndInfo3,"Disciplines",JC);
-                    //fileEditing.storeInObjectFile(member);
+                    double lastPB3 = member.getJuniorCrawlTid();
+                    if (time3<lastPB3) {
+                        member.setJuniorCrawlTid(time3);
+                        member.setJuniorCrawl(place3);
+                        String membersTimeAndInfo3 = stringWithTimeAndName(place3,time3,member);
+
+                        fileEditing.addToFileTop5(membersTimeAndInfo3,"Disciplines",JC);
+                    }
+
+
                     break;
                 case 4:
                     double time4 = userInput.inputTimeDouble("Indtast tid");
                     String place4 = "Junior RygCrawl: Træning";
-                    member.setJuniorCrawlTid(time4);
-                    member.setJuniorCrawl(place4);
-                    String membersTimeAndInfo4 = stringWithTimeAndName(place4,time4,member);
+                    double lastPB4 = member.getJuniorRygcrawlTid();
+                    if (time4<lastPB4){
+                        member.setJuniorRygcrawlTid(time4);
+                        member.setJuniorRygcrawl(place4);
+                        String membersTimeAndInfo4 = stringWithTimeAndName(place4,time4,member);
 
-                    fileEditing.addToFileTop5(membersTimeAndInfo4,"Disciplines",JRC);
-                    //fileEditing.storeInObjectFile(member);
+                        fileEditing.addToFileTop5(membersTimeAndInfo4,"Disciplines",JRC);
+                    }
+
                     break;
                 case 5:
                     double time5 = userInput.inputTimeDouble("Indtast tid");
                     String place5 = "Senior Bryst: Træning";
-                    member.setSeniorCrawlTid(time5);
-                    member.setSeniorCrawl(place5);
-                    String membersTimeAndInfo5 = stringWithTimeAndName(place5,time5,member);
+                    double lastPB5 = member.getSeniorBrystTid();
+                    if(time5<lastPB5){
+                        member.setSeniorBrystTid(time5);
+                        member.setSeniorBryst(place5);
+                        String membersTimeAndInfo5 = stringWithTimeAndName(place5,time5,member);
 
-                    fileEditing.addToFileTop5(membersTimeAndInfo5,"Disciplines",SB);
-                    //fileEditing.storeInObjectFile(member);
+                        fileEditing.addToFileTop5(membersTimeAndInfo5,"Disciplines",SB);
+                    }
+
                     break;
                 case 6:
                     double time6 = userInput.inputTimeDouble("Indtast tid");
                     String place6 = "Senior ButterFly: Træning";
-                    member.setSeniorCrawlTid(time6);
-                    member.setSeniorCrawl(place6);
-                    String membersTimeAndInfo6 = stringWithTimeAndName(place6,time6,member);
+                    double lastPB6 = member.getSeniorButterflyTid();
+                    if(time6<lastPB6){
+                        member.setSeniorButterflyTid(time6);
+                        member.setSeniorButterfly(place6);
+                        String membersTimeAndInfo6 = stringWithTimeAndName(place6,time6,member);
 
-                    fileEditing.addToFileTop5(membersTimeAndInfo6,"Disciplines",SBF);
-                    //fileEditing.storeInObjectFile(member);
+                        fileEditing.addToFileTop5(membersTimeAndInfo6,"Disciplines",SBF);
+                    }
+
                     break;
                 case 7:
                     double time7 = userInput.inputTimeDouble("Indtast tid");
                     String place7 = "Senior Crawl: Træning";
-                    member.setSeniorCrawlTid(time7);
-                    member.setSeniorCrawl(place7);
-                    String membersTimeAndInfo7 = stringWithTimeAndName(place7,time7,member);
+                    double lastPB7 = member.getSeniorCrawlTid();
+                    if(time7<lastPB7){
+                        member.setSeniorCrawlTid(time7);
+                        member.setSeniorCrawl(place7);
+                        String membersTimeAndInfo7 = stringWithTimeAndName(place7,time7,member);
 
-                    fileEditing.addToFileTop5(membersTimeAndInfo7,"Disciplines",SC);
-                    //fileEditing.storeInObjectFile(member);
+                        fileEditing.addToFileTop5(membersTimeAndInfo7,"Disciplines",SC);
+                    }
+
                     break;
                 case 8:
                     double time8 = userInput.inputTimeDouble("Indtast tid");
                     String place8 = "Senior RygCrawl: Træning";
-                    member.setSeniorCrawlTid(time8);
-                    member.setSeniorCrawl(place8);
-                    String membersTimeAndInfo8 = stringWithTimeAndName(place8,time8,member);
+                    double lastPB8 = member.getSeniorRygCrawlTid();
+                    if(time8<lastPB8){
+                        member.setSeniorRygCrawlTid(time8);
+                        member.setSeniorRygCrawl(place8);
+                        String membersTimeAndInfo8 = stringWithTimeAndName(place8,time8,member);
 
-                    fileEditing.addToFileTop5(membersTimeAndInfo8,"Disciplines",SRC);
-                    //fileEditing.storeInObjectFile(member);
+                        fileEditing.addToFileTop5(membersTimeAndInfo8,"Disciplines",SRC);
+                    }
+
                     break;
                 case 9: //Terminates program (if needed).
                     run = false;
-                    fileEditing.storeInObjectFile(member);
                 default:
                     menu2.printMenu();
             }
         }
-
+        fileEditing.storeInObjectFile(member);
         System.out.println(member.toStringTimes() + " DEBUG LINJE, SLET MIG I DISCIPLINEFILERW");
 
     }//end of addSwimTimeToFile
 
+
+    //@author Mick
+    //Used to avoid DRY in switch above.. It makes a String with given values
     String stringWithTimeAndName(String place, Double time,Member member){
         String timeConverted = Double.toString(time);
         String line = timeConverted + " Member: " + member.getName() + ". Time recorded here: "+place;

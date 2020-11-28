@@ -430,17 +430,21 @@ public class FileEditing  {
         //With only one hit
         if (membersFound.size() ==1){
             return membersFound.get(0);
-        } else {
-
-        //More than one hit
+        } else if (membersFound.size()>1){
+            //More than one hit
         for (int i = 0; i < membersFound.size(); i++) {
             System.out.println((i + 1) + "."); //Displays index numbers+1
             System.out.println(membersFound.get(i).getName() + membersFound.get(i).getMemberID());
             }
-            int reInput = UserInput.inputInt(1, membersFound.size(),"Skriv ID-nummer for den " + searchFor + " du vil vælge.")-1;
+            int reInput = UserInput.inputInt("Skriv ID-nummer for den " + searchFor + " du vil vælge.");
             return readFileAndConvertToObject(reInput);
-        }
+        } else {
+            System.out.println("Der kunne ikke findes nogen med søgningen: "+searchFor+ ". Prøv igen!" );
+            findSpecificMemberAndConvert(UserInput.inputString("Skriv navn eller nummer på personen du vil finde"
+                    ,false));
 
+        }
+        return membersFound.get(0);
     }
 
 

@@ -100,10 +100,12 @@ public class Main {
                 case 9: //testI
                     menuSwitches.loginMenu();
                     break;
-                case 10:
-                    Member jasoon = fileEditing.readFileAndConvertToObject(4);
-                    System.out.println(jasoon.getSeniorBrystTid());
-                    System.out.println(jasoon.toStringWithTimes());
+                case 10: //test af print tider..
+                    Member member10 = fileEditing.readFileAndConvertToObject(123);
+                    System.out.println(member10.getSeniorBrystTid());
+                    System.out.println(member10.getSeniorButterflyTid());
+                    System.out.println(member10.getSeniorCrawlTid());
+                    System.out.println(member10.getSeniorRygCrawlTid());
                     break;
                 case 11:
                     break;
