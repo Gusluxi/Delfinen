@@ -267,6 +267,8 @@ public class Member implements Serializable {
                  "\nManglende betaling: " + subscriptionPrice + " kr.";
      }
 
+     //@author the gang
+     //returns a string without "null" states, in case the member doesnt compete in certain disciplines
      public String toStringTimes() {
          ArrayList<String> disciplines = new ArrayList<>();
          ArrayList<Double> disciplineTime = new ArrayList<>();
