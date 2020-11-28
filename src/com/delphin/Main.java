@@ -57,10 +57,13 @@ public class Main {
                     break;
                 case 2: //Edit membership
                     //asks user to type a single Name or #ID which it will return to memberData.
-                    String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+                          //String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
                     //Uses the selected memberID via getMemberIdFromString() to access the connected ID.txt file and run editMembership(with user selected file).
-                    editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
-                    System.out.println(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)).toString());
+                          //editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
+                    Member member2 = fileEditing.findSpecificMemberAndConvert
+                            (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
+                    editMembership.editMembership(member2);
+                    System.out.println(member2.toString());
 
                     break;
                 case 3: //Display total revenue and members with debt.
@@ -88,10 +91,8 @@ public class Main {
                     swimTimesAndStats.addSwimTimeToFile(member6);
                     break;
                 case 7: //toString WITH times
-
                     Member member7 = fileEditing.findSpecificMemberAndConvert
                             (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
-
                     System.out.println(member7.toStringWithTimes());
                     break;
                 case 8: //Display top 5 Switch
@@ -130,29 +131,5 @@ public class Main {
         prg.run();
     }
 
-    void gammelKodetest(){
-        //Nedestående tester om vi kan læse en fil, slette en givet string, og så display igen
-        //fileEditing.displayTextFile();
-        //fileEditing.removeLineFromText("hej");
-        //fileEditing.displayTextFile();
-
-        //Nedestående tester vores sortering. IT WORKS LEL
-        //fileEditing.sortTextFile();
-
-        //fileEditing.readSpecificFile("50");
-
-        /*
-        Member test = fileEditing.readFileAndConvertToObject(69); //henter JESUS medlemsnummer
-        //System.out.println(test.toString()); //Viser Jesus som objekt
-        //test.setActivity(false); //ændrer på ham som object
-        //System.out.println(test.toString()); //viser ændringen
-        fileEditing.createNewMemberObjectFile(test); //sætter ham tilbage i fil som object
-        */
-
-        //editMembership.newMembership();
-        //fileEditing.dataToArrayList();
-
-        //disciplineFileRW.testerAddToFile();
-    }
 }
 

@@ -266,12 +266,7 @@ public class SwimTimesAndStats {
     } //end of DisplayTop5
 
     void choseMemberToEdit(Member member) throws Exception {
-        FileEditing fileEditing = new FileEditing();
 
-        //asks user to type a single Name or #ID which it will return to memberData.
-        fileEditing.findSpecificMemberAndConvert(UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
-
-        //Add method/switch to change/delete times
     }
 }
 
