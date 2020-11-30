@@ -46,7 +46,7 @@ public class SwimTimesAndStats {
                     String askForPlace = placeWhereTimeWasRecorded(); //asks user to specify training/comp
                     String place = "Junior Bryst: " + askForPlace;
                     double lastPB = member.getJuniorBrystTid();
-                    if (time <= lastPB){
+                    if (time < lastPB){
                         member.setJuniorBrystTid(time);
                         member.setJuniorBryst(place);
                         String membersTimeAndInfo = stringWithTimeAndName(place,time,member);
