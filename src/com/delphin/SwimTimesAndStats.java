@@ -353,49 +353,49 @@ public class SwimTimesAndStats {
             choice2 = UserInput.inputInt(leadText2);
             switch (choice2) {
                 case 1: //Junior Bryst
-                    String searchFor = ""+Double.toString(member.getJuniorChestTime()) + " Member : "+member.getName(); // get the time
+                    String searchFor = ""+Double.toString(member.getJuniorChestTime()) + " Member: "+member.getName(); // get the time
                     fileEditing.removeLineFromText(searchFor, "JuniorBryst"); //remove the time
                     member.setJuniorChestTime(0);
                     member.setJuniorChest(null);
                     break;
                 case 2: //Junior Butterfly
-                    String searchFor2 = ""+Double.toString(member.getJuniorButterflyTime()) + " Member : "+member.getName();
+                    String searchFor2 = ""+Double.toString(member.getJuniorButterflyTime()) + " Member: "+member.getName();
                     fileEditing.removeLineFromText(searchFor2, "JuniorButterfly");
                     member.setJuniorButterflyTime(0);
                     member.setJuniorButterfly(null);
                     break;
                 case 3: //Junior Crawl
-                    String searchFor3 = ""+Double.toString(member.getJuniorCrawlTime()) + " Member : "+member.getName();
+                    String searchFor3 = ""+Double.toString(member.getJuniorCrawlTime()) + " Member: "+member.getName();
                     fileEditing.removeLineFromText(searchFor3, "JuniorCrawl");
                     member.setJuniorCrawlTime(0);
                     member.setJuniorCrawl(null);
                     break;
                 case 4: //Junior RygCrawl
-                    String searchFor4 = ""+Double.toString(member.getJuniorBackcrawlTime()) + " Member : "+member.getName();
+                    String searchFor4 = ""+Double.toString(member.getJuniorBackcrawlTime()) + " Member: "+member.getName();
                     fileEditing.removeLineFromText(searchFor4, "JuniorRygcrawl");
                     member.setJuniorBackcrawlTime(0);
                     member.setJuniorBackcrawl(null);
                     break;
                 case 5: //Senior Bryst
-                    String searchFor5 = ""+Double.toString(member.getSeniorChestTime()) + " Member : "+member.getName();
+                    String searchFor5 = ""+Double.toString(member.getSeniorChestTime()) + " Member: "+member.getName();
                     fileEditing.removeLineFromText(searchFor5, "SeniorBryst");
                     member.setSeniorChestTime(0);
                     member.setSeniorChest(null);
                     break;
                 case 6: //Senior Butterfly
-                    String searchFor6 = ""+Double.toString(member.getSeniorButterflyTime()) + " Member : "+member.getName();
+                    String searchFor6 = ""+Double.toString(member.getSeniorButterflyTime()) + " Member: "+member.getName();
                     fileEditing.removeLineFromText(searchFor6, "SeniorButterfly");
                     member.setSeniorButterflyTime(0);
                     member.setSeniorButterfly(null);
                     break;
                 case 7: //Senior Crawl
-                    String searchFor7 = ""+Double.toString(member.getSeniorCrawlTime()) + " Member : "+member.getName();
+                    String searchFor7 = ""+Double.toString(member.getSeniorCrawlTime()) + " Member: "+member.getName();
                     fileEditing.removeLineFromText(searchFor7, "SeniorCrawl");
                     member.setSeniorCrawlTime(0);
                     member.setSeniorCrawl(null);
                     break;
                 case 8: //Senior RygCrawl
-                    String searchFor8 = ""+Double.toString(member.getSeniorBackCrawlTime()) + " Member : "+member.getName();
+                    String searchFor8 = ""+Double.toString(member.getSeniorBackCrawlTime()) + " Member: "+member.getName();
                     fileEditing.removeLineFromText(searchFor8, "SeniorRygcrawl");
                     member.setSeniorBackCrawlTime(0);
                     member.setSeniorBackCrawl(null);
@@ -403,10 +403,10 @@ public class SwimTimesAndStats {
                 case 9: //Terminates program (if needed).
                     run = false;
                 default:
-                    menu2.printMenu();
+                    System.out.println("");
             }
         }
-
+    fileEditing.storeInObjectFile(member);  //Store changes
     }
 }
 
