@@ -216,28 +216,38 @@ public class FileEditing  {
     //@author Mick
     //Searches file for a given String. Writes all the code (except the string)..
     //into another file. Deletes the old file and renames the new one.
-    void removeLineFromText(String string,String directory,String filename) throws IOException {
+    void removeLineFromText(String string, String filename) throws IOException {
+        File inputFile = new File("src\\"+ "Disciplines" +"\\"+filename+".txt");
+        File tempFile = new File("src\\"+ "Disciplines" +"\\tempTestFile.txt");
+        Scanner readFile = new Scanner(inputFile);
+        FileWriter fileWriter = new FileWriter(tempFile);
 
-        File inputFile = new File("src\\"+directory+"\\"+filename+".txt");
-        File tempFile = new File("src\\"+directory+"\\tempTestFile.txt");
-
-        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-
-        String lineToRemove = string;
-        String currentLine;
-
-        while ((currentLine = reader.readLine()) != null) { //As long as the line exists
-            //trim newline when comparing with lineToRemove
-            String trimmedLine = currentLine.trim();
-            if (trimmedLine.contains(lineToRemove)) continue; //Skips the line that matches our input String
-            writer.write(currentLine + "\n");
+        while (readFile.hasNextLine()){
+            if (!readFile.nextLine().contains(string)){
+                fileWriter.write(readFile.nextLine());
+            }
         }
+        readFile.close();
+        fileWriter.close();
 
-        writer.close();
-        reader.close();
+        inputFile.delete();
+        tempFile.renameTo(inputFile);
+    }
 
-        //Deletes the original file. Renames the new one to what the last file was.
+    void removeLineFromText2(String string, String filename) throws IOException {
+        File inputFile = new File("src\\"+ "Disciplines" +"\\"+filename+".txt");
+        File tempFile = new File("src\\"+ "Disciplines" +"\\tempTestFile.txt");
+        Scanner readFile = new Scanner(inputFile);
+        FileWriter fileWriter = new FileWriter(tempFile);
+
+        while (readFile.hasNextLine()){
+            if (!readFile.nextLine().contains(string)){
+                fileWriter.write(readFile.nextLine() + "\n");
+            }
+        }
+        readFile.close();
+        fileWriter.close();
+
         inputFile.delete();
         tempFile.renameTo(inputFile);
     }

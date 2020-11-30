@@ -100,7 +100,7 @@ public class Main {
                     System.out.println(member10.getSeniorChestTime());
                     System.out.println(member10.getSeniorButterflyTime());
                     System.out.println(member10.getSeniorCrawlTime());
-                    System.out.println(member10.getSeniorRygCrawlTime());
+                    System.out.println(member10.getSeniorBackCrawlTime());
                     break;
                 case 11:
                     break;

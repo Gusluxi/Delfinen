@@ -112,7 +112,8 @@ public class MenuSwitches {
            String headertext = "Træner valgmuligheder - "+ TimeAndDate.currentDate();
            String leadtext = "Indtast en valgmulighed: ";
            String[] menuItems = {"1. Indtast ny svømmetid", "2. Vis top5 svømmere indenfor alle discipliner",
-                   "3. Slet tid fra medlem","0. Log ud af din bruger"};
+                   "3. Vis medlem med tider",
+                   "4. Slet tid fra medlem","0. Log ud af din bruger"};
            while (run) {
                Menu menu = new Menu(headertext, leadtext, menuItems);
                menu.printMenu();
@@ -129,7 +130,12 @@ public class MenuSwitches {
                    case 2: //Show top 5 swimmmers in disciplines
                        swimTimesAndStats.displayTop5();
                        break;
-                   case 3: //Delete time from member
+                   case 3: //Show member with best times
+                       Member member8 = fileEditing.findSpecificMemberAndConvert
+                               (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
+                       member8.toStringWithTimes();
+                       break;
+                   case 4: //Delete time from member
                        Member member6 = fileEditing.findSpecificMemberAndConvert
                                (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
                        swimTimesAndStats.deleteMembersTime(member6); // Opens new switch with disciplines.
