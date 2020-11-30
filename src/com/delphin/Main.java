@@ -102,7 +102,7 @@ public class Main {
                     menuSwitches.loginMenu();
                     break;
                 case 10: //test af print tider..
-                    Member member10 = fileEditing.readFileAndConvertToObject(123);
+                    Member member10 = fileEditing.readFileAndConvertToObject(UserInput.inputInt("Skriv ID nummer på medlem"));
                     System.out.println(member10.getSeniorBrystTid());
                     System.out.println(member10.getSeniorButterflyTid());
                     System.out.println(member10.getSeniorCrawlTid());
