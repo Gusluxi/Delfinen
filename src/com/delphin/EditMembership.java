@@ -89,7 +89,7 @@ public class EditMembership {
                     stayInLoop = false;
                     break;
                 default:
-                    System.out.println("Do something");
+                    System.out.println("");
             }
         }
         //When out of the loop, store the information
