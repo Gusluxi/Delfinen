@@ -21,6 +21,7 @@ public class FileEditing  {
 
 
     //@author Mick
+    //Not sure if we're using this anymore.
     //Finds a file with given string-name, displays it.
     void readSpecificFile(String path, String fileName) throws FileNotFoundException {
         File file = new File(path+"\\"+fileName+".txt"); //path = ex. "src\\Disciplines" & fileName = ex. "107".
@@ -31,7 +32,7 @@ public class FileEditing  {
     }
 
     //@author Mick
-    //Not sure if we're using this.
+    //Not sure if we're using this anymore.
     //it displays a file......
     void displaySpecificFileList(String path, String fileName) throws FileNotFoundException {
         File file = new File(path+"\\"+fileName+".txt"); //path = ex. "src\\Disciplines" & fileName = ex. "107"
@@ -40,17 +41,6 @@ public class FileEditing  {
         while (readFile.hasNextLine()){
             count++;
             System.out.println(count + ". " + readFile.nextLine());
-        }
-    }
-
-    //@author Mick
-    //Displays the top5 of a given filename.
-    void displayTop5File(String fileName) throws IOException {
-        File file = new File("src\\Disciplines\\"+fileName+".txt");
-        Scanner readFile = new Scanner(file);
-        sortTextFile(file); //Sort method from below
-        for (int i = 0; i<5; i++){
-            System.out.println(readFile.nextLine());
         }
     }
 
@@ -181,8 +171,8 @@ public class FileEditing  {
     //Sorts after numbers first, then abc..
     void sortTextFile(String directory,String fileName) throws IOException {
 
-        File inputFile = new File("src\\"+directory+"\\"+fileName+".txt");
-        Scanner readFile = new Scanner(inputFile);
+        File file = new File("src\\"+directory+"\\"+fileName+".txt");
+        Scanner readFile = new Scanner(file);
         ArrayList<String> stringArrayList = new ArrayList<>();
 
         //Read the file and pass it on
@@ -194,7 +184,7 @@ public class FileEditing  {
         Collections.sort(stringArrayList); //Sorts the list
 
         //Write to file
-        FileWriter fileWriter = new FileWriter(inputFile);
+        FileWriter fileWriter = new FileWriter(file);
         for (String str : stringArrayList){
             fileWriter.write(str+"\n");
         }
@@ -203,7 +193,6 @@ public class FileEditing  {
 
     //@author Mick OVERLOADED
     void sortTextFile(File file) throws IOException {
-
         File inputFile = file;
         Scanner readFile = new Scanner(inputFile);
         ArrayList<String> stringArrayList = new ArrayList<>();
@@ -223,7 +212,6 @@ public class FileEditing  {
         }
         fileWriter.close();
     }
-
 
     //@author Mick
     //Searches file for a given String. Writes all the code (except the string)..
@@ -263,6 +251,15 @@ public class FileEditing  {
      writer.close();
     }
 
+    //OVERLOADED.
+    //Removed a nextline because of top5 formatting.
+    void addToFileTop5(String stringToFile,String directory, String fileName) throws IOException {
+        File inputFile = new File("src\\"+directory+"\\" + fileName + ".txt");
+        BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile,true));
+        writer.write(stringToFile);
+        writer.close();
+    }
+
     //@author Ludvig OVERLOAD FILE PARAMETER
     //Adds String to textfile.
     void addToFile(String stringToFile,File file) throws IOException {
@@ -271,8 +268,10 @@ public class FileEditing  {
         writer.write("\n" + stringToFile);
         writer.close();
     }
+
     //@author Mick
-    //Added to avoid "DRY" coding. Adds all files in given dir to an ArrayList
+    //Added to avoid "DRY" coding.
+    //Adds all files in given dir to an ArrayList
     ArrayList<File> getAllFilesInDir(String directory){
         File dir = new File("src\\"+directory+"");
         File[] fileArray = dir.listFiles();
@@ -348,8 +347,6 @@ public class FileEditing  {
 
 
     //@author Gustav
-
-    //@author Gustav
     //Looks for a specific member by String or Number.
     //If multiply users appear, you can choose by using the ID-number
     String findSpecificFileValues(String usrMsg) throws IOException {
@@ -372,8 +369,10 @@ public class FileEditing  {
                 System.out.println((c+1)+"."); //Displays index numbers+1
                 printNrNameFromString(memberData.get(arrayPlace.get(c))); //displays Name and NumberID only.T
             }
+
             int reInput = UserInput.inputInt(1, arrayPlace.size(),"Skriv nr. for den " + input + " du vil vælge.")-1;
             return memberData.get(arrayPlace.get(reInput));
+
             //in case the search has 0 results
         } else if (arrayPlace.size() <= 0) { //Runs the same method until the user finds a correct value. (called "Recursion
             return findSpecificFileValues("Fejl, " + input + " findes ikke.\nSkriv navn eller #nr. på den person der skal redigeres: ");
@@ -409,5 +408,45 @@ public class FileEditing  {
         }
         scan.close();
     }
+
+    //@author Mick
+    //Remade findSpecificFileValues to work with objects instead.
+    Member findSpecificMemberAndConvert(String searchFor) throws IOException {
+        ArrayList<File> everyMember = getAllFilesInDir("Members");
+        ArrayList<Member> membersFound = new ArrayList<>();
+
+        //Loop through and find matches to "searchFor". Send to arraylist.
+        for (int i = 0; i<everyMember.size(); i++) {
+            //Convert MemberID to string
+            String word = Integer.toString(readFileAndConvertToObject(everyMember.get(i)).getMemberID());
+
+            if (readFileAndConvertToObject(everyMember.get(i)).getName().contains(searchFor) ||
+                    word.compareTo(searchFor)==0) {
+                membersFound.add(readFileAndConvertToObject(everyMember.get(i)));
+            }
+        }
+
+        //With only one hit
+        if (membersFound.size() ==1){
+            return membersFound.get(0);
+        } else if (membersFound.size()>1){
+            //More than one hit
+        for (int i = 0; i < membersFound.size(); i++) {
+            System.out.println((i + 1) + "."); //Displays index numbers+1
+            System.out.println(membersFound.get(i).getName() + membersFound.get(i).getMemberID());
+            }
+            int reInput = UserInput.inputInt("Skriv ID-nummer for den " + searchFor + " du vil vælge.");
+            return readFileAndConvertToObject(reInput);
+        } else {
+            //No hits on the search-term.
+            System.out.println("Der kunne ikke findes nogen med søgningen: "+searchFor+ ". Prøv igen!" );
+            findSpecificMemberAndConvert(UserInput.inputString("Skriv navn eller nummer på personen du vil finde"
+                    ,false));
+
+        }
+        return membersFound.get(0);
+    }
+
+
 
 }

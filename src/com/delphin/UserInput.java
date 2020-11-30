@@ -193,7 +193,6 @@ public class UserInput {
         double number1 = minuteInt;
         double number2 = number/100 + number1;
 
-        System.out.println(number2);
         return number2;
     }
 
@@ -214,6 +213,7 @@ public class UserInput {
         }
         return word;
     }
+
     // Validerer om brugeren skriver
     public static boolean validationStringArray(ArrayList<String> checkStrings, String msg) {
         //Variables

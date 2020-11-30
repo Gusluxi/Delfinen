@@ -2,8 +2,6 @@ package com.delphin;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import static com.delphin.EditMembership.fileEditing;
-import static com.delphin.UserInput.scan;
 
 public class Main {
 
@@ -13,40 +11,39 @@ public class Main {
         FileEditing fileEditing = new FileEditing();
         IDNumber idNumber = new IDNumber();
         CurrentSubscriptions currentSubscriptions = new CurrentSubscriptions();
-        DisciplineFileRW disciplineFileRW = new DisciplineFileRW();
+        SwimTimesAndStats swimTimesAndStats = new SwimTimesAndStats();
         EditUserLogin editUserLogin = new EditUserLogin();
         MenuSwitches menuSwitches = new MenuSwitches();
 
-
-        final String DELPHIN = "src\\Disciplines";
-        final String JB = "JuniorBryst";
-        final String JBF = "JuniorButterfly";
-        final String JC = "JuniorCrawl";
-        final String JRC = "JuniorRygcrawl";
-        final String SB = "SeniorBryst";
-        final String SBF = "SeniorButterfly";
-        final String SC = "SeniorCrawl";
-        final String SRC = "SeniorRygcrawl";
         //Testcode
 
-        menuSwitches.loginMenu();
+        //Opretter medlem.
+        //Member test3 = new Member(1, 35,"Jesus",true,false,true,false,1500);
+        Member stallone = new Member(2, 74,"Sylvester Stallone",true,false,true,false,1500);
+        Member schwarzenegger = new Member(3, 73,"Arnold Schwarzenegger",true,false,true,false,1500);
+        Member jStatham = new Member(4, 53,"Jason Statham",true,false,true,false,1500);
+        Member jClaude = new Member(5, 60,"Jean-Claude Van Damme",true,false,true,false,1500);
+        Member tCrews = new Member(6, 52,"Terry Crews",true,false,true,false,1500);
+        Member jLi = new Member(7, 57,"Jet Li",true,false,true,false,1500);
+        //Member test4 = new Member(2, 15,"Alpaca",true,false,true,true,1000);
+        fileEditing.storeInObjectFile(stallone);
+        fileEditing.storeInObjectFile(schwarzenegger);
+        fileEditing.storeInObjectFile(jStatham);
+        fileEditing.storeInObjectFile(jClaude);
+        fileEditing.storeInObjectFile(jLi);
+        fileEditing.storeInObjectFile(tCrews);
 
 
 
-        //Opretter JESUS som medlem.
-        //Member test3 = new Member(69, 35,"Jesus",true,false,true,false,1500);
-        //Member test4 = new Member(idNumber.newMemberID(), 15,"Jesus2",true,false,true,true,1000);
-        //fileEditing.createNewMemberObjectFile(test3);
-        //fileEditing.createNewMemberObjectFile(test4);
-        
-        //Gammel switch main menu
-        /*
+        //Menu
         boolean run = true;
         int menuChoice;
         String headertext = "Delfin Klubben.";
         String leadtext = "Indtast en valgmulighed: ";
-        String[] menuItems = {"1. testA Tilføj nyt medlem", "2. testB Rediger medlem", "3. testC Vis omsættelse og medlemmer i restance ",
-                "4. testD leg med Login", "5. testE Display content of all members", "6. Tilføje rekordtider til discipliner", "7. testG", "8. MICKS", "9. Test den rigtige menu", "0. Afslut"};
+        String[] menuItems = {"1. Tilføj nyt medlem", "2. Rediger medlem", "3. Vis omsættelse og medlemmer i restance ",
+                "4. Leg med Login", "5. Display content of all members", "6. Tilføje rekordtider til discipliner",
+                "7. Display medlemmer MED tider", "8. Top 5", "9. Test den rigtige menu","Der findes flere, skriv noter",
+                "0. Afslut"};
         while (run){
             Menu menu = new Menu(headertext, leadtext, menuItems);
             menu.printMenu();
@@ -55,22 +52,25 @@ public class Main {
                 case 0: //End program
                     run = false;
                     break;
-                case 1: //testA new membership
+                case 1: //New membership
                     editMembership.newMembership();
                     break;
-                case 2: //testB edit membership
+                case 2: //Edit membership
                     //asks user to type a single Name or #ID which it will return to memberData.
-                    String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+                          //String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
                     //Uses the selected memberID via getMemberIdFromString() to access the connected ID.txt file and run editMembership(with user selected file).
-                    editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
-                    System.out.println(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)).toString());
+                          //editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
+                    Member member2 = fileEditing.findSpecificMemberAndConvert
+                            (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
+                    editMembership.editMembership(member2);
+                    System.out.println(member2.toString());
 
                     break;
-                case 3: //testC Display total revenue and members with debt.
+                case 3: //Display total revenue and members with debt.
                     CurrentSubscriptions.showTotalRevenue();
                     CurrentSubscriptions.showMembersWithDebt();
                     break;
-                case 4: //testD Play with Username input
+                case 4: //Play with Username input
                     ArrayList<String> testArray = new ArrayList<>();
                     Login chairman = new Login("Formand","JegErDejlig","Kurt Kurt", 1); //Hardcode for now
                     testArray.add(chairman.getUserName());
@@ -81,30 +81,48 @@ public class Main {
 
                     System.out.println(UserInput.validationStringArray(testArray, "Skriv brugernavn:"));
                     break;
-                case 5: //testE
+                case 5: //Display all members
                     for (String i : fileEditing.dataToArrayList("Members"))
                     System.out.println("\n"+i);
                     break;
-                case 6: //testF Menu til at tilføje rekordtider til disciplin
-                    String searchForID = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
-                    disciplineFileRW.addSwimtimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(searchForID)));
+                case 6: //Menu til at tilføje rekordtider til disciplin
+                    Member member6 = fileEditing.findSpecificMemberAndConvert
+                            (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
+                    swimTimesAndStats.addSwimTimeToFile(member6);
                     break;
-                case 7: //testG
-
+                case 7: //toString WITH times
+                    Member member7 = fileEditing.findSpecificMemberAndConvert
+                            (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
+                    System.out.println(member7.toStringWithTimes());
                     break;
-                case 8: //test MICK
-                    fileEditing.displayTop5File(JB);
-                    fileEditing.displaySpecificFileList("src\\Disciplines",JB);
+                case 8: //Display top 5 Switch
+                    swimTimesAndStats.displayTop5();
                     break;
                 case 9: //testI
                     menuSwitches.loginMenu();
                     break;
-                case 10:
+                case 10: //test af print tider..
+                    Member member10 = fileEditing.readFileAndConvertToObject(123);
+                    System.out.println(member10.getSeniorBrystTid());
+                    System.out.println(member10.getSeniorButterflyTid());
+                    System.out.println(member10.getSeniorCrawlTid());
+                    System.out.println(member10.getSeniorRygCrawlTid());
+                    break;
+                case 11:
+                    break;
+                case 12:
+                    break;
+                case 13:
+                    break;
+                case 14:
+                    break;
+                case 15:
+                    break;
 
                 default:
                     menu.printMenu();
             }
-        }*/
+        }
     }
 
 
@@ -113,29 +131,5 @@ public class Main {
         prg.run();
     }
 
-    void gammelKodetest(){
-        //Nedestående tester om vi kan læse en fil, slette en givet string, og så display igen
-        //fileEditing.displayTextFile();
-        //fileEditing.removeLineFromText("hej");
-        //fileEditing.displayTextFile();
-
-        //Nedestående tester vores sortering. IT WORKS LEL
-        //fileEditing.sortTextFile();
-
-        //fileEditing.readSpecificFile("50");
-
-        /*
-        Member test = fileEditing.readFileAndConvertToObject(69); //henter JESUS medlemsnummer
-        //System.out.println(test.toString()); //Viser Jesus som objekt
-        //test.setActivity(false); //ændrer på ham som object
-        //System.out.println(test.toString()); //viser ændringen
-        fileEditing.createNewMemberObjectFile(test); //sætter ham tilbage i fil som object
-        */
-
-        //editMembership.newMembership();
-        //fileEditing.dataToArrayList();
-
-        //disciplineFileRW.testerAddToFile();
-    }
 }
 

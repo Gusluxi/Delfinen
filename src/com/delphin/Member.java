@@ -1,6 +1,8 @@
 package com.delphin;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.jar.Attributes;
 
 //Serialization is the conversion of the state of an object into a byte stream;
 //deserialization does the opposite. Stated differently, serialization is the
@@ -245,6 +247,19 @@ public class Member implements Serializable {
                  "\nKontingentet: " + subscriptionPrice + " kr.";
      }
 
+     public String toStringWithTimes() {
+        String times = toStringTimes();
+         return "MemberID: #" + memberID +
+                 "\nAlder: " + age +
+                 "\nNavn: " + name +
+                 "\nAktiv: " + activity +
+                 "\njunior: " + junior +
+                 "\nKonkurrence: " + competitor +
+                 "\nRestance: " + activeDebt +
+                 "\nKontingentet: " + subscriptionPrice + " kr." +
+                 "\n"+times;
+     }
+
      public String toStringDebt() {
          return "MemberID: #" + memberID +
                  "\nNavn: " + name +
@@ -252,36 +267,65 @@ public class Member implements Serializable {
                  "\nManglende betaling: " + subscriptionPrice + " kr.";
      }
 
+     //@author the gang
+     //returns a string without "null" states, in case the member doesnt compete in certain disciplines
      public String toStringTimes() {
-         ArrayList<String> times = new ArrayList<>();
-         times.add(juniorBryst);
-         times.add(String.valueOf(juniorBrystTid));
-         times.add(juniorButterfly);
-         times.add(String.valueOf(juniorButterflyTid));
-         times.add(juniorCrawl);
-         times.add(String.valueOf(juniorCrawlTid));
-         times.add(juniorRygcrawl);
-         times.add(String.valueOf(juniorRygcrawlTid));
-         times.add(seniorBryst);
-         times.add(String.valueOf(seniorBrystTid));
-         times.add(seniorButterfly);
-         times.add(String.valueOf(seniorButterflyTid));
-         times.add(seniorCrawl);
-         times.add(String.valueOf(seniorCrawlTid));
-         times.add(seniorRygCrawl);
-         times.add(String.valueOf(seniorCrawlTid));
+         ArrayList<String> disciplines = new ArrayList<>();
+         ArrayList<Double> disciplineTime = new ArrayList<>();
+         disciplines.add(juniorBryst);
+         disciplines.add(juniorButterfly);
+         disciplines.add(juniorCrawl);
+         disciplines.add(juniorRygcrawl);
+         disciplines.add(seniorBryst);
+         disciplines.add(seniorButterfly);
+         disciplines.add(seniorCrawl);
+         disciplines.add(seniorRygCrawl);
 
-         ArrayList<String> test = new ArrayList<>();
+         disciplineTime.add(juniorBrystTid);
+         disciplineTime.add(juniorButterflyTid);
+         disciplineTime.add(juniorCrawlTid);
+         disciplineTime.add(juniorRygcrawlTid);
+         disciplineTime.add(seniorBrystTid);
+         disciplineTime.add(seniorButterflyTid);
+         disciplineTime.add(seniorCrawlTid);
+         disciplineTime.add(seniorRygCrawlTid);
 
-         for (int i = 0; i < times.size(); i++) {
-             System.out.println(times.get(i));
-             if (times.get(i) != null || times.get(i).compareTo("0.0") == 0) {
-                 test.add(times.get(i));
+         ArrayList<Double> zeroNullDoubles = new ArrayList<>();
+         ArrayList<String> zeroNullStrings = new ArrayList<>();
+         ArrayList<String> convertedDoubles = new ArrayList<>();
+         ArrayList<String> disciplinesAndTimes = new ArrayList<>();
 
+         //for loop for string nulls
+         for (int i = 0; i < disciplines.size(); i++) {
+             if (disciplines.get(i) != null) {
+                 zeroNullStrings.add(disciplines.get(i));
+             }
+         }
+        //for loop for double nulls  (0.0)
+         for (int i =0;i<disciplineTime.size();i++){
+             if (disciplineTime.get(i) != 0.0){
+                zeroNullDoubles.add(disciplineTime.get(i));
              }
          }
 
-         return test.toString();
+         //Convert double to String
+         for (int i = 0; i<zeroNullDoubles.size();i++){
+             convertedDoubles.add(String.valueOf(zeroNullDoubles.get(i)));
+         }
+
+         //Put into ONE list
+         for (int i=0;i<zeroNullStrings.size();i++){
+             disciplinesAndTimes.add(convertedDoubles.get(i) + " ");
+             disciplinesAndTimes.add(zeroNullStrings.get(i)+"\n");
+         }
+
+         String timesAndDiscString="";
+
+         for (String str:disciplinesAndTimes){
+             timesAndDiscString += str;
+         }
+
+         return "Medlemmets bedste tider er: \n" + timesAndDiscString;
      }
 
 
