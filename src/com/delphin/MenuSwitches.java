@@ -84,10 +84,11 @@ public class MenuSwitches {
                    break;
                case 2: //testB edit membership
                    //asks user to type a single Name or #ID which it will return to memberData.
-                   String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+                   Member member = fileEditing.findSpecificMemberAndConvert
+                           (UserInput.inputString("Skriv navn eller #nr. på den person der skal redigeres: ", false));
                    //Uses the selected memberID via getMemberIdFromString() to access the connected ID.txt file and run editMembership(with user selected file).
-                   editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
-                   System.out.println(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)).toString());
+                   editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(String.valueOf(member))));
+                   System.out.println(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(String.valueOf(member))).toString());
                    break;
                case 3: //testC Display total revenue and members with debt.
                    CurrentSubscriptions.showTotalRevenue();
@@ -123,8 +124,9 @@ public class MenuSwitches {
                        loginMenu();
                        break;
                    case 1: //Add new swimtime/best swimtime
-                       String searchForID = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
-                       swimTimesAndStats.addSwimTimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(searchForID)));
+                       Member member = fileEditing.findSpecificMemberAndConvert
+                               (UserInput.inputString("Skriv navn eller #nr. på den person der skal redigeres: ", false));
+                       swimTimesAndStats.addSwimTimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(String.valueOf(member))));
                        break;
                    case 2: //Show top 5 swimmmers in disciplines
                        swimTimesAndStats.displayTop5();
@@ -196,18 +198,20 @@ public class MenuSwitches {
                     break;
                 case 2: //testB edit membership
                     //asks user to type a single Name or #ID which it will return to memberData.
-                    String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
+                    Member member = fileEditing.findSpecificMemberAndConvert
+                            (UserInput.inputString("Skriv navn eller #nr. på den person der skal redigeres: ", false));
                     //Uses the selected memberID via getMemberIdFromString() to access the connected ID.txt file and run editMembership(with user selected file).
-                    editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
-                    System.out.println(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)).toString());
+                    editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(String.valueOf(member))));
+                    System.out.println(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(String.valueOf(member))).toString());
                     break;
                 case 3: //testC Display total revenue and members with debt.
                     CurrentSubscriptions.showTotalRevenue();
                     CurrentSubscriptions.showMembersWithDebt();
                     break;
                 case 4: //Add new swimtime/best swimtime
-                    String searchForID = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
-                    swimTimesAndStats.addSwimTimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(searchForID)));
+                    Member member2 = fileEditing.findSpecificMemberAndConvert
+                            (UserInput.inputString("Skriv navn eller #nr. på den person der skal redigeres: ", false));
+                    swimTimesAndStats.addSwimTimeToFile(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(String.valueOf(member2))));
                     break;
                 case 5: //Show top 5 swimmmers in disciplines
                     swimTimesAndStats.displayTop5();
