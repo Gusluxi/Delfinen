@@ -2,6 +2,7 @@ package com.delphin;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Time;
 import java.util.Scanner;
 
 public class SwimTimesAndStats {
@@ -22,6 +23,7 @@ public class SwimTimesAndStats {
     //A switch where you can add times to specific disciplines
     void addSwimTimeToFile(Member member) throws IOException {
         boolean run = true;
+        String date = TimeAndDate.currentDate(); //Returns the current date.
         int choice2;
         String headerText2 = "Vælg dig ind på en disciplin, for at tilføje en tid!";
         String leadText2 = "Indtast den specifikke disciplins tal!";
@@ -44,7 +46,7 @@ public class SwimTimesAndStats {
                 case 1:
                     double time = userInput.inputTimeDouble("Indtast tid");
                     String askForPlace = placeWhereTimeWasRecorded(); //asks user to specify training/comp
-                    String place = "Junior Bryst: " + askForPlace;
+                    String place = "Junior Bryst: " + askForPlace + " " + date;
                     double lastPB = member.getJuniorBrystTid();
                     if (time <= lastPB){
                         member.setJuniorBrystTid(time);
@@ -58,7 +60,7 @@ public class SwimTimesAndStats {
                 case 2:
                     double time2 = userInput.inputTimeDouble("Indtast tid");
                     String askForPlace2 = placeWhereTimeWasRecorded();
-                    String place2 = "Junior ButterFly: "+askForPlace2;
+                    String place2 = "Junior ButterFly: "+askForPlace2+" "+date;
                     double lastPB2 = member.getJuniorButterflyTid();
                     if (time2<lastPB2) {
                         member.setJuniorButterflyTid(time2);
@@ -71,8 +73,9 @@ public class SwimTimesAndStats {
                     break;
                 case 3:
                     double time3 = userInput.inputTimeDouble("Indtast tid");
+
                     String askForPlace3 = placeWhereTimeWasRecorded();
-                    String place3 = "Junior Crawl: "+askForPlace3;
+                    String place3 = "Junior Crawl: "+askForPlace3+" "+date;
 
                     double lastPB3 = member.getJuniorCrawlTid();
                     if (time3<lastPB3) {
@@ -86,8 +89,9 @@ public class SwimTimesAndStats {
                     break;
                 case 4:
                     double time4 = userInput.inputTimeDouble("Indtast tid");
+
                     String askForPlace4 = placeWhereTimeWasRecorded();
-                    String place4 = "Junior RygCrawl: "+askForPlace4;
+                    String place4 = "Junior RygCrawl: "+askForPlace4 + " " + date;
                     double lastPB4 = member.getJuniorRygcrawlTid();
                     if (time4<lastPB4){
                         member.setJuniorRygcrawlTid(time4);
@@ -101,7 +105,7 @@ public class SwimTimesAndStats {
                 case 5:
                     double time5 = userInput.inputTimeDouble("Indtast tid");
                     String askForPlace5 = placeWhereTimeWasRecorded();
-                    String place5 = "Senior Bryst: "+askForPlace5;
+                    String place5 = "Senior Bryst: "+askForPlace5 + " " + date;
                     double lastPB5 = member.getSeniorBrystTid();
                     if(time5<lastPB5){
                         member.setSeniorBrystTid(time5);
@@ -115,7 +119,7 @@ public class SwimTimesAndStats {
                 case 6:
                     double time6 = userInput.inputTimeDouble("Indtast tid");
                     String askForPlace6 = placeWhereTimeWasRecorded();
-                    String place6 = "Senior ButterFly: "+askForPlace6;
+                    String place6 = "Senior ButterFly: "+askForPlace6 + " " + date;
                     double lastPB6 = member.getSeniorButterflyTid();
                     if(time6<lastPB6){
                         member.setSeniorButterflyTid(time6);
@@ -129,7 +133,7 @@ public class SwimTimesAndStats {
                 case 7:
                     double time7 = userInput.inputTimeDouble("Indtast tid");
                     String askForPlace7 = placeWhereTimeWasRecorded();
-                    String place7 = "Senior Crawl: "+askForPlace7;
+                    String place7 = "Senior Crawl: "+askForPlace7 + " " + date;
                     double lastPB7 = member.getSeniorCrawlTid();
                     if(time7<lastPB7){
                         member.setSeniorCrawlTid(time7);
@@ -143,7 +147,7 @@ public class SwimTimesAndStats {
                 case 8:
                     double time8 = userInput.inputTimeDouble("Indtast tid");
                     String askForPlace8 = placeWhereTimeWasRecorded();
-                    String place8 = "Senior RygCrawl: "+askForPlace8;
+                    String place8 = "Senior RygCrawl: "+askForPlace8 + " " + date;
                     double lastPB8 = member.getSeniorRygCrawlTid();
                     if(time8<lastPB8){
                         member.setSeniorRygCrawlTid(time8);
@@ -200,7 +204,8 @@ public class SwimTimesAndStats {
     //Used to avoid DRY in switch above.. It makes a String with given values
     String stringWithTimeAndName(String place, Double time,Member member){
         String timeConverted = Double.toString(time);
-        String line = timeConverted + " Member: " + member.getName() + ". Time recorded here: "+place;
+        String date = TimeAndDate.currentDate();
+        String line = timeConverted + " Member: " + member.getName() + ". Time recorded here: "+place+" - "+date;
         return line;
     }
 

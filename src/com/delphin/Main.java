@@ -25,6 +25,7 @@ public class Main {
         Member jClaude = new Member(5, 60,"Jean-Claude Van Damme",true,false,true,false,1500);
         Member tCrews = new Member(6, 52,"Terry Crews",true,false,true,false,1500);
         Member jLi = new Member(7, 57,"Jet Li",true,false,true,false,1500);
+
         //Member test4 = new Member(2, 15,"Alpaca",true,false,true,true,1000);
         fileEditing.storeInObjectFile(stallone);
         fileEditing.storeInObjectFile(schwarzenegger);
@@ -33,12 +34,10 @@ public class Main {
         fileEditing.storeInObjectFile(jLi);
         fileEditing.storeInObjectFile(tCrews);
 
-
-
         //Menu
         boolean run = true;
         int menuChoice;
-        String headertext = "Delfin Klubben.";
+        String headertext = "Delfin Klubben." + TimeAndDate.currentDate();
         String leadtext = "Indtast en valgmulighed: ";
         String[] menuItems = {"1. Tilføj nyt medlem", "2. Rediger medlem", "3. Vis omsættelse og medlemmer i restance ",
                 "4. Leg med Login", "5. Display content of all members", "6. Tilføje rekordtider til discipliner",
