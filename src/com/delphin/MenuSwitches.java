@@ -148,9 +148,6 @@ public class MenuSwitches {
 
     //@author ludvig+frederik
    void cashierMenu() throws Exception {
-        //print kasser swtichmenu
-        System.out.println("jahejmegatestKASSER");
-        //Menu
         boolean run = true;
         int menuChoice;
         String headertext = "Kasser valgmuligheder - " + TimeAndDate.currentDate();
