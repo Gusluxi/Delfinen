@@ -292,7 +292,7 @@ public class FileEditing  {
         }
         return memberData;
     }
-    //@Author Maybe Frederik
+
     ArrayList<Integer> userStatus() throws IOException {
         ArrayList<File> fileA = getAllFilesInDir("UserLogin");
         ArrayList<Integer> loginData = new ArrayList<>();
@@ -340,8 +340,9 @@ public class FileEditing  {
         ArrayList<Member> memberData = new ArrayList<>();
 
         for (int i = 0; i < fileArrayList.size(); i++ ) {
-            if (readFileAndConvertToObject(fileArrayList.get(i)).isActiveDebt() == true)
+            if (readFileAndConvertToObject(fileArrayList.get(i)).isActiveDebt() == true) {
             memberData.add(readFileAndConvertToObject(fileArrayList.get(i)));
+            }
         }
         return memberData;
     }

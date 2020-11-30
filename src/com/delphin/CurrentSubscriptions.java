@@ -13,7 +13,6 @@ public class CurrentSubscriptions {
     //Show Total expected subscription income.
     public static void showTotalRevenue() throws IOException {
         ArrayList<Double> memberData = fileEditing.memberFilesSubscription(); //gets all subscriptions in Dir
-        System.out.println(memberData);
 
         double membersRevenue;
         double totalMembersRevenue = 0;
