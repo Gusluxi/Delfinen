@@ -41,7 +41,8 @@ public class SwimTimesAndStats {
         int choice2;
         String headerText2 = "Vælg dig ind på en disciplin, for at tilføje en tid!";
         String leadText2 = "Indtast den specifikke disciplins tal!";
-        String[] menuItems2 = {"1. Bryst", "2. Butterfly", "3. Crawl", "4. Rygcrawl",
+        String[] menuItems2 = {"1. JuniorBryst", "2. JuniorButterfly", "3. JuniorCrawl",
+                "4. JuniorRygcrawl", "5. SeniorBryst", "6. SeniorButterfly", "7. SeniorCrawl", "8. SeniorRygcrawl",
                 "9. Gå tilbage til hovedmenu"};
         FileEditing fileEditing = new FileEditing();
         UserInput userInput = new UserInput();
@@ -156,7 +157,7 @@ public class SwimTimesAndStats {
                 case 1:
                     double time = userInput.inputTimeDouble("Indtast tid");
                     String askForPlace = placeWhereTimeWasRecorded(); //asks user to specify training/comp
-                    String place = "Junior Bryst: " + askForPlace;
+                    String place = "Junior Bryst: " + askForPlace + " " + date;
                     double lastPB = member.getJuniorBrystTid();
                     if (lastPB <1){
                         lastPB = 900;
@@ -173,7 +174,7 @@ public class SwimTimesAndStats {
                 case 2:
                     double time2 = userInput.inputTimeDouble("Indtast tid");
                     String askForPlace2 = placeWhereTimeWasRecorded();
-                    String place2 = "Junior ButterFly: "+askForPlace2;
+                    String place2 = "Junior ButterFly: "+askForPlace2+" "+date;
                     double lastPB2 = member.getJuniorButterflyTid();
                     if (lastPB2 <1){
                         lastPB2 = 900;
@@ -189,8 +190,10 @@ public class SwimTimesAndStats {
                     break;
                 case 3:
                     double time3 = userInput.inputTimeDouble("Indtast tid");
+
                     String askForPlace3 = placeWhereTimeWasRecorded();
-                    String place3 = "Junior Crawl: "+askForPlace3;
+                    String place3 = "Junior Crawl: "+askForPlace3+" "+date;
+
                     double lastPB3 = member.getJuniorCrawlTid();
                     if (lastPB3 <1){
                         lastPB3 = 900;
@@ -206,8 +209,9 @@ public class SwimTimesAndStats {
                     break;
                 case 4:
                     double time4 = userInput.inputTimeDouble("Indtast tid");
+
                     String askForPlace4 = placeWhereTimeWasRecorded();
-                    String place4 = "Junior RygCrawl: "+askForPlace4;
+                    String place4 = "Junior RygCrawl: "+askForPlace4 + " " + date;
                     double lastPB4 = member.getJuniorRygcrawlTid();
                     if (lastPB4 <1){
                         lastPB4 = 900;
@@ -219,19 +223,74 @@ public class SwimTimesAndStats {
 
                         fileEditing.addToFileTop5(membersTimeAndInfo4,"Disciplines",JRC);
                     }
+
+                    break;
+                case 5:
+                    double time5 = userInput.inputTimeDouble("Indtast tid");
+                    String askForPlace5 = placeWhereTimeWasRecorded();
+                    String place5 = "Senior Bryst: "+askForPlace5;
+                    double lastPB5 = member.getSeniorBrystTid();
+                    if(time5<lastPB5){
+                        member.setSeniorBrystTid(time5);
+                        member.setSeniorBryst(place5);
+                        String membersTimeAndInfo5 = stringWithTimeAndName(place5,time5,member);
+
+                        fileEditing.addToFileTop5(membersTimeAndInfo5,"Disciplines",SB);
+                    }
+
+                    break;
+                case 6:
+                    double time6 = userInput.inputTimeDouble("Indtast tid");
+                    String askForPlace6 = placeWhereTimeWasRecorded();
+                    String place6 = "Senior ButterFly: "+askForPlace6;
+                    double lastPB6 = member.getSeniorButterflyTid();
+                    if(time6<lastPB6){
+                        member.setSeniorButterflyTid(time6);
+                        member.setSeniorButterfly(place6);
+                        String membersTimeAndInfo6 = stringWithTimeAndName(place6,time6,member);
+
+                        fileEditing.addToFileTop5(membersTimeAndInfo6,"Disciplines",SBF);
+                    }
+
+                    break;
+                case 7:
+                    double time7 = userInput.inputTimeDouble("Indtast tid");
+                    String askForPlace7 = placeWhereTimeWasRecorded();
+                    String place7 = "Senior Crawl: "+askForPlace7;
+                    double lastPB7 = member.getSeniorCrawlTid();
+                    if(time7<lastPB7){
+                        member.setSeniorCrawlTid(time7);
+                        member.setSeniorCrawl(place7);
+                        String membersTimeAndInfo7 = stringWithTimeAndName(place7,time7,member);
+
+                        fileEditing.addToFileTop5(membersTimeAndInfo7,"Disciplines",SC);
+                    }
+
+                    break;
+                case 8:
+                    double time8 = userInput.inputTimeDouble("Indtast tid");
+                    String askForPlace8 = placeWhereTimeWasRecorded();
+                    String place8 = "Senior RygCrawl: "+askForPlace8;
+                    double lastPB8 = member.getSeniorRygCrawlTid();
+                    if(time8<lastPB8){
+                        member.setSeniorRygCrawlTid(time8);
+                        member.setSeniorRygCrawl(place8);
+                        String membersTimeAndInfo8 = stringWithTimeAndName(place8,time8,member);
+
+                        fileEditing.addToFileTop5(membersTimeAndInfo8,"Disciplines",SRC);
+                    }
+
+                    break;
                 case 9: //Terminates program (if needed).
                     run = false;
-
                 default:
                     menu2.printMenu();
             }
-
         }
         fileEditing.storeInObjectFile(member); //Save the updates to the member in the file.
-    }//end of juniorSwitch
 
 
-
+    }//end of addSwimTimeToFile
 
     //@author Mick
     //Switch case to ask user, where the time was recorded (Træning eller stævne).
@@ -268,7 +327,8 @@ public class SwimTimesAndStats {
     //Used to avoid DRY in switch above.. It makes a String with given values
     String stringWithTimeAndName(String place, Double time,Member member){
         String timeConverted = Double.toString(time);
-        String line = timeConverted + " Member: " + member.getName() + ". Time recorded here: "+place;
+        String date = TimeAndDate.currentDate();
+        String line = timeConverted + " Member: " + member.getName() + ". Time recorded here: "+place+" - "+date;
         return line;
     }
 
