@@ -68,7 +68,7 @@ public class MenuSwitches {
        //Menu
        boolean run = true;
        int menuChoice;
-       String headertext = "Formands valgmuligheder";
+       String headertext = "Formands valgmuligheder - "+ TimeAndDate.currentDate();
        String leadtext = "Indtast en valgmulighed: ";
        String[] menuItems = {"1. Tilføj nyt medlem", "2. Rediger medlem", "3. Slet medlem",
                "4. ", "0. Log ud af din bruger"};
@@ -112,7 +112,7 @@ public class MenuSwitches {
            //Menu
            boolean run = true;
            int menuChoice;
-           String headertext = "Træner valgmuligheder";
+           String headertext = "Træner valgmuligheder - "+ TimeAndDate.currentDate();
            String leadtext = "Indtast en valgmulighed: ";
            String[] menuItems = {"1. Indtast ny svømmetid", "2. Vis top5 svømmere indenfor alle discipliner", "0. Log ud af din bruger"};
            while (run) {
@@ -144,7 +144,7 @@ public class MenuSwitches {
         //Menu
         boolean run = true;
         int menuChoice;
-        String headertext = "Kasser valgmuligheder";
+        String headertext = "Kasser valgmuligheder - " + TimeAndDate.currentDate();
         String leadtext = "Indtast en valgmulighed: ";
         String[] menuItems = {"1. Vis omsættelse", "2. Vis medlemmer i restance", "0. Log ud af din bruger"};
         while (run) {
@@ -168,19 +168,19 @@ public class MenuSwitches {
     }
 
     //@author ludvig+frederik test push pls commit
-    void adminMenu() throws IOException {
+   void adminMenu() throws IOException {
 
-        //Instances
-        FileEditing fileEditing = new FileEditing();
-        EditMembership editMembership = new EditMembership();
-        SwimTimesAndStats swimTimesAndStats = new SwimTimesAndStats();
+       //Instances
+       FileEditing fileEditing = new FileEditing();
+       EditMembership editMembership = new EditMembership();
+       SwimTimesAndStats swimTimesAndStats = new SwimTimesAndStats();
 
         //print admin swtichmenu
         System.out.println("admin virker kekw");
         //Menu
         boolean run = true;
         int menuChoice;
-        String headertext = "admin valgmuligheder";
+        String headertext = "admin valgmuligheder - " + TimeAndDate.currentDate();
         String leadtext = "Indtast en valgmulighed: ";
         String[] menuItems = {"1. Tilføj nyt medlem", "2. Rediger medlem", "3. Slet medlem",
                 "4. Indtast bedste svømmetid", "5. Vis top5 svømmere indenfor alle discipliner",
@@ -250,6 +250,6 @@ public class MenuSwitches {
                     adminMenu();
             }
 
-        }
-    }
+       }
+   }
 }
