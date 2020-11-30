@@ -12,9 +12,9 @@ public class MenuSwitches {
 
 
         editUserLogin.newUser("Formand","1","Kurt",1);
-        editUserLogin.newUser("Traener","2","Hurtigere Kurt",2);
+        editUserLogin.newUser("Coach","2","Hurtigere Kurt",2);
         editUserLogin.newUser("Kasser","3","Dame Kurt",3);
-        editUserLogin.newUser("admin","admin","admin",4);
+        editUserLogin.newUser("Kurt","4","admin",4);
         editUserLogin.newUser("luk","luk","luk",9);
 
     boolean run = true;
@@ -95,7 +95,7 @@ public class MenuSwitches {
                    CurrentSubscriptions.showMembersWithDebt();
                    break;
                default:
-                   formandMenu();
+                   System.out.println("");
            }
        }
    }
@@ -106,14 +106,13 @@ public class MenuSwitches {
            FileEditing fileEditing = new FileEditing();
            SwimTimesAndStats swimTimesAndStats = new SwimTimesAndStats();
 
-
            //Menu
            boolean run = true;
            int menuChoice;
            String headertext = "Træner valgmuligheder - "+ TimeAndDate.currentDate();
            String leadtext = "Indtast en valgmulighed: ";
            String[] menuItems = {"1. Indtast ny svømmetid", "2. Vis top5 svømmere indenfor alle discipliner",
-                   "Slet tid fra medlem","0. Log ud af din bruger"};
+                   "3. Slet tid fra medlem","0. Log ud af din bruger"};
            while (run) {
                Menu menu = new Menu(headertext, leadtext, menuItems);
                menu.printMenu();
@@ -136,7 +135,7 @@ public class MenuSwitches {
                        swimTimesAndStats.deleteMembersTime(member6); // Opens new switch with disciplines.
                        break;
                    default:
-                       coachMenu();
+                       System.out.println("");
                }
            }
        }
@@ -166,7 +165,7 @@ public class MenuSwitches {
                     CurrentSubscriptions.showMembersWithDebt();
                     break;
                 default:
-                    cashierMenu();
+                    System.out.println("");
             }
         }
     }
@@ -231,7 +230,7 @@ public class MenuSwitches {
                     editMembership.removeMemberFromSystem("Members",UserInput.inputString("Skriv IDNummer som skal slettes: ",false));
                     break;
                 default:
-                    adminMenu();
+                    System.out.println("");
             }
 
        }

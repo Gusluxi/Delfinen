@@ -304,6 +304,7 @@ public class FileEditing  {
         }
         return loginData;
     }
+
     //@Author Frederik
     //Overloaded method of memberFilesDebt
     //Method searches all Login-objects for Username and password. If they fit a member, they return status int of member.
@@ -339,8 +340,9 @@ public class FileEditing  {
         ArrayList<Member> memberData = new ArrayList<>();
 
         for (int i = 0; i < fileArrayList.size(); i++ ) {
-            if (readFileAndConvertToObject(fileArrayList.get(i)).isActiveDebt() == true);
+            if (readFileAndConvertToObject(fileArrayList.get(i)).isActiveDebt() == true) {
             memberData.add(readFileAndConvertToObject(fileArrayList.get(i)));
+            }
         }
         return memberData;
     }
