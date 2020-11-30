@@ -318,7 +318,7 @@ public class FileEditing  {
             }
         }
         return status;
-    }
+   }
 
     //@author Kristian
     //Returns personal subscription Price for each club member.
@@ -443,10 +443,8 @@ public class FileEditing  {
             Member memberr = findSpecificMemberAndConvert(UserInput.inputString("Skriv navn eller nummer på personen du vil finde"
                     ,false));
             return memberr;
-
         }
-
-    }
+   }
 
 
 
