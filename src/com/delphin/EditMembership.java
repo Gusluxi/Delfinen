@@ -29,7 +29,7 @@ public class EditMembership {
         fileEditing.storeInObjectFile(member);
     }
 
-    //@author MIck
+    //@author Mick
     //A switch case to edit in a member's data.
     //Uses UserInput and getter/setters from Member.
     void editMembership(Member member) throws IOException {

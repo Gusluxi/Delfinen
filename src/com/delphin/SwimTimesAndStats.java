@@ -31,9 +31,7 @@ public class SwimTimesAndStats {
         else {
             seniorSwitch(member);
         }
-
-
-    }//end of addSwimTimeToFile
+    }
 
 
     void seniorSwitch(Member member) throws IOException {
@@ -133,7 +131,6 @@ public class SwimTimesAndStats {
             }
         }
         fileEditing.storeInObjectFile(member); //Save the updates to the member in the file.
-
     }
 
     void juniorSwitch(Member member) throws IOException {
@@ -235,9 +232,7 @@ public class SwimTimesAndStats {
             }
         }
         fileEditing.storeInObjectFile(member); //Save the updates to the member in the file.
-
-
-    }//end of addSwimTimeToFile
+    }
 
     //@author Mick
     //Switch case to ask user, where the time was recorded (Træning eller stævne).
@@ -275,7 +270,7 @@ public class SwimTimesAndStats {
     String stringWithTimeAndName(String place, Double time,Member member){
         String timeConverted = Double.toString(time);
         String date = TimeAndDate.currentDate();
-        String line = timeConverted + " Member: " + member.getName() + ". Time recorded here: "+place+" - "+date;
+        String line = timeConverted + " Member: " + member.getName() + ". Time recorded here: "+place+" - "+date; //@author Gustav
         return line;
     }
 
@@ -337,16 +332,18 @@ public class SwimTimesAndStats {
                         menu2.printMenu();
                 }
             }
+    }
 
-    } //end of DisplayTop5
-
+    //@author Mick
+    //Switch menu to set a users time to 0 if needed.
     void deleteMembersTime(Member member) throws Exception {
         boolean run = true;
         int choice2;
         String headerText2 = "Menu til at slette en svømmetid fra medlem.";
         String leadText2 = "Vælg hvilken disciplin, som skal slettes fra medlemmet:";
         String[] menuItems2 = {"1. JuniorBryst", "2. JuniorButterfly", "3. JunirCrawl",
-                "4. JuniorRygcrawl", "5. SeniorBryst", "6. SeniorButterfly", "7. SeniorCrawl", "8. SeniorRygcrawl", "9. Gå tilbage til hovedmenu"};
+                "4. JuniorRygcrawl", "5. SeniorBryst", "6. SeniorButterfly", "7. SeniorCrawl", "8. SeniorRygcrawl",
+                "9. Gå tilbage til hovedmenu"};
         Menu menu2 = new Menu(headerText2, leadText2, menuItems2); // Create new menu instance
         FileEditing fileEditing = new FileEditing();
 
@@ -356,8 +353,8 @@ public class SwimTimesAndStats {
             choice2 = UserInput.inputInt(leadText2);
             switch (choice2) {
                 case 1: //Junior Bryst
-                    String searchFor = Double.toString(member.getJuniorBrystTid());
-                    fileEditing.removeLineFromText(searchFor,"Disciplines","JuniorBryst");
+                    String searchFor = Double.toString(member.getJuniorBrystTid()); // get the time
+                    fileEditing.removeLineFromText(searchFor,"Disciplines","JuniorBryst"); //remove the time
                     member.setJuniorBrystTid(0);
                     member.setJuniorBreast(null);
                     break;
@@ -410,7 +407,7 @@ public class SwimTimesAndStats {
             }
         }
 
-    } //end of DisplayTop5
+    }
 }
 
 

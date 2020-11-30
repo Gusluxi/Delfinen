@@ -31,16 +31,16 @@ public class MenuSwitches {
                 System.out.println("Wrong Username and or Password");
                 loginMenu();
                 break;
-            case 1: //FormandsMenu
+            case 1: //Chairman Menu
                 formandMenu();
                 break;
-            case 2: //TraenerMenu
+            case 2: //Coach Menu
                 coachMenu();
                 break;
-            case 3: //KasserMenu
+            case 3: //Cashier Menu
                 cashierMenu();
                 break;
-            case 4: //AdminMenu
+            case 4: //Admin Menu
                 adminMenu();
                 break;
             case 9: //Luk
@@ -65,7 +65,9 @@ public class MenuSwitches {
        int menuChoice;
        String headertext = "Formands valgmuligheder - "+ TimeAndDate.currentDate();
        String leadtext = "Indtast en valgmulighed: ";
-       String[] menuItems = {"1. Tilføj nyt medlem", "2. Rediger medlem", "3. Slet medlem", "0. Log ud af din bruger"};
+       String[] menuItems = {"1. Tilføj nyt medlem.", "2. Rediger medlem.", "3. Slet medlem.",
+               "4. Vis den årlige indkomst fra kontigenter.",
+               "5. Vis navn og id på alle som skylder penge.", "0. Log ud af din bruger."};
        while (run) {
            Menu menu = new Menu(headertext, leadtext, menuItems);
            menu.printMenu();
@@ -88,6 +90,8 @@ public class MenuSwitches {
                    break;
                case 4: // Display total revenue and members with debt.
                    CurrentSubscriptions.showTotalRevenue();
+                   break;
+               case 5: // Display members with arrears.
                    CurrentSubscriptions.showMembersWithDebt();
                    break;
                default:
