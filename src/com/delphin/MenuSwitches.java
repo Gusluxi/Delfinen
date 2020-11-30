@@ -11,9 +11,9 @@ public class MenuSwitches {
         FileEditing fileEditing = new FileEditing();
 
 
-        editUserLogin.newUser("Formand","JegErFormand","Kurt",1);
-        editUserLogin.newUser("Traener","JegErTraener","Hurtigere Kurt",2);
-        editUserLogin.newUser("Kasser","JegErKasser","Dame Kurt",3);
+        editUserLogin.newUser("Formand","1","Kurt",1);
+        editUserLogin.newUser("Traener","2","Hurtigere Kurt",2);
+        editUserLogin.newUser("Kasser","3","Dame Kurt",3);
         editUserLogin.newUser("admin","admin","admin",4);
         editUserLogin.newUser("luk","luk","luk",9);
 
@@ -32,19 +32,15 @@ public class MenuSwitches {
                 loginMenu();
                 break;
             case 1: //FormandsMenu
-                System.out.println("Tilykke du er logget ind som Formand");
                 formandMenu();
                 break;
             case 2: //TraenerMenu
-                System.out.println("Tilykke du er logget ind som Traener");
                 coachMenu();
                 break;
             case 3: //KasserMenu
-                System.out.println("Tilykke du er logget ind som Kasser");
-                kasserMenu();
+                cashierMenu();
                 break;
             case 4: //AdminMenu
-                System.out.println("Tilykke du er admin, you win REEEEEEEEE PEPEGAPLS");
                 adminMenu();
                 break;
             case 9: //Luk
@@ -64,33 +60,33 @@ public class MenuSwitches {
        FileEditing fileEditing = new FileEditing();
        EditMembership editMembership = new EditMembership();
 
-       System.out.println("jahejmegatestFORMAND");
        //Menu
        boolean run = true;
        int menuChoice;
        String headertext = "Formands valgmuligheder - "+ TimeAndDate.currentDate();
        String leadtext = "Indtast en valgmulighed: ";
-       String[] menuItems = {"1. Tilføj nyt medlem", "2. Rediger medlem", "3. Slet medlem",
-               "4. ", "0. Log ud af din bruger"};
+       String[] menuItems = {"1. Tilføj nyt medlem", "2. Rediger medlem", "3. Slet medlem", "0. Log ud af din bruger"};
        while (run) {
            Menu menu = new Menu(headertext, leadtext, menuItems);
            menu.printMenu();
            menuChoice = UserInput.inputInt(leadtext);
            switch (menuChoice) {
-               case 0: //End program
+               case 0: // End program
                    loginMenu();
                    break;
-               case 1: //testA new membership
+               case 1: // New membership
                    editMembership.newMembership();
                    break;
-               case 2: //testB edit membership
-                   //asks user to type a single Name or #ID which it will return to memberData.
-                   String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
-                   //Uses the selected memberID via getMemberIdFromString() to access the connected ID.txt file and run editMembership(with user selected file).
-                   editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
-                   System.out.println(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)).toString());
+               case 2: // Edit membership
+                   Member member2 = fileEditing.findSpecificMemberAndConvert
+                           (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
+                   editMembership.editMembership(member2);
+                   System.out.println(member2.toString());
                    break;
-               case 3: //testC Display total revenue and members with debt.
+               case 3: // Delete member
+                   editMembership.removeMemberFromSystem("Members",UserInput.inputString("Skriv IDNummer som skal slettes: ",false));
+                   break;
+               case 4: // Display total revenue and members with debt.
                    CurrentSubscriptions.showTotalRevenue();
                    CurrentSubscriptions.showMembersWithDebt();
                    break;
@@ -105,16 +101,15 @@ public class MenuSwitches {
            //instances
            FileEditing fileEditing = new FileEditing();
            SwimTimesAndStats swimTimesAndStats = new SwimTimesAndStats();
-           EditMembership editMembership = new EditMembership();
 
-           //print træner switchmenu
-           System.out.println("jahejmegatestTRÆNER");
+
            //Menu
            boolean run = true;
            int menuChoice;
            String headertext = "Træner valgmuligheder - "+ TimeAndDate.currentDate();
            String leadtext = "Indtast en valgmulighed: ";
-           String[] menuItems = {"1. Indtast ny svømmetid", "2. Vis top5 svømmere indenfor alle discipliner", "0. Log ud af din bruger"};
+           String[] menuItems = {"1. Indtast ny svømmetid", "2. Vis top5 svømmere indenfor alle discipliner",
+                   "Slet tid fra medlem","0. Log ud af din bruger"};
            while (run) {
                Menu menu = new Menu(headertext, leadtext, menuItems);
                menu.printMenu();
@@ -123,7 +118,7 @@ public class MenuSwitches {
                    case 0: //End program
                        loginMenu();
                        break;
-                   case 1: //Add new swimtime/best swimtime
+                   case 1: //Add new time
                        Member member5 = fileEditing.findSpecificMemberAndConvert
                                (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
                        swimTimesAndStats.addSwimTimeToFile(member5);
@@ -134,7 +129,7 @@ public class MenuSwitches {
                    case 3: //Delete time from member
                        Member member6 = fileEditing.findSpecificMemberAndConvert
                                (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
-                       swimTimesAndStats.deleteMembersTime(member6);
+                       swimTimesAndStats.deleteMembersTime(member6); // Opens new switch with disciplines.
                        break;
                    default:
                        coachMenu();
@@ -143,7 +138,7 @@ public class MenuSwitches {
        }
 
     //@author ludvig+frederik
-    void kasserMenu() throws Exception {
+   void cashierMenu() throws Exception {
         //print kasser swtichmenu
         System.out.println("jahejmegatestKASSER");
         //Menu
@@ -167,29 +162,28 @@ public class MenuSwitches {
                     CurrentSubscriptions.showMembersWithDebt();
                     break;
                 default:
-                    kasserMenu();
+                    cashierMenu();
             }
         }
     }
 
     //@author ludvig+frederik test push pls commit
-   void adminMenu() throws IOException {
+   void adminMenu() throws Exception {
 
        //Instances
        FileEditing fileEditing = new FileEditing();
        EditMembership editMembership = new EditMembership();
        SwimTimesAndStats swimTimesAndStats = new SwimTimesAndStats();
 
-        //print admin swtichmenu
-        System.out.println("admin virker kekw");
         //Menu
         boolean run = true;
         int menuChoice;
         String headertext = "admin valgmuligheder - " + TimeAndDate.currentDate();
         String leadtext = "Indtast en valgmulighed: ";
-        String[] menuItems = {"1. Tilføj nyt medlem", "2. Rediger medlem", "3. Slet medlem",
-                "4. Indtast bedste svømmetid", "5. Vis top5 svømmere indenfor alle discipliner",
-                "6. Vis omsættelse", "7. Vis medlemmer i restance", "0. Log ud af din bruger"};
+        String[] menuItems = {"1. Tilføj nyt medlem", "2. Rediger medlem", "3. Vis omsættelse",
+                "4. Display top5 ", "5. Vis alle medlemmer",
+                "6. Tilføj en tid til medlem", "7. Slet en tid fra medlem","8. Slet et medlem",
+                "0. Log ud af din bruger"};
         while (run) {
             Menu menu = new Menu(headertext, leadtext, menuItems);
             menu.printMenu();
@@ -202,7 +196,6 @@ public class MenuSwitches {
                     editMembership.newMembership();
                     break;
                 case 2: //Edit membership
-
                     Member member2 = fileEditing.findSpecificMemberAndConvert
                             (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
                     editMembership.editMembership(member2);
@@ -213,16 +206,8 @@ public class MenuSwitches {
                     CurrentSubscriptions.showTotalRevenue();
                     CurrentSubscriptions.showMembersWithDebt();
                     break;
-                case 4: //Play with Username input
-                    ArrayList<String> testArray = new ArrayList<>();
-                    Login chairman = new Login("Formand","JegErDejlig","Kurt Kurt", 1); //Hardcode for now
-                    testArray.add(chairman.getUserName());
-                    Login trainer = new Login("Traener","JegErDenHurtigeste","Hurtig Kurt", 2); //Hardcode for now
-                    testArray.add(trainer.getUserName());
-                    Login cashier = new Login("Kasser","JegElskerTal","Kvinde Kurt", 3); //Hardcode for now
-                    testArray.add(cashier.getUserName());
-
-                    System.out.println(UserInput.validationStringArray(testArray, "Skriv brugernavn:"));
+                case 4: //Display top 5 Switch
+                    swimTimesAndStats.displayTop5();
                     break;
                 case 5: //Display all members
                     for (String i : fileEditing.dataToArrayList("Members"))
@@ -233,23 +218,13 @@ public class MenuSwitches {
                             (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
                     swimTimesAndStats.addSwimTimeToFile(member6);
                     break;
-                case 7: //toString WITH times
+                case 7: //Delete time from member
                     Member member7 = fileEditing.findSpecificMemberAndConvert
                             (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
-                    System.out.println(member7.toStringWithTimes());
+                    swimTimesAndStats.deleteMembersTime(member7); // Opens new switch with disciplines.
                     break;
-                case 8: //Display top 5 Switch
-                    swimTimesAndStats.displayTop5();
-                    break;
-                case 9: //testI
-
-                    break;
-                case 10: //test af print tider..
-                    Member member10 = fileEditing.readFileAndConvertToObject(123);
-                    System.out.println(member10.getSeniorChestTime());
-                    System.out.println(member10.getSeniorButterflyTime());
-                    System.out.println(member10.getSeniorCrawlTime());
-                    System.out.println(member10.getSeniorRygCrawlTime());
+                case 8: // Delete member
+                    editMembership.removeMemberFromSystem("Members",UserInput.inputString("Skriv IDNummer som skal slettes: ",false));
                     break;
                 default:
                     adminMenu();

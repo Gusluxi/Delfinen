@@ -54,10 +54,6 @@ public class Main {
                     editMembership.newMembership();
                     break;
                 case 2: //Edit membership
-                    //asks user to type a single Name or #ID which it will return to memberData.
-                          //String memberData = fileEditing.findSpecificFileValues("Skriv navn eller #nr. på den person der skal redigeres: ");
-                    //Uses the selected memberID via getMemberIdFromString() to access the connected ID.txt file and run editMembership(with user selected file).
-                          //editMembership.editMembership(fileEditing.readFileAndConvertToObject(editMembership.getMemberIDFromString(memberData)));
                     Member member2 = fileEditing.findSpecificMemberAndConvert
                             (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
                     editMembership.editMembership(member2);
