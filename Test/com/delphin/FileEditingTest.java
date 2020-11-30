@@ -127,7 +127,7 @@ class FileEditingTest {
         System.out.println(firstAL.toString());
         readFile.close();
 
-        fileEditing.removeLineFromText("YayeetDAB","Disciplines","JuniorBryst");
+        fileEditing.removeLineFromText("YayeetDAB", "JuniorBryst");
 
         File file2 = new File(path);
         Scanner readFile2 = new Scanner(file2);
