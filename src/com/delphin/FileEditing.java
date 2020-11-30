@@ -23,8 +23,8 @@ public class FileEditing  {
     //@author Mick
     //Not sure if we're using this anymore.
     //Finds a file with given string-name, displays it.
-    void readSpecificFile(String path, String fileName) throws FileNotFoundException {
-        File file = new File(path+"\\"+fileName+".txt"); //path = ex. "src\\Disciplines" & fileName = ex. "107".
+    void readSpecificFile(String directory, String fileName) throws FileNotFoundException {
+        File file = new File("src\\"+directory+"\\"+fileName+".txt"); //path = ex. "src\\Disciplines" & fileName = ex. "107".
         Scanner readFile = new Scanner(file);
         while (readFile.hasNextLine()){
             System.out.println(readFile.nextLine());
@@ -34,8 +34,8 @@ public class FileEditing  {
     //@author Mick
     //Not sure if we're using this anymore.
     //it displays a file......
-    void displaySpecificFileList(String path, String fileName) throws FileNotFoundException {
-        File file = new File(path+"\\"+fileName+".txt"); //path = ex. "src\\Disciplines" & fileName = ex. "107"
+    void displaySpecificFileList(String directory, String fileName) throws FileNotFoundException {
+        File file = new File("src\\"+directory+"\\"+fileName+".txt"); //path = ex. "src\\Disciplines" & fileName = ex. "107"
         int count = 0;
         Scanner readFile = new Scanner(file);
         while (readFile.hasNextLine()){
