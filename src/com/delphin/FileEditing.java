@@ -418,10 +418,10 @@ public class FileEditing  {
         //Loop through and find matches to "searchFor". Send to arraylist.
         for (int i = 0; i<everyMember.size(); i++) {
             //Convert MemberID to string
-            String word = Integer.toString(readFileAndConvertToObject(everyMember.get(i)).getMemberID());
+            String numberID = Integer.toString(readFileAndConvertToObject(everyMember.get(i)).getMemberID());
 
             if (readFileAndConvertToObject(everyMember.get(i)).getName().contains(searchFor) ||
-                    word.compareTo(searchFor)==0) {
+                    numberID.compareTo(searchFor)==0) {
                 membersFound.add(readFileAndConvertToObject(everyMember.get(i)));
             }
         }
@@ -440,11 +440,12 @@ public class FileEditing  {
         } else {
             //No hits on the search-term.
             System.out.println("Der kunne ikke findes nogen med søgningen: "+searchFor+ ". Prøv igen!" );
-            findSpecificMemberAndConvert(UserInput.inputString("Skriv navn eller nummer på personen du vil finde"
+            Member memberr = findSpecificMemberAndConvert(UserInput.inputString("Skriv navn eller nummer på personen du vil finde"
                     ,false));
+            return memberr;
 
         }
-        return membersFound.get(0);
+
     }
 
 

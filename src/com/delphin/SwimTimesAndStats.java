@@ -185,7 +185,7 @@ public class SwimTimesAndStats {
                     menu=false;
                     break;
                 case 2: // Competition
-                    placeOfTime += UserInput.inputString("Skriv hvad stævnet hed: ",true);
+                    placeOfTime += UserInput.inputString("Skriv hvad stævnet hed, og hvad plads konkurrenten fik: ",false);
                     menu=false;
                     break;
                 default:
