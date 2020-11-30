@@ -48,7 +48,6 @@ public class MenuSwitches {
                 break;
             default:
                 loginMenu();
-
         }
     }
 }
@@ -224,7 +223,7 @@ public class MenuSwitches {
                     break;
                 case 6: //Menu til at tilføje rekordtider til disciplin
                     Member member6 = fileEditing.findSpecificMemberAndConvert
-                            (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
+                            (UserInput.inputString("\nSkriv navn eller nummer på personen du vil finde",false));
                     swimTimesAndStats.addSwimTimeToFile(member6);
                     break;
                 case 7: //Delete time from member

@@ -21,7 +21,6 @@ public class SwimTimesAndStats {
     //@author Ludvig,
     //A switch where you can add times to specific disciplines
     void addSwimTimeToFile(Member member) throws IOException {
-
         //Checks if member is Junior or Senior
         boolean junior = member.isJunior();
         int decideSwitch = 0;
@@ -35,6 +34,7 @@ public class SwimTimesAndStats {
 
 
     void seniorSwitch(Member member) throws IOException {
+        System.out.println(member.getName());
         boolean run = true;
         String date = TimeAndDate.currentDate();
         int choice2;
@@ -133,6 +133,7 @@ public class SwimTimesAndStats {
     }
 
     void juniorSwitch(Member member) throws IOException {
+        System.out.println(member.getName());
         boolean run = true;
         String date = TimeAndDate.currentDate();
         int choice2;
@@ -338,6 +339,7 @@ public class SwimTimesAndStats {
     void deleteMembersTime(Member member) throws Exception {
         boolean run = true;
         int choice2;
+        System.out.println(member.getName());
         String headerText2 = "Menu til at slette en svømmetid fra medlem.";
         String leadText2 = "Vælg hvilken disciplin, som skal slettes fra medlemmet:";
         String[] menuItems2 = {"1. JuniorBryst", "2. JuniorButterfly", "3. JuniorCrawl",

@@ -51,33 +51,37 @@ public class EditMembership {
                 case 1://Set age
                     member.setAge(UserInput.inputInt("Indsæt den nye alder"));
                     Member.calculateJuniorSenior(member);
-                    System.out.println("Den nye alder er sat til: " + member.getAge());
+                    System.out.println(member.getName()+"s nye alder er sat til: " + member.getAge());
                     break;
                 case 2://Set name
                     member.setName(UserInput.inputString("Skriv det nye navn: ", true));
-                    System.out.println("Det nye navn er sat til: " + member.getName());
+                    System.out.println("Medlemmets nye navn er sat til: " + member.getName());
                     break;
                 case 3://Change activity level (passive/active member)
                     member.setActivity(UserInput.validateStringToBoolean("Aktiv", "Passiv",
-                            "Er medlemmet aktiv eller passiv?"));
+                            "Er "+member.getName()+" aktiv eller passiv?"));
                     if (member.isActivity() == true) {
-                        System.out.println("Medlemmet er nu sat til at være et aktivt medlem!");
+                        System.out.println(member.getName()+" er nu sat til at være et aktivt medlem!");
                     } else {
-                        System.out.println("Medlemmet er nu passivt, og kan ikke længere bruge vores svømmehal.");
+                        System.out.println(member.getName()+" er nu passivt, og kan ikke længere bruge vores svømmehal.");
                     }
                     break;
                 case 4://Change competitiveness level
-                    member.setCompetitor(UserInput.validateStringToBoolean("Kompetitiv", "Afslappet",
-                            "Er medlemmet kompetitiv eller afslappet?"));
-                    System.out.println("Den nye konkurrence tilstand er sat til: " + member.isCompetitor());
+                    member.setCompetitor(UserInput.validateStringToBoolean("Konkurrence", "Atlet",
+                            "Er "+member.getName()+" konkurrence eller atlet -svømmer?"));
+                    if (member.isCompetitor() == true) {
+                        System.out.println(member.getName()+" er nu sat til at være konkurrencesvømmer");
+                    } else {
+                        System.out.println(member.getName()+" er nu sat til at være atletisksvømmer");
+                    }
                     break;
                 case 5://Change arrear-status
                     member.setActiveDebt(UserInput.validateStringToBoolean("Godkendt", "Mangelfuld",
-                            "Er medlemmets betaling godkendt eller mangelfuld?\nEller tryk 1. for at skylde penge, 2 for at der er betalt"));
+                            "Er "+member.getName()+"s betaling godkendt eller mangelfuld?"));
                     if (member.isActiveDebt() == true) {
-                        System.out.println("Medlemmet skylder penge, kontakt dem hurtigst muligt.");
+                        System.out.println(member.getName()+" skylder penge, kontakt dem hurtigst muligt.");
                     } else {
-                        System.out.println("Medlemmet skylder ikke længere penge.");
+                        System.out.println(member.getName()+" skylder ikke længere penge.");
                     }
                     break;
 
