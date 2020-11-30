@@ -242,6 +242,23 @@ public class FileEditing  {
         tempFile.renameTo(inputFile);
     }
 
+    void removeLineFromText2(String string, String filename) throws IOException {
+        File inputFile = new File("src\\"+ "Disciplines" +"\\"+filename+".txt");
+        File tempFile = new File("src\\"+ "Disciplines" +"\\tempTestFile.txt");
+        Scanner readFile = new Scanner(inputFile);
+        FileWriter fileWriter = new FileWriter(tempFile);
+
+        while (readFile.hasNextLine()){
+            if (!readFile.nextLine().contains(string)){
+                fileWriter.write(readFile.nextLine());
+            }
+        }
+        readFile.close();
+        fileWriter.close();
+
+        inputFile.delete();
+        tempFile.renameTo(inputFile);
+    }
 
 
     //@author Ludvig
