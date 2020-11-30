@@ -1,8 +1,6 @@
 package com.delphin;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.jar.Attributes;
 
 //Serialization is the conversion of the state of an object into a byte stream;
 //deserialization does the opposite. Stated differently, serialization is the
@@ -20,23 +18,23 @@ public class Member implements Serializable {
     private boolean activeDebt; //true = has arrears
     private double subscriptionPrice; //use method to calculate
 
-    private String juniorBryst;
+    private String juniorBreast;
     private String juniorButterfly;
     private String juniorCrawl;
-    private String juniorRygcrawl;
-    private String seniorBryst;
+    private String juniorBackcrawl;
+    private String seniorChest;
     private String seniorButterfly;
     private String seniorCrawl;
-    private String seniorRygCrawl;
+    private String seniorBackCrawl;
 
-    private double juniorBrystTid;
-    private double juniorButterflyTid;
-    private double juniorCrawlTid;
-    private double juniorRygcrawlTid;
-    private double seniorBrystTid;
-    private double seniorButterflyTid;
-    private double seniorCrawlTid;
-    private double seniorRygCrawlTid;
+    private double juniorChestTime;
+    private double juniorButterflyTime;
+    private double juniorCrawlTime;
+    private double juniorBackcrawlTime;
+    private double seniorChestTime;
+    private double seniorButterflyTime;
+    private double seniorCrawlTime;
+    private double seniorRygCrawlTime;
 
     static final double SENIORPRICE = 1600;
     static final double JUNIORPRICE = 1000;
@@ -106,12 +104,12 @@ public class Member implements Serializable {
     public String getName() {return this.name;}
     public void setName(String name) {this.name=name;}
 
-    public String getJuniorBryst() {
-        return juniorBryst;
+    public String getJuniorBreast() {
+        return juniorBreast;
     }
 
-    public void setJuniorBryst(String juniorBryst) {
-        this.juniorBryst = juniorBryst;
+    public void setJuniorBreast(String juniorBreast) {
+        this.juniorBreast = juniorBreast;
     }
 
     public String getJuniorButterfly() {
@@ -130,20 +128,20 @@ public class Member implements Serializable {
         this.juniorCrawl = juniorCrawl;
     }
 
-    public String getJuniorRygcrawl() {
-        return juniorRygcrawl;
+    public String getJuniorBackcrawl() {
+        return juniorBackcrawl;
     }
 
-    public void setJuniorRygcrawl(String juniorRygcrawl) {
-        this.juniorRygcrawl = juniorRygcrawl;
+    public void setJuniorBackcrawl(String juniorBackcrawl) {
+        this.juniorBackcrawl = juniorBackcrawl;
     }
 
-    public String getSeniorBryst() {
-        return seniorBryst;
+    public String getSeniorChest() {
+        return seniorChest;
     }
 
-    public void setSeniorBryst(String seniorBryst) {
-        this.seniorBryst = seniorBryst;
+    public void setSeniorChest(String seniorChest) {
+        this.seniorChest = seniorChest;
     }
 
     public String getSeniorButterfly() {
@@ -162,76 +160,76 @@ public class Member implements Serializable {
         this.seniorCrawl = seniorCrawl;
     }
 
-    public String getSeniorRygCrawl() {
-        return seniorRygCrawl;
+    public String getSeniorBackCrawl() {
+        return seniorBackCrawl;
     }
 
-    public void setSeniorRygCrawl(String seniorRygCrawl) {
-        this.seniorRygCrawl = seniorRygCrawl;
+    public void setSeniorBackCrawl(String seniorBackCrawl) {
+        this.seniorBackCrawl = seniorBackCrawl;
     }
 
     public double getJuniorBrystTid() {
-        return juniorBrystTid;
+        return juniorChestTime;
     }
 
     public void setJuniorBrystTid(double juniorBrystTid) {
-        this.juniorBrystTid = juniorBrystTid;
+        this.juniorChestTime = juniorBrystTid;
     }
 
-    public double getJuniorButterflyTid() {
-        return juniorButterflyTid;
+    public double getJuniorButterflyTime() {
+        return juniorButterflyTime;
     }
 
-    public void setJuniorButterflyTid(double juniorButterflyTid) {
-        this.juniorButterflyTid = juniorButterflyTid;
+    public void setJuniorButterflyTime(double juniorButterflyTime) {
+        this.juniorButterflyTime = juniorButterflyTime;
     }
 
-    public double getJuniorCrawlTid() {
-        return juniorCrawlTid;
+    public double getJuniorCrawlTime() {
+        return juniorCrawlTime;
     }
 
-    public void setJuniorCrawlTid(double juniorCrawlTid) {
-        this.juniorCrawlTid = juniorCrawlTid;
+    public void setJuniorCrawlTime(double juniorCrawlTime) {
+        this.juniorCrawlTime = juniorCrawlTime;
     }
 
-    public double getJuniorRygcrawlTid() {
-        return juniorRygcrawlTid;
+    public double getJuniorBackcrawlTime() {
+        return juniorBackcrawlTime;
     }
 
-    public void setJuniorRygcrawlTid(double juniorRygcrawlTid) {
-        this.juniorRygcrawlTid = juniorRygcrawlTid;
+    public void setJuniorBackcrawlTime(double juniorBackcrawlTime) {
+        this.juniorBackcrawlTime = juniorBackcrawlTime;
     }
 
-    public double getSeniorBrystTid() {
-        return seniorBrystTid;
+    public double getSeniorChestTime() {
+        return seniorChestTime;
     }
 
-    public void setSeniorBrystTid(double seniorBrystTid) {
-        this.seniorBrystTid = seniorBrystTid;
+    public void setSeniorChestTime(double seniorChestTime) {
+        this.seniorChestTime = seniorChestTime;
     }
 
-    public double getSeniorButterflyTid() {
-        return seniorButterflyTid;
+    public double getSeniorButterflyTime() {
+        return seniorButterflyTime;
     }
 
-    public void setSeniorButterflyTid(double seniorButterflyTid) {
-        this.seniorButterflyTid = seniorButterflyTid;
+    public void setSeniorButterflyTime(double seniorButterflyTime) {
+        this.seniorButterflyTime = seniorButterflyTime;
     }
 
-    public double getSeniorCrawlTid() {
-        return seniorCrawlTid;
+    public double getSeniorCrawlTime() {
+        return seniorCrawlTime;
     }
 
-    public void setSeniorCrawlTid(double seniorCrawlTid) {
-        this.seniorCrawlTid = seniorCrawlTid;
+    public void setSeniorCrawlTime(double seniorCrawlTime) {
+        this.seniorCrawlTime = seniorCrawlTime;
     }
 
-    public double getSeniorRygCrawlTid() {
-        return seniorRygCrawlTid;
+    public double getSeniorRygCrawlTime() {
+        return seniorRygCrawlTime;
     }
 
-    public void setSeniorRygCrawlTid(double seniorRygCrawlTid) {
-        this.seniorRygCrawlTid = seniorRygCrawlTid;
+    public void setSeniorRygCrawlTime(double seniorRygCrawlTime) {
+        this.seniorRygCrawlTime = seniorRygCrawlTime;
     }
 
 
@@ -272,23 +270,23 @@ public class Member implements Serializable {
      public String toStringTimes() {
          ArrayList<String> disciplines = new ArrayList<>();
          ArrayList<Double> disciplineTime = new ArrayList<>();
-         disciplines.add(juniorBryst);
+         disciplines.add(juniorBreast);
          disciplines.add(juniorButterfly);
          disciplines.add(juniorCrawl);
-         disciplines.add(juniorRygcrawl);
-         disciplines.add(seniorBryst);
+         disciplines.add(juniorBackcrawl);
+         disciplines.add(seniorChest);
          disciplines.add(seniorButterfly);
          disciplines.add(seniorCrawl);
-         disciplines.add(seniorRygCrawl);
+         disciplines.add(seniorBackCrawl);
 
-         disciplineTime.add(juniorBrystTid);
-         disciplineTime.add(juniorButterflyTid);
-         disciplineTime.add(juniorCrawlTid);
-         disciplineTime.add(juniorRygcrawlTid);
-         disciplineTime.add(seniorBrystTid);
-         disciplineTime.add(seniorButterflyTid);
-         disciplineTime.add(seniorCrawlTid);
-         disciplineTime.add(seniorRygCrawlTid);
+         disciplineTime.add(juniorChestTime);
+         disciplineTime.add(juniorButterflyTime);
+         disciplineTime.add(juniorCrawlTime);
+         disciplineTime.add(juniorBackcrawlTime);
+         disciplineTime.add(seniorChestTime);
+         disciplineTime.add(seniorButterflyTime);
+         disciplineTime.add(seniorCrawlTime);
+         disciplineTime.add(seniorRygCrawlTime);
 
          ArrayList<Double> zeroNullDoubles = new ArrayList<>();
          ArrayList<String> zeroNullStrings = new ArrayList<>();

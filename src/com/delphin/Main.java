@@ -1,11 +1,10 @@
 package com.delphin;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
 
-    void run() throws IOException {
+    void run() throws Exception {
         //Instances of classes
         EditMembership editMembership = new EditMembership();
         FileEditing fileEditing = new FileEditing();
@@ -102,10 +101,10 @@ public class Main {
                     break;
                 case 10: //test af print tider..
                     Member member10 = fileEditing.readFileAndConvertToObject(UserInput.inputInt("Skriv ID nummer på medlem"));
-                    System.out.println(member10.getSeniorBrystTid());
-                    System.out.println(member10.getSeniorButterflyTid());
-                    System.out.println(member10.getSeniorCrawlTid());
-                    System.out.println(member10.getSeniorRygCrawlTid());
+                    System.out.println(member10.getSeniorChestTime());
+                    System.out.println(member10.getSeniorButterflyTime());
+                    System.out.println(member10.getSeniorCrawlTime());
+                    System.out.println(member10.getSeniorRygCrawlTime());
                     break;
                 case 11:
                     break;
@@ -125,7 +124,7 @@ public class Main {
     }
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         Main prg = new Main();
         prg.run();
     }

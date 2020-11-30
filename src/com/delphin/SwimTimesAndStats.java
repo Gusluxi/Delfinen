@@ -62,13 +62,13 @@ public class SwimTimesAndStats {
                     double time5 = userInput.inputTimeDouble("Indtast tid");
                     String askForPlace5 = placeWhereTimeWasRecorded();
                     String place5 = "Senior Bryst: "+askForPlace5+ " " + date;
-                    double lastPB5 = member.getSeniorBrystTid();
+                    double lastPB5 = member.getSeniorChestTime();
                     if (lastPB5 <1){
                         lastPB5 = 900;
                     }
                     if(time5<lastPB5){
-                        member.setSeniorBrystTid(time5);
-                        member.setSeniorBryst(place5);
+                        member.setSeniorChestTime(time5);
+                        member.setSeniorChest(place5);
                         String membersTimeAndInfo5 = stringWithTimeAndName(place5,time5,member);
 
                         fileEditing.addToFileTop5(membersTimeAndInfo5,"Disciplines",SB);
@@ -79,12 +79,12 @@ public class SwimTimesAndStats {
                     double time6 = userInput.inputTimeDouble("Indtast tid");
                     String askForPlace6 = placeWhereTimeWasRecorded();
                     String place6 = "Senior ButterFly: "+askForPlace6+ " " + date;
-                    double lastPB6 = member.getSeniorButterflyTid();
+                    double lastPB6 = member.getSeniorButterflyTime();
                     if (lastPB6 <1){
                         lastPB6 = 900;
                     }
                     if(time6<lastPB6){
-                        member.setSeniorButterflyTid(time6);
+                        member.setSeniorButterflyTime(time6);
                         member.setSeniorButterfly(place6);
                         String membersTimeAndInfo6 = stringWithTimeAndName(place6,time6,member);
 
@@ -96,12 +96,12 @@ public class SwimTimesAndStats {
                     double time7 = userInput.inputTimeDouble("Indtast tid");
                     String askForPlace7 = placeWhereTimeWasRecorded();
                     String place7 = "Senior Crawl: "+askForPlace7+ " " + date;
-                    double lastPB7 = member.getSeniorCrawlTid();
+                    double lastPB7 = member.getSeniorCrawlTime();
                     if (lastPB7 <1){
                         lastPB7 = 900;
                     }
                     if(time7<lastPB7){
-                        member.setSeniorCrawlTid(time7);
+                        member.setSeniorCrawlTime(time7);
                         member.setSeniorCrawl(place7);
                         String membersTimeAndInfo7 = stringWithTimeAndName(place7,time7,member);
 
@@ -113,13 +113,13 @@ public class SwimTimesAndStats {
                     double time8 = userInput.inputTimeDouble("Indtast tid");
                     String askForPlace8 = placeWhereTimeWasRecorded();
                     String place8 = "Senior RygCrawl: "+askForPlace8+ " " + date;
-                    double lastPB8 = member.getSeniorRygCrawlTid();
+                    double lastPB8 = member.getSeniorRygCrawlTime();
                     if (lastPB8 <1){
                         lastPB8 = 900;
                     }
                     if(time8<lastPB8){
-                        member.setSeniorRygCrawlTid(time8);
-                        member.setSeniorRygCrawl(place8);
+                        member.setSeniorRygCrawlTime(time8);
+                        member.setSeniorBackCrawl(place8);
                         String membersTimeAndInfo8 = stringWithTimeAndName(place8,time8,member);
 
                         fileEditing.addToFileTop5(membersTimeAndInfo8,"Disciplines",SRC);
@@ -166,7 +166,7 @@ public class SwimTimesAndStats {
                     }
                     if (time <= lastPB){
                         member.setJuniorBrystTid(time);
-                        member.setJuniorBryst(place);
+                        member.setJuniorBreast(place);
                         String membersTimeAndInfo = stringWithTimeAndName(place,time,member);
 
                         fileEditing.addToFileTop5(membersTimeAndInfo,"Disciplines",JB);
@@ -177,12 +177,12 @@ public class SwimTimesAndStats {
                     double time2 = userInput.inputTimeDouble("Indtast tid");
                     String askForPlace2 = placeWhereTimeWasRecorded();
                     String place2 = "Junior ButterFly: "+askForPlace2+" "+date;
-                    double lastPB2 = member.getJuniorButterflyTid();
+                    double lastPB2 = member.getJuniorButterflyTime();
                     if (lastPB2 <1){
                         lastPB2 = 900;
                     }
                     if (time2<lastPB2) {
-                        member.setJuniorButterflyTid(time2);
+                        member.setJuniorButterflyTime(time2);
                         member.setJuniorButterfly(place2);
                         String membersTimeAndInfo2 = stringWithTimeAndName(place2,time2,member);
 
@@ -196,12 +196,12 @@ public class SwimTimesAndStats {
                     String askForPlace3 = placeWhereTimeWasRecorded();
                     String place3 = "Junior Crawl: "+askForPlace3+" "+date;
 
-                    double lastPB3 = member.getJuniorCrawlTid();
+                    double lastPB3 = member.getJuniorCrawlTime();
                     if (lastPB3 <1){
                         lastPB3 = 900;
                     }
                     if (time3<lastPB3) {
-                        member.setJuniorCrawlTid(time3);
+                        member.setJuniorCrawlTime(time3);
                         member.setJuniorCrawl(place3);
                         String membersTimeAndInfo3 = stringWithTimeAndName(place3,time3,member);
 
@@ -214,13 +214,13 @@ public class SwimTimesAndStats {
 
                     String askForPlace4 = placeWhereTimeWasRecorded();
                     String place4 = "Junior RygCrawl: "+askForPlace4 + " " + date;
-                    double lastPB4 = member.getJuniorRygcrawlTid();
+                    double lastPB4 = member.getJuniorBackcrawlTime();
                     if (lastPB4 <1){
                         lastPB4 = 900;
                     }
                     if (time4<lastPB4){
-                        member.setJuniorRygcrawlTid(time4);
-                        member.setJuniorRygcrawl(place4);
+                        member.setJuniorBackcrawlTime(time4);
+                        member.setJuniorBackcrawl(place4);
                         String membersTimeAndInfo4 = stringWithTimeAndName(place4,time4,member);
 
                         fileEditing.addToFileTop5(membersTimeAndInfo4,"Disciplines",JRC);
@@ -359,49 +359,49 @@ public class SwimTimesAndStats {
                     String searchFor = Double.toString(member.getJuniorBrystTid());
                     fileEditing.removeLineFromText(searchFor,"Disciplines","JuniorBryst");
                     member.setJuniorBrystTid(0);
-                    member.setJuniorBryst(null);
+                    member.setJuniorBreast(null);
                     break;
                 case 2: //Junior Butterfly
-                    String searchFor2 = Double.toString(member.getJuniorButterflyTid());
+                    String searchFor2 = Double.toString(member.getJuniorButterflyTime());
                     fileEditing.removeLineFromText(searchFor2,"Disciplines","JuniorButterfly");
-                    member.setJuniorButterflyTid(0);
+                    member.setJuniorButterflyTime(0);
                     member.setJuniorButterfly(null);
                     break;
                 case 3: //Junior Crawl
-                    String searchFor3 = Double.toString(member.getJuniorCrawlTid());
+                    String searchFor3 = Double.toString(member.getJuniorCrawlTime());
                     fileEditing.removeLineFromText(searchFor3,"Disciplines","JuniorCrawl");
-                    member.setJuniorCrawlTid(0);
+                    member.setJuniorCrawlTime(0);
                     member.setJuniorCrawl(null);
                     break;
                 case 4: //Junior RygCrawl
-                    String searchFor4 = Double.toString(member.getJuniorRygcrawlTid());
+                    String searchFor4 = Double.toString(member.getJuniorBackcrawlTime());
                     fileEditing.removeLineFromText(searchFor4,"Disciplines","JuniorRygcrawl");
-                    member.setJuniorRygcrawlTid(0);
-                    member.setJuniorRygcrawl(null);
+                    member.setJuniorBackcrawlTime(0);
+                    member.setJuniorBackcrawl(null);
                     break;
                 case 5: //Senior Bryst
-                    String searchFor5 = Double.toString(member.getSeniorBrystTid());
+                    String searchFor5 = Double.toString(member.getSeniorChestTime());
                     fileEditing.removeLineFromText(searchFor5,"Disciplines","SeniorBryst");
-                    member.setSeniorBrystTid(0);
-                    member.setSeniorBryst(null);
+                    member.setSeniorChestTime(0);
+                    member.setSeniorChest(null);
                     break;
                 case 6: //Senior Butterfly
-                    String searchFor6 = Double.toString(member.getSeniorButterflyTid());
+                    String searchFor6 = Double.toString(member.getSeniorButterflyTime());
                     fileEditing.removeLineFromText(searchFor6,"Disciplines","SeniorButterfly");
-                    member.setSeniorButterflyTid(0);
+                    member.setSeniorButterflyTime(0);
                     member.setSeniorButterfly(null);
                     break;
                 case 7: //Senior Crawl
-                    String searchFor7 = Double.toString(member.getSeniorCrawlTid());
+                    String searchFor7 = Double.toString(member.getSeniorCrawlTime());
                     fileEditing.removeLineFromText(searchFor7,"Disciplines","SeniorCrawl");
-                    member.setSeniorCrawlTid(0);
+                    member.setSeniorCrawlTime(0);
                     member.setSeniorCrawl(null);
                     break;
                 case 8: //Senior RygCrawl
-                    String searchFor8 = Double.toString(member.getSeniorRygCrawlTid());
+                    String searchFor8 = Double.toString(member.getSeniorRygCrawlTime());
                     fileEditing.removeLineFromText(searchFor8,"Disciplines","SeniorRygcrawl");
-                    member.setSeniorRygCrawlTid(0);
-                    member.setSeniorRygCrawl(null);
+                    member.setSeniorRygCrawlTime(0);
+                    member.setSeniorBackCrawl(null);
                     break;
                 case 9: //Terminates program (if needed).
                     run = false;

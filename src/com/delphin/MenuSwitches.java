@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class MenuSwitches {
 
     //@author ludvig+frederik
-    void loginMenu() throws IOException {
+    void loginMenu() throws Exception {
         EditUserLogin editUserLogin = new EditUserLogin();
         FileEditing fileEditing = new FileEditing();
 
@@ -37,7 +37,7 @@ public class MenuSwitches {
                 break;
             case 2: //TraenerMenu
                 System.out.println("Tilykke du er logget ind som Traener");
-                traenerMenu();
+                coachMenu();
                 break;
             case 3: //KasserMenu
                 System.out.println("Tilykke du er logget ind som Kasser");
@@ -58,7 +58,7 @@ public class MenuSwitches {
 }
 
     //@author ludvig+frederik
-   void formandMenu() throws IOException {
+   void formandMenu() throws Exception {
 
        //Instances
        FileEditing fileEditing = new FileEditing();
@@ -101,7 +101,7 @@ public class MenuSwitches {
    }
 
        //@author ludvig+frederik
-       void traenerMenu() throws IOException {
+       void coachMenu() throws Exception {
            //instances
            FileEditing fileEditing = new FileEditing();
            SwimTimesAndStats swimTimesAndStats = new SwimTimesAndStats();
@@ -131,14 +131,19 @@ public class MenuSwitches {
                    case 2: //Show top 5 swimmmers in disciplines
                        swimTimesAndStats.displayTop5();
                        break;
+                   case 3: //Delete time from member
+                       Member member6 = fileEditing.findSpecificMemberAndConvert
+                               (UserInput.inputString("Skriv navn eller nummer på personen du vil finde",false));
+                       swimTimesAndStats.deleteMembersTime(member6);
+                       break;
                    default:
-                       traenerMenu();
+                       coachMenu();
                }
            }
        }
 
     //@author ludvig+frederik
-    void kasserMenu() throws IOException {
+    void kasserMenu() throws Exception {
         //print kasser swtichmenu
         System.out.println("jahejmegatestKASSER");
         //Menu
@@ -241,10 +246,10 @@ public class MenuSwitches {
                     break;
                 case 10: //test af print tider..
                     Member member10 = fileEditing.readFileAndConvertToObject(123);
-                    System.out.println(member10.getSeniorBrystTid());
-                    System.out.println(member10.getSeniorButterflyTid());
-                    System.out.println(member10.getSeniorCrawlTid());
-                    System.out.println(member10.getSeniorRygCrawlTid());
+                    System.out.println(member10.getSeniorChestTime());
+                    System.out.println(member10.getSeniorButterflyTime());
+                    System.out.println(member10.getSeniorCrawlTime());
+                    System.out.println(member10.getSeniorRygCrawlTime());
                     break;
                 default:
                     adminMenu();
