@@ -108,31 +108,3 @@ public class EditMembership {
         }
     }
 }
-
-
-
-
-
-
-/*
-    //@author Gustav
-    //Used to extract MemberID from a String
-    //This method takes a string and checks each line if it contains the MemberID:
-    int getMemberIDFromString(String data) {
-        Scanner scan = new Scanner(data);
-        String memberID = "MemberID: #";
-        String stringID;
-        int intID = 0;
-        while (scan.hasNextLine()) {
-            String line = scan.nextLine();
-            if (line.contains(memberID)) { //If line contains "MemberID: #" it will extract the memberID and convert int to an int
-                stringID = line.substring(memberID.length());
-                intID = Integer.parseInt(stringID);
-            }
-        }
-        return intID;
-    }
-
- */
-
-

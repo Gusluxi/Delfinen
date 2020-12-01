@@ -22,20 +22,11 @@ class FileEditingTest {
 
         assertTrue(member instanceof Member);
     }
-    @Test
-        //asserts that when it retrieves a file, it is readable as member
-    void testReadFileAndConvertToObject() throws IOException {
-        FileEditing fileEditing = new FileEditing();
-        String path = "src\\Members\\87.txt";
-        Member member;
-        member = fileEditing.readFileAndConvertToObject(new File(path));
 
-        assertTrue(member instanceof Member);
-    }
     @Test
         //@author Mick
         //asserts that the method makes a file and that it is convertable.
-    void createNewMemberObjectFile() throws IOException {
+    void storeInObjectFile() throws IOException {
         FileEditing fileEditing = new FileEditing();
         Member member;
         member = fileEditing.readFileAndConvertToObject(87);
@@ -78,36 +69,6 @@ class FileEditingTest {
         readFile2.close();
 
         assertNotEquals(firstAL,sortedAL);
-    }
-
-    @Test
-        //@author Mick
-    void addToFile() throws IOException {
-        FileEditing fileEditing = new FileEditing();
-        String path = "src\\Disciplines\\JuniorBryst.txt";
-        File file = new File(path);
-
-        //insert file to Arraylist, add line to file, insert file to new arraylist, compare.
-        ArrayList<String> firstAL = new ArrayList<>();
-        ArrayList<String> secondAL = new ArrayList<>();
-
-        Scanner readFile = new Scanner(file);
-        while (readFile.hasNextLine()){
-            firstAL.add(readFile.nextLine());
-        }
-        System.out.println(firstAL.toString());
-        readFile.close();
-
-        fileEditing.addToFile("YayeetDAB","Disciplines","JuniorBryst");
-
-        File file2 = new File(path);
-        Scanner readFile2 = new Scanner(file2);
-        while (readFile2.hasNextLine()){
-            secondAL.add(readFile2.nextLine());
-        }
-        System.out.println(secondAL.toString());
-        readFile2.close();
-        assertNotEquals(firstAL,secondAL);
     }
 
     @Test
@@ -168,6 +129,7 @@ class FileEditingTest {
         readFile2.close();
         assertNotEquals(firstAL,secondAL);
     }
+
     @Test
         //@Author Gustav
     void testDataToArrayList() {
@@ -227,7 +189,7 @@ class FileEditingTest {
     }
     @Test
         //@Author Gustav
-    void testFindSpecificFileValues() {
+    void testFindSpecificMemberAndConvert() {
         ArrayList<Integer> arrayPlace = new ArrayList<>();
         String input = "Gustav";
         ArrayList<String> memberData = new ArrayList<>();
@@ -257,52 +219,4 @@ class FileEditingTest {
             }
         }
     }
-
-    @Test
-        //@Author Gustav
-    void testPrintNrNameFromString() {
-        //TestData
-        String dataLineOneAge = "This is line one Alder: ";
-        String dataLineTwoName = "This is line two Navn: ";
-        String dataLineThreeMemberID = "This is line three MemberID:";
-        String data = "\n" + dataLineOneAge + "\n" + dataLineTwoName + "\n" + dataLineThreeMemberID; //What a data string would look like
-        Scanner scan = new Scanner(data);
-        while (scan.hasNextLine()) {
-            String line = scan.nextLine();
-            if (line.contains("MemberID:"))  {
-                //Tests to see if the specific Line 3 with MemberID: Matches and tests that the other lines did not
-                assertNotEquals(dataLineOneAge, line);
-                assertNotEquals(dataLineTwoName, line);
-                assertEquals(dataLineThreeMemberID, line);
-            }
-            if (line.contains("Navn:")) {
-                //Tests to see if the specific Line 2 with Navn: Matches and tests that the other lines did not.
-                assertNotEquals(dataLineOneAge, line);
-                assertEquals(dataLineTwoName, line);
-                assertNotEquals(dataLineThreeMemberID, line);
-            }
-
-        }
-    }
-
-    @Test
-        //@Author Gustav
-    void testPrintStringAsList() {
-        String dataLineOneAge = "This is line one Alder: ";
-        String dataLineTwoName = "This is line two Navn: ";
-        String dataLineThreeMemberID = "This is line three MemberID:";
-        String data = "\n" + dataLineOneAge + "\n" + dataLineTwoName + "\n" + dataLineThreeMemberID; //What a data string would look like
-        Scanner scan = new Scanner(data);
-        int count = 0;
-
-        while (scan.hasNextLine()) {
-            count++;
-            String line = scan.nextLine();
-            //Tests that only one line gets scanned at a time.
-            assertTrue(dataLineOneAge.contains(line)|| dataLineTwoName.contains(line) || dataLineThreeMemberID.contains(line));
-        }
-        //Tests if count actually counted the number of lines
-        assertEquals(count, 3);
-    }
-
 }
