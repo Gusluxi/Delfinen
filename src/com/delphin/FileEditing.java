@@ -20,29 +20,7 @@ public class FileEditing  {
     static final String SRC = "SeniorRygcrawl";
 
 
-    //@author Mick
-    //Not sure if we're using this anymore.
-    //Finds a file with given string-name, displays it.
-    void readSpecificFile(String directory, String fileName) throws FileNotFoundException {
-        File file = new File("src\\"+directory+"\\"+fileName+".txt"); //path = ex. "src\\Disciplines" & fileName = ex. "107".
-        Scanner readFile = new Scanner(file);
-        while (readFile.hasNextLine()){
-            System.out.println(readFile.nextLine());
-        }
-    }
 
-    //@author Mick
-    //Not sure if we're using this anymore.
-    //it displays a file......
-    void displaySpecificFileList(String directory, String fileName) throws FileNotFoundException {
-        File file = new File("src\\"+directory+"\\"+fileName+".txt"); //path = ex. "src\\Disciplines" & fileName = ex. "107"
-        int count = 0;
-        Scanner readFile = new Scanner(file);
-        while (readFile.hasNextLine()){
-            count++;
-            System.out.println(count + ". " + readFile.nextLine());
-        }
-    }
 
     //@author Mick
     //Reads a given filename as an Object (member)
@@ -242,23 +220,6 @@ public class FileEditing  {
         tempFile.renameTo(inputFile);
     }
 
-    void removeLineFromText2(String string, String filename) throws IOException {
-        File inputFile = new File("src\\"+ "Disciplines" +"\\"+filename+".txt");
-        File tempFile = new File("src\\"+ "Disciplines" +"\\tempTestFile.txt");
-        Scanner readFile = new Scanner(inputFile);
-        FileWriter fileWriter = new FileWriter(tempFile);
-
-        while (readFile.hasNextLine()){
-            if (!readFile.nextLine().contains(string)){
-                fileWriter.write(readFile.nextLine());
-            }
-        }
-        readFile.close();
-        fileWriter.close();
-
-        inputFile.delete();
-        tempFile.renameTo(inputFile);
-    }
 
 
     //@author Ludvig
@@ -364,70 +325,6 @@ public class FileEditing  {
             }
         }
         return memberData;
-    }
-
-
-    //@author Gustav
-    //Looks for a specific member by String or Number.
-    //If multiply users appear, you can choose by using the ID-number
-    String findSpecificFileValues(String usrMsg) throws IOException {
-
-        ArrayList<Integer> arrayPlace = new ArrayList<>(); //Keeps track of each search result.
-        String input = UserInput.inputString(usrMsg, false);
-        ArrayList<String> memberData = dataToArrayList("Members"); //Returns an Arraylist of Strings with each member instead.
-        //so when searching for "Gus" it finds all members named something with "Gus"
-
-        for (int i = 0; i < memberData.size(); i++) {
-            if (memberData.get(i).contains(input)) {
-                arrayPlace.add(i);
-            }
-        }
-
-        //In case of more hits on Search-word.
-        if (arrayPlace.size() > 1) {
-            System.out.println("Vælg hvilken "+input+":");
-            for (int c = 0; c < arrayPlace.size(); c++) {
-                System.out.println((c+1)+"."); //Displays index numbers+1
-                printNrNameFromString(memberData.get(arrayPlace.get(c))); //displays Name and NumberID only.T
-            }
-
-            int reInput = UserInput.inputInt(1, arrayPlace.size(),"Skriv nr. for den " + input + " du vil vælge.")-1;
-            return memberData.get(arrayPlace.get(reInput));
-
-            //in case the search has 0 results
-        } else if (arrayPlace.size() <= 0) { //Runs the same method until the user finds a correct value. (called "Recursion
-            return findSpecificFileValues("Fejl, " + input + " findes ikke.\nSkriv navn eller #nr. på den person der skal redigeres: ");
-        }
-        return memberData.get(arrayPlace.get(0));
-    }
-
-    //@author Gustav
-    //Prints MemberID and Name of the subject(data)
-    void printNrNameFromString(String data) {
-        Scanner scan = new Scanner(data);
-        while (scan.hasNextLine()) {
-            String line = scan.nextLine();
-            if (line.contains("MemberID:")) {
-                System.out.println(line);
-            }
-            if (line.contains("Navn:")) {
-                System.out.println(line+"\n");
-            }
-        }
-        scan.close();
-    }
-
-    //@author Gustav
-    //Prints each line in a String as a list of 1. 2. 3...
-    void printStringAsList(String data) {
-        Scanner scan = new Scanner(data);
-        int count = 0;
-        while (scan.hasNextLine()) {
-            count++;
-            String line = scan.nextLine();
-            System.out.println(count + ". " + line);
-        }
-        scan.close();
     }
 
     //@author Mick
