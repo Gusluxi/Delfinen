@@ -339,7 +339,6 @@ public class SwimTimesAndStats {
     void deleteMembersTime(Member member) throws Exception {
         boolean run = true;
         int choice2;
-        System.out.println(member.getName());
         String headerText2 = "Menu til at slette en svømmetid fra medlem.";
         String leadText2 = "Vælg hvilken disciplin, som skal slettes fra medlemmet:";
         String[] menuItems2 = {"1. JuniorBryst", "2. JuniorButterfly", "3. JuniorCrawl",
@@ -349,7 +348,7 @@ public class SwimTimesAndStats {
         FileEditing fileEditing = new FileEditing();
 
         while (run) {
-
+            System.out.println(member.getName());
             menu2.printMenu(); // Print menu
             System.out.println(member.toStringTimes());
             choice2 = UserInput.inputInt(leadText2);
