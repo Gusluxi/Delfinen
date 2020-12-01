@@ -1,26 +1,13 @@
 package com.delphin;
 
-import java.io.*;
+import java.io.*; //IOExceptions, ObjectInputStream/ObjectOutputStream, FileInputStream/FileOutputStream, File
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
+
 public class FileEditing  {
-
-    //When asked for directory, DELPHIN works as a path name.
-    static final String DELPHIN = "com\\delphin";
-    static final String JB = "JuniorBryst";
-    static final String JBF = "JuniorButterfly";
-    static final String JC = "JuniorCrawl";
-    static final String JRC = "JuniorRygcrawl";
-    static final String SB = "SeniorBryst";
-    static final String SBF = "SeniorButterfly";
-    static final String SC = "SeniorCrawl";
-    static final String SRC = "SeniorRygcrawl";
-
-
-
 
     //@author Mick
     //Reads a given filename as an Object (member)
@@ -45,7 +32,7 @@ public class FileEditing  {
             fi.close();
             return aMember; //returns a member-object
 
-        } catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException | FileNotFoundException e){
             e.printStackTrace();
         }
 
@@ -271,18 +258,6 @@ public class FileEditing  {
 
         }
         return memberData;
-    }
-
-    ArrayList<Integer> userStatus() throws IOException {
-        ArrayList<File> fileA = getAllFilesInDir("UserLogin");
-        ArrayList<Integer> loginData = new ArrayList<>();
-
-        for (int i = 0; i < fileA.size(); i++ ) {
-            //adds a string that contains the file-object's toString
-            loginData.add(readFileAndConvertToObjectLogin(fileA.get(i)).getStatus());
-
-        }
-        return loginData;
     }
 
     //@Author Frederik

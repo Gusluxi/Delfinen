@@ -1,6 +1,5 @@
 package com.delphin;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 //@author Frederik (copied from member partially)
@@ -10,10 +9,10 @@ public class Login implements Serializable {
     private String name;
     private int status;
 
-    Login() throws IOException {
+    Login()  {
     }
 
-    Login(String userName, String userPassword, String name, int status) throws IOException {
+    Login(String userName, String userPassword, String name, int status) {
         this.userName = userName;
         this.userPassword = userPassword;
         this.name = name;

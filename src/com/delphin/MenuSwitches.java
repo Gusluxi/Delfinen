@@ -1,35 +1,31 @@
 package com.delphin;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 public class MenuSwitches {
 
     //@author ludvig+frederik
     void loginMenu() throws Exception {
-        EditUserLogin editUserLogin = new EditUserLogin();
         FileEditing fileEditing = new FileEditing();
 
 
-        editUserLogin.newUser("Formand","1","Kurt",1);
-        editUserLogin.newUser("Coach","2","Hurtigere Kurt",2);
-        editUserLogin.newUser("Kasser","3","Dame Kurt",3);
-        editUserLogin.newUser("Kurt","4","admin",4);
-        editUserLogin.newUser("luk","luk","luk",9);
+        //editUserLogin.newUser("Formand","1","Kurt",1);
+        //editUserLogin.newUser("Coach","2","Hurtigere Kurt",2);
+        //editUserLogin.newUser("Kasser","3","Dame Kurt",3);
+        //editUserLogin.newUser("Kurt","4","admin",4);
+        //editUserLogin.newUser("luk","luk","luk",9);
 
     boolean run = true;
     int menuChoice;
-    String userNameText = "Venligst indtast dit Username: ";
-    String passwordText = "Venligst indtast dit Password: ";
+        System.out.println("Skriv \"luk\" for at lukke programmet");
+        String userNameText = "Venligst indtast dit Username: ";
+        String passwordText = "Venligst indtast dit Password: ";
 
         while (run){
-        String  userName = UserInput.inputString(userNameText, false);
-        String password = UserInput.inputString(passwordText, false);
-        menuChoice = (fileEditing.getUserStatusFromFile(userName,password));
-        switch (menuChoice){
-            case 0: //End program
+            String userName = UserInput.inputString(userNameText, false);
+            String password = UserInput.inputString(passwordText, false);
+            menuChoice = (fileEditing.getUserStatusFromFile(userName,password));
+            switch (menuChoice){
+            case 0: //Error
                 System.out.println("Wrong Username and or Password");
-                loginMenu();
                 break;
             case 1: //Chairman Menu
                 formandMenu();
@@ -47,7 +43,6 @@ public class MenuSwitches {
                 run = false;
                 break;
             default:
-                loginMenu();
         }
     }
 }
@@ -73,7 +68,7 @@ public class MenuSwitches {
            menuChoice = UserInput.inputInt(leadtext);
            switch (menuChoice) {
                case 0: // End program
-                   loginMenu();
+                   run = false;
                    break;
                case 1: // New membership
                    editMembership.newMembership();
@@ -119,7 +114,7 @@ public class MenuSwitches {
                menuChoice = UserInput.inputInt(leadtext);
                switch (menuChoice) {
                    case 0: //End program
-                       loginMenu();
+                       run = false;
                        break;
                    case 1: //Add new time
                        Member member5 = fileEditing.findSpecificMemberAndConvert
@@ -158,7 +153,7 @@ public class MenuSwitches {
             menuChoice = UserInput.inputInt(leadtext);
             switch (menuChoice) {
                 case 0: //End program
-                    loginMenu();
+                    run = false;
                     break;
                 case 1: //shows total revenue
                     CurrentSubscriptions.showTotalRevenue();
@@ -179,6 +174,7 @@ public class MenuSwitches {
        FileEditing fileEditing = new FileEditing();
        EditMembership editMembership = new EditMembership();
        SwimTimesAndStats swimTimesAndStats = new SwimTimesAndStats();
+       EditUserLogin editUserLogin = new EditUserLogin();
 
         //Menu
         boolean run = true;
@@ -188,7 +184,7 @@ public class MenuSwitches {
         String[] menuItems = {"1. Tilføj nyt medlem", "2. Rediger medlem", "3. Vis omsættelse",
                 "4. Display top5 ", "5. Vis alle medlemmer",
                 "6. Tilføj en tid til medlem", "7. Slet en tid fra medlem","8. Slet et medlem",
-                "0. Log ud af din bruger"};
+                "9. Opret ny bruger","0. For at lukke programmet"};
         while (run) {
             Menu menu = new Menu(headertext, leadtext, menuItems);
             menu.printMenu();
@@ -231,6 +227,8 @@ public class MenuSwitches {
                 case 8: // Delete member
                     editMembership.removeMemberFromSystem("Members",UserInput.inputString("Skriv IDNummer som skal slettes: ",false));
                     break;
+                case 9:
+                    editUserLogin.newUser();
                 default:
                     System.out.println("");
             }

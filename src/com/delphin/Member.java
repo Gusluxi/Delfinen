@@ -1,5 +1,5 @@
 package com.delphin;
-import java.io.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 //Serialization is the conversion of the state of an object into a byte stream;
@@ -42,16 +42,16 @@ public class Member implements Serializable {
     static final double PENSIONER = (SENIORPRICE- (SENIORPRICE*DISCOUNT));
     static final double PASSIVE = 500;
 
-    Member() throws IOException {}
+    Member() {}
 
-    Member(int memberID, int age, String name) throws IOException {
+    Member(int memberID, int age, String name) {
         this.memberID=memberID;
         this.age=age;
         this.name=name;
 
     }
 
-    Member(int memberID, int age, String name, boolean activity, boolean junior, boolean competitor, boolean activeDebt, double subscriptionPrice) throws IOException {
+    Member(int memberID, int age, String name, boolean activity, boolean junior, boolean competitor, boolean activeDebt, double subscriptionPrice) {
         this.memberID=memberID;
         this.age=age;
         this.name=name;

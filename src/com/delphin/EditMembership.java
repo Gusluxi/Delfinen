@@ -1,9 +1,9 @@
 package com.delphin;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.util.Scanner;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class EditMembership {
     static IDNumber idNumber = new IDNumber();
@@ -32,7 +32,7 @@ public class EditMembership {
     //@author Mick
     //A switch case to edit in a member's data.
     //Uses UserInput and getter/setters from Member.
-    void editMembership(Member member) throws IOException {
+    void editMembership(Member member) {
         System.out.println(member.toString());
         boolean stayInLoop = true;
         //Menu
